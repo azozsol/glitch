@@ -185,3 +185,107 @@
     var(--scan-line) 3px
   );
 }
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--acid);
+  color: var(--background);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  &:hover {
+    background: var(--foreground);
+    transform: translateY(-2px);
+  }
+}
+
+@utility btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--muted-foreground);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 15px 0;
+  text-decoration: none;
+  &::after {
+    content: "→";
+    transition: transform 0.2s;
+  }
+  &:hover {
+    color: var(--acid);
+  }
+  &:hover::after {
+    transform: translateX(4px);
+  }
+}
+
+@utility section-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-soft);
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--surface-3);
+  }
+}
+
+@utility form-input {
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  &:focus {
+    border-color: var(--acid);
+  }
+}
+
+@utility case-col-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-soft);
+  margin-bottom: 8px;
+}
+@utility case-col-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 6px;
+}
+@utility case-col-body {
+  font-size: 13px;
+  color: var(--muted-faint);
+  line-height: 1.6;
+}
