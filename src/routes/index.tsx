@@ -36,7 +36,7 @@ function Nav() {
   const { theme, toggle } = useTheme();
   return (
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-acid/10 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex h-[60px] max-w-[1160px] items-center justify-between px-8">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-8">
         <a href="#" className="flex items-center gap-0.5 font-mono text-[18px] font-bold tracking-tight text-foreground">
           <span className="relative inline-block">GLITCH</span>
           <span className="text-acid">.BE</span>
@@ -71,20 +71,21 @@ function Nav() {
           <li>
             <button
               onClick={toggle}
-              aria-label="Toggle theme"
-              className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted-faint hover:text-acid"
+              aria-label="Basculer entre le thème clair et sombre"
+              className="relative inline-block font-mono text-[11px] uppercase tracking-[0.1em] text-muted-faint transition-colors hover:text-acid"
             >
-              {theme === "dark" ? "☀ Light" : "☾ Dark"}
+              {/* Élément invisible qui réserve toujours la largeur du texte le plus long */}
+              <span className="invisible" aria-hidden="true">
+                ☀ Light
+              </span>
+              <span className="absolute inset-0">
+                {theme === "dark" ? "☀ Light" : "☾ Dark"}
+              </span>
             </button>
           </li>
         </ul>
-        <button
-          onClick={toggle}
-          aria-label="Toggle theme"
-          className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted-faint hover:text-acid md:hidden"
-        >
-          {theme === "dark" ? "☀" : "☾"}
-        </button>
+
+
       </div>
     </nav>
   );
@@ -152,9 +153,9 @@ function Hero() {
 }
 
 const TICKER = [
-  "Stratégie de marque","Direction créative","Web & Développement","Marketing Digital",
-  "Identité visuelle","TVCs & Production","SEO & Croissance","Formation & Conseil",
-  "Menus animés","Packaging Design",
+  "Stratégie de marque", "Direction créative", "Web & Développement", "Marketing Digital",
+  "Identité visuelle", "TVCs & Production", "SEO & Croissance", "Formation & Conseil",
+  "Menus animés", "Packaging Design",
 ];
 
 function Ticker() {
@@ -175,14 +176,14 @@ function Ticker() {
 
 function Clients() {
   const clients = [
-    ["Vodafone", "Egypt · DDB Cairo"],["Arab Bank", "Egypt · DDB Cairo"],
-    ["Mitsubishi", "Bahrain · JWT"],["Energizer", "Egypt · BBDO"],
-    ["Zain", "Bahrain · JWT"],["TMG", "Egypt · DDB"],
-    ["Makifornia", "Brussels · CMLeon"],["Président", "Egypt · BBDO"],
+    ["Vodafone", "Egypt · DDB Cairo"], ["Arab Bank", "Egypt · DDB Cairo"],
+    ["Mitsubishi", "Bahrain · JWT"], ["Energizer", "Egypt · BBDO"],
+    ["Zain", "Bahrain · JWT"], ["TMG", "Egypt · DDB"],
+    ["Makifornia", "Brussels · CMLeon"], ["Président", "Egypt · BBDO"],
   ];
   return (
     <div className="border-y border-border bg-surface-1 py-14">
-      <div className="mx-auto max-w-[1160px] px-8">
+      <div className="mx-auto max-w-6xl px-8">
         <Reveal className="section-label">Ils nous ont fait confiance</Reveal>
         <Reveal className="flex flex-wrap overflow-hidden rounded-sm border border-border">
           {clients.map(([name, meta]) => (
@@ -227,10 +228,10 @@ function Difference() {
 
 function Services() {
   const services = [
-    { num: "01", title: "Stratégie & Création publicitaire", body: "Du positionnement de marque à la campagne 360°. L'idée qui colle, le message qui convertit.", tags: [["Brand strategy","a"],["TVC & Radio","a"],["Copywriting",""],["Campagnes",""]] },
-    { num: "02", title: "Marketing Digital & Croissance", body: "SEO, réseaux sociaux, publicité en ligne. Votre visibilité, mesurée et optimisée chaque semaine.", tags: [["SEO","a"],["Meta & Google Ads",""],["Analytics",""],["Content",""]] },
-    { num: "03", title: "Web & Développement", body: "Sites, e-commerce, applications web. Conçus pour convertir. Construits pour durer.", tags: [["Webflow","c"],["E-commerce","c"],["UI/UX",""],["Web apps",""]] },
-    { num: "04", title: "Formation & Conseil", body: "On forme aussi vos équipes. Marketing digital, réseaux sociaux, stratégie de contenu — en présentiel à Bruxelles.", tags: [["Ateliers",""],["CF2M","a"],["Coaching",""],["En ligne",""]] },
+    { num: "01", title: "Stratégie & Création publicitaire", body: "Du positionnement de marque à la campagne 360°. L'idée qui colle, le message qui convertit.", tags: [["Brand strategy", "a"], ["TVC & Radio", "a"], ["Copywriting", ""], ["Campagnes", ""]] },
+    { num: "02", title: "Marketing Digital & Croissance", body: "SEO, réseaux sociaux, publicité en ligne. Votre visibilité, mesurée et optimisée chaque semaine.", tags: [["SEO", "a"], ["Meta & Google Ads", ""], ["Analytics", ""], ["Content", ""]] },
+    { num: "03", title: "Web & Développement", body: "Sites, e-commerce, applications web. Conçus pour convertir. Construits pour durer.", tags: [["Webflow", "c"], ["E-commerce", "c"], ["UI/UX", ""], ["Web apps", ""]] },
+    { num: "04", title: "Formation & Conseil", body: "On forme aussi vos équipes. Marketing digital, réseaux sociaux, stratégie de contenu — en présentiel à Bruxelles.", tags: [["Ateliers", ""], ["CF2M", "a"], ["Coaching", ""], ["En ligne", ""]] },
   ];
   return (
     <section id="services" className="pb-20">
@@ -246,13 +247,12 @@ function Services() {
                 {s.tags.map(([label, kind]) => (
                   <span
                     key={label}
-                    className={`rounded-sm border px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.06em] ${
-                      kind === "a"
-                        ? "border-acid/25 text-acid"
-                        : kind === "c"
+                    className={`rounded-sm border px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.06em] ${kind === "a"
+                      ? "border-acid/25 text-acid"
+                      : kind === "c"
                         ? "border-cyn/25 text-cyn"
                         : "border-border text-muted-faint"
-                    }`}
+                      }`}
                   >
                     {label}
                   </span>
@@ -275,21 +275,23 @@ function Services() {
 function FeaturedCase() {
   return (
     <section id="portfolio" className="pb-20">
-      <div className="mx-auto max-w-[1160px] px-8">
-        <Reveal className="section-label">Une réalisation récente</Reveal>
+      <div className="mx-auto max-w-6xl px-8">
+        {/* <Reveal className="section-label">Une réalisation récente</Reveal> */}
         <Reveal className="overflow-hidden rounded border border-border bg-surface-1">
           <div
-            className="relative flex h-[220px] items-center justify-center overflow-hidden"
+            className="relative flex h-65 items-center justify-center overflow-hidden"
             style={{ background: "linear-gradient(135deg,#0a0a14,#1a0a0a)" }}
           >
-            <span className="absolute left-3.5 top-3.5 rounded-sm border border-acid/30 bg-acid/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-acid">
+            {/* <span className="absolute left-3.5 top-3.5 rounded-sm border border-acid/30 bg-acid/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-acid">
               ● Identité visuelle · Packaging
-            </span>
-            <CaseCanvas />
+            </span> */}
+            {/* <CaseCanvas /> */}
             <div className="relative z-10 flex flex-col items-center gap-2.5">
-              <div style={{ fontFamily: "Georgia, serif", fontSize: 52, fontStyle: "italic", color: "white", textShadow: "0 2px 16px rgba(0,0,0,.5)" }}>Pales</div>
+              <img src="/images/pales.jpeg" alt="Pales three products" />
+
+              {/* <div style={{ fontFamily: "Georgia, serif", fontSize: 52, fontStyle: "italic", color: "white", textShadow: "0 2px 16px rgba(0,0,0,.5)" }}>Pales</div>
               <div className="h-0.5 w-20 rounded-sm" style={{ background: "#f0c040" }} />
-              <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/50">Drinks · Bruxelles</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/50">Drinks · Bruxelles</div> */}
             </div>
           </div>
           <div className="grid gap-7 p-8 md:grid-cols-3">
@@ -330,8 +332,8 @@ function Team() {
               name: "Joe Chamata",
               bio: "20 ans chez DDB, BBDO, JWT — du Caire à Bahreïn à Bruxelles. Basé à Woluwe-Saint-Pierre depuis 2010. Formateur en marketing digital au CF2M depuis 2018. Il crée les idées qui font vendre.",
               statNum: "20+", statLabel: "ans de direction créative internationale",
-              tags: [["DDB · BBDO · JWT",""],["35+ TVCs","a"],["CF2M · Bruxelles",""]],
-              avatar: { hair:"#2a1a0a", skin:"#c8906a", shirt:"#1a1a2a", accent:"#b6ff2e" } as const,
+              tags: [["DDB · BBDO · JWT", ""], ["35+ TVCs", "a"], ["CF2M · Bruxelles", ""]],
+              avatar: { hair: "#2a1a0a", skin: "#c8906a", shirt: "#1a1a2a", accent: "#b6ff2e" } as const,
               tint: "rgba(182,255,46,.06)",
             },
             {
@@ -339,8 +341,8 @@ function Team() {
               name: "Soliman Azoz",
               bio: "Développeur web et architecte digital. Il transforme chaque concept créatif en une expérience web qui performe — belle à voir, robuste à l'usage, mesurable en résultats.",
               statNum: "100+", statLabel: "projets web livrés",
-              tags: [["Webflow","a"],["Full-stack","a"],["UI/UX Design",""]],
-              avatar: { hair:"#1a1a1a", skin:"#d4a574", shirt:"#1a1a3a", accent:"#00e5ff" } as const,
+              tags: [["Webflow", "a"], ["Full-stack", "a"], ["UI/UX Design", ""]],
+              avatar: { hair: "#1a1a1a", skin: "#d4a574", shirt: "#1a1a3a", accent: "#00e5ff" } as const,
               tint: "rgba(0,229,255,.06)",
             },
           ].map((m) => (
@@ -488,9 +490,9 @@ function Footer() {
             </p>
           </div>
           {[
-            ["Services", ["Stratégie & création","Marketing digital","Web & développement","Identité visuelle","Formation"]],
-            ["L'agence", ["À propos","Réalisations","Blog","Pourquoi GLITCH","Formules & tarifs"]],
-            ["Contact", ["hello@glitch.be","WhatsApp","LinkedIn","Instagram","Bruxelles, Belgique"]],
+            ["Services", ["Stratégie & création", "Marketing digital", "Web & développement", "Identité visuelle", "Formation"]],
+            ["L'agence", ["À propos", "Réalisations", "Blog", "Pourquoi GLITCH", "Formules & tarifs"]],
+            ["Contact", ["hello@glitch.be", "WhatsApp", "LinkedIn", "Instagram", "Bruxelles, Belgique"]],
           ].map(([title, items]) => (
             <div key={title as string}>
               <h4 className="mb-[18px] font-mono text-[9px] uppercase tracking-[0.18em] text-muted-soft">{title}</h4>
@@ -509,13 +511,12 @@ function Footer() {
             © 2025 GLITCH.BE — Comm & Marketing · Tous droits réservés · Mentions légales
           </p>
           <div className="flex gap-3.5">
-            {(["FR","NL","EN"] as const).map((l) => (
+            {(["FR", "NL", "EN"] as const).map((l) => (
               <button
                 key={l}
                 onClick={() => setLang(l)}
-                className={`font-mono text-[10px] uppercase tracking-[0.1em] transition-colors ${
-                  lang === l ? "text-acid" : "text-muted-soft hover:text-acid"
-                }`}
+                className={`font-mono text-[10px] uppercase tracking-[0.1em] transition-colors ${lang === l ? "text-acid" : "text-muted-soft hover:text-acid"
+                  }`}
               >
                 {l}
               </button>
