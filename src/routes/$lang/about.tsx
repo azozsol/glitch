@@ -1,23 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/glitch/layout";
 import { PixelAvatar } from "@/components/glitch/canvases";
+import { useLang } from "@/hooks/use-lang";
+import { getDictionary } from "@/i18n";
 
 export const Route = createFileRoute("/$lang/about")({
-  head: () => ({
-    meta: [
-      { title: "À propos — GLITCH.BE — Agence Comm & Marketing à Bruxelles" },
-      {
-        name: "description",
-        content:
-          "Deux experts, un seul brief. Découvrez l'équipe derrière GLITCH.BE et ce qui nous rend différents.",
-      },
-      { property: "og:title", content: "À propos — GLITCH.BE" },
-      {
-        property: "og:description",
-        content: "20 ans de création publicitaire. Le web dans le code. Une équipe, un brief.",
-      },
-    ],
-  }),
+  head: ({ params }) => {
+    const t = getDictionary(params.lang);
+    return {
+      meta: [
+        { title: t.aboutPage.meta.title },
+        { name: "description", content: t.aboutPage.meta.description },
+        { property: "og:title", content: t.aboutPage.meta.ogTitle },
+        { property: "og:description", content: t.aboutPage.meta.ogDescription },
+      ],
+    };
+  },
   component: AboutPage,
 });
 
@@ -80,11 +78,14 @@ const TEAM = [
 ];
 
 function AboutPage() {
+  const { t } = useLang();
+  const a = t.aboutPage;
+
   return (
     <>
       <section className="px-0 pb-16 pt-[140px]">
         <div className="mx-auto max-w-[1160px] px-8">
-          <Reveal className="section-label">L'agence</Reveal>
+          <Reveal className="section-label">{a.eyebrow}</Reveal>
           <Reveal className="mb-4">
             <h1 className="font-bold tracking-[-0.03em]" style={{ fontSize: "clamp(32px,5vw,56px)" }}>
               Deux experts. <span className="text-acid">Un seul brief.</span>
@@ -147,9 +148,8 @@ function AboutPage() {
                     {m.tags.map(([label, kind]) => (
                       <span
                         key={label}
-                        className={`rounded-sm border px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.06em] ${
-                          kind === "a" ? "border-acid/20 text-acid" : "border-border text-muted-faint"
-                        }`}
+                        className={`rounded-sm border px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.06em] ${kind === "a" ? "border-acid/20 text-acid" : "border-border text-muted-faint"
+                          }`}
                       >
                         {label}
                       </span>
