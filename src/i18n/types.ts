@@ -1,0 +1,150 @@
+/**
+ * Shape of a single language's full dictionary.
+ * fr.ts and en.ts must both satisfy this type — if you add a key to one
+ * and forget the other, TypeScript will error, so nothing silently
+ * falls back to blank text.
+ */
+export type Dictionary = {
+    meta: {
+        siteName: string;
+    };
+
+    nav: {
+        services: string;
+        realisations: string; // -> currently links to /#portfolio on the homepage
+        about: string;
+        contact: string;
+        cta: string; // "Démarrer un projet →"
+        themeLight: string; // label shown when switching TO light mode
+        themeDark: string; // label shown when switching TO dark mode
+    };
+
+    footer: {
+        tagline: string;
+        colServices: { title: string; items: string[] };
+        colAgency: { title: string; items: string[] };
+        colContact: { title: string; items: string[] };
+        copyright: string;
+    };
+
+    home: {
+        meta: { title: string; description: string; ogTitle: string; ogDescription: string };
+        hero: {
+            eyebrow: string;
+            titleLine1: string;
+            titleLine2: string; // "de votre" (acid color)
+            titleLine3: string; // "communication."
+            subtitleStrong: string; // "Stratégie, création, web."
+            subtitleRest: string; // "Une équipe. Un brief. Zéro prise de tête."
+            ctaPrimary: string;
+            ctaSecondary: string;
+            cardBadge: string; // "GLITCH.BE — LET'S CRACK THE CODE"
+            cardSubBadge: string;
+        };
+        ticker: string[];
+        clients: {
+            label: string;
+            names: { name: string; meta: string }[];
+        };
+        difference: {
+            label: string;
+            items: { num: string; title: string; bodyStrong: string; bodyRest: string }[];
+        };
+        services: {
+            label: string;
+            items: { num: string; title: string; body: string; tags: [string, string][] }[];
+            discoverLabel: string; // "Découvrir →" per card
+            ctaAll: string; // "Découvrir tous nos services"
+        };
+        featuredCase: {
+            imgAlt: string;
+            challengeLabel: string;
+            challengeTitle: string;
+            challengeBody: string;
+            whatWeDidLabel: string;
+            whatWeDidTitle: string;
+            whatWeDidBody: string;
+            resultLabel: string;
+            resultBody: string;
+            caseStudyLink: string;
+        };
+        team: {
+            label: string;
+            ctaMore: string;
+        };
+        bottomCta: {
+            titleStrong: string; // "Votre prochain projet"
+            titleAccent: string; // "commence ici."
+            body: string;
+            ctaPrimary: string;
+            ctaSecondary: string;
+            whatsapp: string;
+        };
+    };
+
+    team: {
+        // Shared between homepage Team section and the About page
+        members: {
+            role: string;
+            name: string;
+            bio: string;
+            statNum: string;
+            statLabel: string;
+            tags: [string, string][];
+        }[];
+    };
+
+    servicesPage: {
+        meta: { title: string; description: string; ogTitle: string; ogDescription: string };
+        eyebrow: string;
+        titleStrong: string; // "Des services pensés"
+        titleAccent: string; // "comme un tout."
+        intro: string;
+        items: { num: string; title: string; body: string; tags: [string, string][] }[];
+    };
+
+    aboutPage: {
+        meta: { title: string; description: string; ogTitle: string; ogDescription: string };
+        eyebrow: string;
+        titleStrong: string; // "Deux experts."
+        titleAccent: string; // "Un seul brief."
+        intro: string;
+        differenceLabel: string;
+        differenceItems: { num: string; title: string; bodyStrong: string; bodyRest: string }[];
+        teamLabel: string;
+    };
+
+    contactPage: {
+        meta: { title: string; description: string; ogTitle: string; ogDescription: string };
+        eyebrow: string;
+        titleStrong: string; // "Parlons de"
+        titleAccent: string; // "votre projet."
+        intro: string;
+    };
+
+    contactForm: {
+        label: string;
+        titleLine1: string;
+        titleLine2: string;
+        fields: {
+            name: string;
+            namePlaceholder: string;
+            company: string;
+            companyPlaceholder: string;
+            email: string;
+            emailPlaceholder: string;
+            phone: string;
+            phonePlaceholder: string;
+            need: string;
+            needPlaceholder: string;
+            needOptions: string[];
+            budget: string;
+            budgetPlaceholder: string;
+            budgetOptions: string[];
+            message: string;
+            messagePlaceholder: string;
+        };
+        submit: string;
+        privacyNote: string;
+    };
+};

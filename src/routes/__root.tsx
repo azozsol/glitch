@@ -8,9 +8,9 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
-
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Nav, Footer } from "@/components/glitch/layout";
 
 function NotFoundComponent() {
   return (
@@ -122,7 +122,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      <Nav />
+      <div className="pointer-events-none fixed inset-0 z-0 pixel-grid" />
+      <div className="pointer-events-none fixed inset-0 z-1 scanlines" />
       <Outlet />
+      <Footer />
     </QueryClientProvider>
   );
 }
