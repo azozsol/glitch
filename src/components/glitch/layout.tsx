@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { useTheme } from "@/hooks/use-theme";
 import { useReveal } from "@/hooks/use-reveal";
 import { useLang } from "@/hooks/use-lang";
@@ -55,7 +55,7 @@ export function Field({
 /**
  * ContactForm
  * The lead-capture form section, shared by the homepage (bottom section)
- * and the dedicated /contact page.
+ * and the dedicated /[lang]/contact page.
  */
 export function ContactForm() {
     const { t } = useLang();
@@ -71,41 +71,41 @@ export function ContactForm() {
                     </h2>
                 </Reveal>
                 <Reveal className="grid gap-3.5 md:grid-cols-2">
-                    <Field label="Votre prénom et nom *"><input type="text" placeholder="Jean Dupont" className="form-input" /></Field>
-                    <Field label="Votre entreprise"><input type="text" placeholder="Acme SPRL" className="form-input" /></Field>
-                    <Field label="Votre email *"><input type="email" placeholder="jean@acme.be" className="form-input" /></Field>
-                    <Field label="Téléphone / WhatsApp"><input type="tel" placeholder="+32 …" className="form-input" /></Field>
-                    <Field label="J'ai besoin d'aide pour… *">
+                    <Field label={f.fields.name}>
+                        <input type="text" placeholder={f.fields.namePlaceholder} className="form-input" />
+                    </Field>
+                    <Field label={f.fields.company}>
+                        <input type="text" placeholder={f.fields.companyPlaceholder} className="form-input" />
+                    </Field>
+                    <Field label={f.fields.email}>
+                        <input type="email" placeholder={f.fields.emailPlaceholder} className="form-input" />
+                    </Field>
+                    <Field label={f.fields.phone}>
+                        <input type="tel" placeholder={f.fields.phonePlaceholder} className="form-input" />
+                    </Field>
+                    <Field label={f.fields.need}>
                         <select className="form-input">
-                            <option value="">Sélectionnez un service</option>
-                            <option>Stratégie & création publicitaire</option>
-                            <option>Marketing digital (SEO / Ads)</option>
-                            <option>Site web & développement</option>
-                            <option>Identité visuelle</option>
-                            <option>Formation & conseil</option>
-                            <option>Je ne sais pas encore</option>
+                            <option value="">{f.fields.needPlaceholder}</option>
+                            {f.fields.needOptions.map((opt) => (
+                                <option key={opt}>{opt}</option>
+                            ))}
                         </select>
                     </Field>
-                    <Field label="Budget approximatif">
+                    <Field label={f.fields.budget}>
                         <select className="form-input">
-                            <option value="">Sélectionnez une fourchette</option>
-                            <option>Moins de 1.500€</option>
-                            <option>1.500€ – 5.000€</option>
-                            <option>5.000€ – 15.000€</option>
-                            <option>15.000€+</option>
-                            <option>À définir ensemble</option>
+                            <option value="">{f.fields.budgetPlaceholder}</option>
+                            {f.fields.budgetOptions.map((opt) => (
+                                <option key={opt}>{opt}</option>
+                            ))}
                         </select>
                     </Field>
-                    <Field label="Dites-nous en quelques mots ce que vous préparez" full>
-                        <textarea
-                            placeholder="Même les idées en cours de formation sont les bienvenues."
-                            className="form-input min-h-[110px] resize-y"
-                        />
+                    <Field label={f.fields.message} full>
+                        <textarea placeholder={f.fields.messagePlaceholder} className="form-input min-h-[110px] resize-y" />
                     </Field>
                     <Field full>
-                        <button type="button" className="btn-primary w-fit">Envoyer mon brief →</button>
+                        <button type="button" className="btn-primary w-fit">{f.submit}</button>
                         <p className="mt-2.5 font-mono text-[10px] tracking-[0.04em] text-muted-faint">
-                            Vos informations restent confidentielles. On ne partage rien avec des tiers.
+                            {f.privacyNote}
                         </p>
                     </Field>
                 </Reveal>
@@ -116,33 +116,30 @@ export function ContactForm() {
 
 /**
  * Nav
- * Site-wide navigation bar with theme toggle.
- * Links now point to real routes (/services, /about, /contact) instead of
- * in-page anchors, since those sections no longer all live on one page.
+ * Site-wide navigation bar with theme toggle and language-aware links.
+ * Every link is prefixed with the current language ($lang param), so
+ * navigating from /en/services to "Contact" goes to /en/contact, not /fr/contact.
  */
 export function Nav() {
     const { theme, toggle } = useTheme();
+    const { lang, t } = useLang();
 
     const links: [string, string][] = [
-        ["/services", "Services"],
-        ["/#portfolio", "Réalisations"],
-        ["/about", "L'équipe"],
-        ["/contact", "Contact"],
+        [`/${lang}/services`, t.nav.services],
+        [`/${lang}#portfolio`, t.nav.realisations],
+        [`/${lang}/about`, t.nav.about],
+        [`/${lang}/contact`, t.nav.contact],
     ];
 
     return (
         <nav className="fixed inset-x-0 top-0 z-50 border-b border-acid/10 bg-background/85 backdrop-blur-md">
             <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-8">
                 <Link
-                    to="/"
+                    to="/$lang"
+                    params={{ lang }}
                     className="flex items-center gap-0.5 font-mono text-[18px] font-bold tracking-tight text-foreground"
                 >
-                    {/* <span className="relative inline-block">GLITCH</span>
-                    <span className="text-acid">.BE</span>
-                    <span className="ml-2.5 border-l border-muted-soft pl-2.5 font-mono text-[9px] uppercase tracking-[0.14em] text-muted-faint">
-                        Comm & Marketing
-                    </span> */}
-                    <img src="/images/glitch-Logo.svg" alt="GLITCH.BE — Comm & Marketing" className="h-10 w-auto" />
+                    <img src="/images/glitch-Logo.svg" alt="GLITCH.BE — Comm & Marketing" className="h-8 w-auto" />
                 </Link>
                 <ul className="hidden items-center gap-8 md:flex">
                     {links.map(([href, label]) => (
@@ -157,24 +154,25 @@ export function Nav() {
                     ))}
                     <li>
                         <Link
-                            to="/contact"
+                            to="/$lang/contact"
+                            params={{ lang }}
                             className="rounded-sm bg-acid px-[18px] py-[9px] font-mono text-[11px] font-bold uppercase tracking-[0.1em] text-background hover:bg-foreground"
                         >
-                            Démarrer un projet →
+                            {t.nav.cta}
                         </Link>
                     </li>
                     <li>
                         <button
                             onClick={toggle}
-                            aria-label="Basculer entre le thème clair et sombre"
+                            aria-label="Toggle light / dark theme"
                             className="relative inline-block font-mono text-[11px] uppercase tracking-[0.1em] text-muted-faint transition-colors hover:text-acid"
                         >
-                            {/* Élément invisible qui réserve toujours la largeur du texte le plus long */}
+                            {/* Invisible element that always reserves the width of the longer label */}
                             <span className="invisible" aria-hidden="true">
-                                ☀ Light
+                                {t.nav.themeLight}
                             </span>
                             <span className="absolute inset-0">
-                                {theme === "dark" ? "☀ Light" : "☾ Dark"}
+                                {theme === "dark" ? t.nav.themeLight : t.nav.themeDark}
                             </span>
                         </button>
                     </li>
@@ -186,10 +184,25 @@ export function Nav() {
 
 /**
  * Footer
- * Site-wide footer with language switcher.
+ * Site-wide footer with a real language switcher: clicking FR/EN
+ * navigates to the same page in the other language, preserving the
+ * current path (e.g. /fr/services -> /en/services).
  */
 export function Footer() {
-    const [lang, setLang] = useState<"FR" | "NL" | "EN">("FR");
+    const { lang, t } = useLang();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    function switchLang(target: Lang) {
+        if (target === lang) return;
+        // Replace the leading /fr or /en segment with the target language,
+        // keeping the rest of the path (and any trailing segments) intact.
+        const rest = location.pathname.replace(/^\/(fr|en)/, "");
+        navigate({ to: `/${target}${rest}` || `/${target}` });
+    }
+
+    const langLabels: Record<Lang, string> = { fr: "FR", en: "EN" };
+
     return (
         <footer className="relative z-10 border-t border-border px-0 pb-9 pt-14">
             <div className="mx-auto max-w-[1160px] px-8">
@@ -200,18 +213,14 @@ export function Footer() {
                             <span className="font-mono text-[18px] font-bold text-acid">.BE</span>
                         </div>
                         <p className="mt-2.5 max-w-[240px] text-[13px] leading-[1.65] text-muted-soft">
-                            Agence de communication et marketing à Bruxelles. Stratégie, création, web — livrés comme un tout par deux experts qui se parlent.
+                            {t.footer.tagline}
                         </p>
                     </div>
-                    {[
-                        ["Services", ["Stratégie & création", "Marketing digital", "Web & développement", "Identité visuelle", "Formation"]],
-                        ["L'agence", ["À propos", "Réalisations", "Blog", "Pourquoi GLITCH", "Formules & tarifs"]],
-                        ["Contact", ["hello@glitch.be", "WhatsApp", "LinkedIn", "Instagram", "Bruxelles, Belgique"]],
-                    ].map(([title, items]) => (
-                        <div key={title as string}>
-                            <h4 className="mb-[18px] font-mono text-[9px] uppercase tracking-[0.18em] text-muted-soft">{title}</h4>
+                    {[t.footer.colServices, t.footer.colAgency, t.footer.colContact].map((col) => (
+                        <div key={col.title}>
+                            <h4 className="mb-[18px] font-mono text-[9px] uppercase tracking-[0.18em] text-muted-soft">{col.title}</h4>
                             <ul className="flex flex-col gap-2.5">
-                                {(items as string[]).map((it) => (
+                                {col.items.map((it) => (
                                     <li key={it}>
                                         <a href="#" className="text-[13px] text-muted-faint transition-colors hover:text-acid">{it}</a>
                                     </li>
@@ -222,17 +231,17 @@ export function Footer() {
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6">
                     <p className="font-mono text-[10px] tracking-[0.06em] text-muted-soft">
-                        © 2025 GLITCH.BE — Comm & Marketing · Tous droits réservés · Mentions légales
+                        {t.footer.copyright}
                     </p>
                     <div className="flex gap-3.5">
-                        {(["FR", "NL", "EN"] as const).map((l) => (
+                        {SUPPORTED_LANGS.map((l) => (
                             <button
                                 key={l}
-                                onClick={() => setLang(l)}
+                                onClick={() => switchLang(l)}
                                 className={`font-mono text-[10px] uppercase tracking-[0.1em] transition-colors ${lang === l ? "text-acid" : "text-muted-soft hover:text-acid"
                                     }`}
                             >
-                                {l}
+                                {langLabels[l]}
                             </button>
                         ))}
                     </div>

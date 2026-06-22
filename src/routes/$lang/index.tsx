@@ -5,6 +5,8 @@ import { HeroCanvas, CaseCanvas, PixelAvatar } from "@/components/glitch/canvase
 import { Reveal } from "@/components/glitch/layout";
 import { useLang } from "@/hooks/use-lang";
 import { getDictionary } from "@/i18n";
+//import GlitchLogo from "@/components/GlitchLogo";
+
 
 export const Route = createFileRoute("/$lang/")({
   head: ({ params }) => {
@@ -27,8 +29,50 @@ function Hero() {
   const h = t.home.hero;
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-0 pb-20 pt-[100px]">
-      <div className="pointer-events-none absolute inset-0">
+    //<section className="relative flex min-h-screen items-center justify-center overflow-hidden px-0 pb-20 pt-[100px]">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+
+      {/* Background image */}
+      <img
+        src="images/bg.jpeg"
+        alt="background"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+
+      {/* Optional dark overlay */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto grid w-full max-w-[1160px] items-center gap-16 px-8 md:grid-cols-[1fr_420px]">
+        <div>
+          <p className="mb-6 flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-acid">
+            <span className="h-px w-5 bg-acid" />
+            {h.eyebrow}
+          </p>
+
+          <h1
+            className="mb-7 font-bold leading-none tracking-[-0.03em]"
+            style={{ fontSize: "clamp(38px,5.5vw,72px)" }}
+          >
+            <span
+              className="glitch-overlay relative inline-block text-foreground"
+              data-t={h.titleLine1}
+            >
+              {h.titleLine1}
+            </span>
+            <span className="block text-acid">{h.titleLine2}</span>
+            <span className="block text-foreground">{h.titleLine3}</span>
+          </h1>
+
+          <p className="mb-10 max-w-[520px] text-lg leading-[1.7] text-muted-foreground">
+            <strong className="font-medium text-foreground">
+              {h.subtitleStrong}
+            </strong>{" "}
+            {h.subtitleRest}
+          </p>
+        </div>
+      </div>
+      {/* <div className="pointer-events-none absolute inset-0">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-mono font-bold tracking-[-0.04em]"
@@ -67,7 +111,7 @@ function Hero() {
           </div>
         </div>
         <div className="relative hidden md:block">
-          <div className="relative aspect-square overflow-hidden rounded border border-acid/20 bg-surface-1">
+          <div className="relative aspect-square overflow-hidden rounded border border-acid/20 bg-surface-1 ">
             <span className="absolute -left-px -top-px z-10 h-3.5 w-3.5 border-l-2 border-t-2 border-acid" />
             <span className="absolute -right-px -top-px z-10 h-3.5 w-3.5 border-r-2 border-t-2 border-acid" />
             <span className="absolute -bottom-px -left-px z-10 h-3.5 w-3.5 border-b-2 border-l-2 border-acid" />
@@ -79,9 +123,12 @@ function Hero() {
                 {h.cardSubBadge}
               </span>
             </div>
+
           </div>
+
+
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
