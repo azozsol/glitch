@@ -11,8 +11,8 @@ export const fr: Dictionary = {
         about: "L'équipe",
         contact: "Contact",
         cta: "Démarrer un projet →",
-        themeLight: "☀ Clair",
-        themeDark: "☾ Sombre",
+        themeLight: "☀",
+        themeDark: "☾",
     },
 
     footer: {

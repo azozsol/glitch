@@ -7,7 +7,6 @@ import { useLang } from "@/hooks/use-lang";
 import { getDictionary } from "@/i18n";
 //import GlitchLogo from "@/components/GlitchLogo";
 
-
 export const Route = createFileRoute("/$lang/")({
   head: ({ params }) => {
     const t = getDictionary(params.lang);
@@ -43,7 +42,7 @@ function Hero() {
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto grid w-full max-w-[1160px] items-center gap-16 px-8 md:grid-cols-[1fr_420px]">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-16 px-8 md:grid-cols-[1fr_420px]">
         <div>
           <p className="mb-6 flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-acid">
             <span className="h-px w-5 bg-acid" />
@@ -55,17 +54,17 @@ function Hero() {
             style={{ fontSize: "clamp(38px,5.5vw,72px)" }}
           >
             <span
-              className="glitch-overlay relative inline-block text-foreground"
+              className="glitch-overlay relative inline-block text-white"
               data-t={h.titleLine1}
             >
               {h.titleLine1}
             </span>
             <span className="block text-acid">{h.titleLine2}</span>
-            <span className="block text-foreground">{h.titleLine3}</span>
+            <span className="block text-white">{h.titleLine3}</span>
           </h1>
 
           <p className="mb-10 max-w-[520px] text-lg leading-[1.7] text-muted-foreground">
-            <strong className="font-medium text-foreground">
+            <strong className="font-medium text-white">
               {h.subtitleStrong}
             </strong>{" "}
             {h.subtitleRest}
@@ -208,7 +207,7 @@ function Services() {
 
   return (
     <section id="services" className="pb-20">
-      <div className="mx-auto max-w-[1160px] px-8">
+      <div className="mx-auto max-w-6xl px-8">
         <Reveal className="section-label">{s.label}</Reveal>
         <Reveal className="grid gap-3 md:grid-cols-2">
           {s.items.map((svc) => (

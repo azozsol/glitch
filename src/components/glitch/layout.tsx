@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { useTheme } from "@/hooks/use-theme";
 import { useReveal } from "@/hooks/use-reveal";
 import { useLang } from "@/hooks/use-lang";
@@ -63,7 +63,7 @@ export function ContactForm() {
 
     return (
         <section id="contact" className="pb-20">
-            <div className="mx-auto max-w-[1160px] px-8">
+            <div className="mx-auto max-w-6xl px-8">
                 <Reveal className="section-label">{f.label}</Reveal>
                 <Reveal className="mb-12">
                     <h2 className="font-bold tracking-[-0.02em]" style={{ fontSize: "clamp(28px,3.5vw,44px)" }}>
@@ -120,9 +120,12 @@ export function ContactForm() {
  * Every link is prefixed with the current language ($lang param), so
  * navigating from /en/services to "Contact" goes to /en/contact, not /fr/contact.
  */
+
 export function Nav() {
     const { theme, toggle } = useTheme();
     const { lang, t } = useLang();
+    const [menuOpen, setMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const links: [string, string][] = [
         [`/${lang}/services`, t.nav.services],
@@ -131,9 +134,20 @@ export function Nav() {
         [`/${lang}/contact`, t.nav.contact],
     ];
 
+    function switchLang(target: Lang) {
+        if (target === lang) return;
+        // Replace the leading /fr or /en segment with the target language,
+        // keeping the rest of the path (and any trailing segments) intact.
+        const rest = location.pathname.replace(/^\/(fr|en)/, "");
+        navigate({ to: `/${target}${rest}` || `/${target}` });
+    }
+
+    const langLabels: Record<Lang, string> = { fr: "FR", en: "EN" };
+
     return (
         <nav className="fixed inset-x-0 top-0 z-50 border-b border-acid/10 bg-background/85 backdrop-blur-md">
             <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-8">
+                {/* Logo */}
                 <Link
                     to="/$lang"
                     params={{ lang }}
@@ -141,12 +155,14 @@ export function Nav() {
                 >
                     <img src="/images/glitch-Logo.svg" alt="GLITCH.BE — Comm & Marketing" className="h-8 w-auto" />
                 </Link>
+
+                {/* Desktop nav */}
                 <ul className="hidden items-center gap-8 md:flex">
                     {links.map(([href, label]) => (
                         <li key={href}>
                             <Link
                                 to={href}
-                                className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted-faint transition-colors hover:text-acid [&.active]:text-acid"
+                                className="font-mono text-[11px] uppercase tracking-widest text-muted-faint transition-colors hover:text-acid [&.active]:text-acid"
                             >
                                 {label}
                             </Link>
@@ -156,28 +172,102 @@ export function Nav() {
                         <Link
                             to="/$lang/contact"
                             params={{ lang }}
-                            className="rounded-sm bg-acid px-[18px] py-[9px] font-mono text-[11px] font-bold uppercase tracking-[0.1em] text-background hover:bg-foreground"
+                            className="rounded-sm bg-acid px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-widest text-background hover:bg-foreground"
                         >
                             {t.nav.cta}
                         </Link>
                     </li>
                     <li>
+                        {/* Fix: grid stack both labels, show only the active one — width is always the wider of the two */}
                         <button
                             onClick={toggle}
                             aria-label="Toggle light / dark theme"
-                            className="relative inline-block font-mono text-[11px] uppercase tracking-[0.1em] text-muted-faint transition-colors hover:text-acid"
+                            className="grid font-mono text-[18px] uppercase tracking-widest text-muted-faint transition-colors hover:text-acid"
                         >
-                            {/* Invisible element that always reserves the width of the longer label */}
-                            <span className="invisible" aria-hidden="true">
+                            <span className="col-start-1 row-start-1 invisible" aria-hidden="true">
                                 {t.nav.themeLight}
                             </span>
-                            <span className="absolute inset-0">
+                            <span className="col-start-1 row-start-1 invisible" aria-hidden="true">
+                                {t.nav.themeDark}
+                            </span>
+                            <span className="col-start-1 row-start-1">
                                 {theme === "dark" ? t.nav.themeLight : t.nav.themeDark}
                             </span>
                         </button>
                     </li>
                 </ul>
+                {/* Mobile: theme toggle + hamburger */}
+                <div className="flex items-center gap-6 md:hidden">
+                    <button
+                        onClick={toggle}
+                        aria-label="Toggle light / dark theme"
+                        className="grid font-mono text-[18px] uppercase tracking-widest text-muted-faint transition-colors hover:text-acid"
+                    >
+                        <span className="col-start-1 row-start-1 invisible" aria-hidden="true">
+                            {t.nav.themeLight}
+                        </span>
+                        <span className="col-start-1 row-start-1 invisible" aria-hidden="true">
+                            {t.nav.themeDark}
+                        </span>
+                        <span className="col-start-1 row-start-1">
+                            {theme === "dark" ? t.nav.themeLight : t.nav.themeDark}
+                        </span>
+                    </button>
+
+                    <button
+                        onClick={() => setMenuOpen((v) => !v)}
+                        aria-label="Toggle menu"
+                        aria-expanded={menuOpen}
+                        className="flex flex-col justify-center gap-1.5 text-foreground"
+                    >
+                        <span className={`block h-px w-5 bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[4.5px] rotate-45" : ""}`} />
+                        <span className={`block h-px w-5 bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+                        <span className={`block h-px w-5 bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-[4.5px] -rotate-45" : ""}`} />
+                    </button>
+                </div>
+                <div className="flex gap-3.5">
+                    {SUPPORTED_LANGS.map((l) => (
+                        <button
+                            key={l}
+                            onClick={() => switchLang(l)}
+                            className={`font-mono text-[10px] uppercase tracking-widest transition-colors ${lang === l ? "text-acid" : "text-muted-soft hover:text-acid"
+                                }`}
+                        >
+                            {langLabels[l]}
+                        </button>
+                    ))}
+                </div>
             </div>
+
+
+            {/* Mobile dropdown */}
+            {menuOpen && (
+                <div className="border-t border-acid/10 bg-background/95 px-8 py-6 md:hidden">
+                    <ul className="flex flex-col gap-5">
+                        {links.map(([href, label]) => (
+                            <li key={href}>
+                                <Link
+                                    to={href}
+                                    onClick={() => setMenuOpen(false)}
+                                    className="font-mono text-[11px] uppercase tracking-widest text-muted-faint transition-colors hover:text-acid [&.active]:text-acid"
+                                >
+                                    {label}
+                                </Link>
+                            </li>
+                        ))}
+                        <li>
+                            <Link
+                                to="/$lang/contact"
+                                params={{ lang }}
+                                onClick={() => setMenuOpen(false)}
+                                className="inline-block rounded-sm bg-acid px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-widest text-background hover:bg-foreground"
+                            >
+                                {t.nav.cta}
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            )}
         </nav>
     );
 }
@@ -205,8 +295,8 @@ export function Footer() {
 
     return (
         <footer className="relative z-10 border-t border-border px-0 pb-9 pt-14">
-            <div className="mx-auto max-w-[1160px] px-8">
-                <div className="mb-[52px] grid grid-cols-2 gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
+            <div className="mx-auto max-w-6xl px-8">
+                <div className="mb-14 grid grid-cols-2 gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
                     <div>
                         <div className="flex items-center gap-0.5">
                             <span className="font-mono text-[18px] font-bold text-foreground">GLITCH</span>

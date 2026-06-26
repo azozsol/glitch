@@ -16,13 +16,13 @@ export const en: Dictionary = {
     },
 
     nav: {
-        services: "[EN] Services",
-        realisations: "[EN] Work",
-        about: "[EN] The team",
-        contact: "[EN] Contact",
-        cta: "[EN] Start a project →",
-        themeLight: "☀ Light",
-        themeDark: "☾ Dark",
+        services: "Services",
+        realisations: "Work",
+        about: "The team",
+        contact: "Contact",
+        cta: "Start a project →",
+        themeLight: "☀",
+        themeDark: "☾",
     },
 
     footer: {
