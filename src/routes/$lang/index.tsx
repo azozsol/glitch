@@ -33,7 +33,7 @@ function Hero() {
 
       {/* Background image */}
       <img
-        src="images/bg.jpeg"
+        src="images/bg-1.png"
         alt="background"
         className="absolute inset-0 h-full w-full object-cover"
       />
@@ -58,8 +58,9 @@ function Hero() {
               data-t={h.titleLine1}
             >
               {h.titleLine1}
+              <span className="text-acid"> {h.titleLine2}</span>
+
             </span>
-            <span className="block text-acid">{h.titleLine2}</span>
             <span className="block text-white">{h.titleLine3}</span>
           </h1>
 

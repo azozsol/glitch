@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { useTheme } from "@/hooks/use-theme";
 import { useReveal } from "@/hooks/use-reveal";
 import { useLang } from "@/hooks/use-lang";
@@ -126,10 +126,15 @@ export function Nav() {
     const { lang, t } = useLang();
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const links: [string, string][] = [
         [`/${lang}/services`, t.nav.services],
-        [`/${lang}#portfolio`, t.nav.realisations],
+        [`/${lang}/work`, t.nav.realisations],
         [`/${lang}/about`, t.nav.about],
         [`/${lang}/contact`, t.nav.contact],
     ];
@@ -145,7 +150,7 @@ export function Nav() {
     const langLabels: Record<Lang, string> = { fr: "FR", en: "EN" };
 
     return (
-        <nav className="fixed inset-x-0 top-0 z-50 border-b border-acid/10 bg-background/85 backdrop-blur-md">
+        <nav className="fixed inset-x-0 top-0 z-50 border-b border-acid/10 bg-background/95 backdrop-blur-md">
             <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-8">
                 {/* Logo */}
                 <Link
@@ -179,7 +184,7 @@ export function Nav() {
                     </li>
                     <li>
                         {/* Fix: grid stack both labels, show only the active one — width is always the wider of the two */}
-                        <button
+                        {mounted && (<button
                             onClick={toggle}
                             aria-label="Toggle light / dark theme"
                             className="grid font-mono text-[18px] uppercase tracking-widest text-muted-faint transition-colors hover:text-acid"
@@ -193,11 +198,11 @@ export function Nav() {
                             <span className="col-start-1 row-start-1">
                                 {theme === "dark" ? t.nav.themeLight : t.nav.themeDark}
                             </span>
-                        </button>
+                        </button>)}
                     </li>
                 </ul>
                 {/* Mobile: theme toggle + hamburger */}
-                <div className="flex items-center gap-6 md:hidden">
+                {mounted && (<div className="flex items-center gap-6 md:hidden">
                     <button
                         onClick={toggle}
                         aria-label="Toggle light / dark theme"
@@ -224,7 +229,7 @@ export function Nav() {
                         <span className={`block h-px w-5 bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
                         <span className={`block h-px w-5 bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-[4.5px] -rotate-45" : ""}`} />
                     </button>
-                </div>
+                </div>)}
                 <div className="flex gap-3.5">
                     {SUPPORTED_LANGS.map((l) => (
                         <button
@@ -294,7 +299,7 @@ export function Footer() {
     const langLabels: Record<Lang, string> = { fr: "FR", en: "EN" };
 
     return (
-        <footer className="relative z-10 border-t border-border px-0 pb-9 pt-14">
+        <footer className="relative z-10 border-t border-border px-0 pb-9 pt-14 bg-background/95">
             <div className="mx-auto max-w-6xl px-8">
                 <div className="mb-14 grid grid-cols-2 gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
                     <div>

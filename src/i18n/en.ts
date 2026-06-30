@@ -1,15 +1,5 @@
 import type { Dictionary } from "./types";
 
-/**
- * PLACEHOLDER ENGLISH COPY
- * ------------------------
- * Every translatable string below is prefixed with "[EN]" so it's
- * obvious in the UI which text is still a placeholder. Replace the
- * placeholder text (and remove the "[EN] " prefix) with your real,
- * reviewed English copy. The *structure* (keys, arrays, tags, {strong}
- * placeholders) must stay identical to fr.ts — only the string values
- * should change.
- */
 export const en: Dictionary = {
     meta: {
         siteName: "GLITCH.BE",
@@ -50,16 +40,16 @@ export const en: Dictionary = {
             ogDescription: "[EN] We crack the code of your communication. Strategy · Creative · Web.",
         },
         hero: {
-            eyebrow: "[EN] Comm & Marketing Agency — Brussels",
-            titleLine1: "[EN] We crack the code",
-            titleLine2: "[EN] of your",
-            titleLine3: "[EN] communication.",
-            subtitleStrong: "[EN] Strategy, creative, web.",
-            subtitleRest: "[EN] One team. One brief. Zero headaches.",
-            ctaPrimary: "[EN] Tell us about your project →",
-            ctaSecondary: "[EN] See our work",
+            eyebrow: "Comm & Marketing Agency — Brussels",
+            titleLine1: "We crack the code",
+            titleLine2: "of your",
+            titleLine3: "communication.",
+            subtitleStrong: "Strategy, creative, web.",
+            subtitleRest: "One team. One brief. Zero headaches.",
+            ctaPrimary: "Tell us about your project →",
+            ctaSecondary: "See our work",
             cardBadge: "GLITCH.BE — LET'S CRACK THE CODE",
-            cardSubBadge: "[EN] Brussels · Strategy · Creative · Web",
+            cardSubBadge: "Brussels · Strategy · Creative · Web",
         },
         ticker: [
             "[EN] Brand strategy", "[EN] Creative direction", "[EN] Web & Development", "[EN] Digital Marketing",
@@ -305,4 +295,117 @@ export const en: Dictionary = {
         submit: "[EN] Send my brief →",
         privacyNote: "[EN] Your information stays confidential. We don't share anything with third parties.",
     },
+
+    workPage: {
+        meta: {
+            title: "Work — GLITCH.BE — Comm & Marketing Agency in Brussels",
+            description: "Packaging, branding, SEO, visual identity. Real projects for Brussels clients — backed by an international track record.",
+            ogTitle: "Work — GLITCH.BE",
+            ogDescription: "Three projects. Three proofs. Packaging · Branding · SEO · Visual identity.",
+        },
+        hero: {
+            kicker: "Portfolio — Brussels · Belgium",
+            h1: ["WHAT WE'VE", "ACTUALLY", "DONE."],
+            sub: "Packaging, branding, SEO, visual identity. Real projects for Brussels clients — backed by an international track record.",
+            cta: "Explore the case studies →",
+        },
+        ticker: [
+            "Packaging Design", "Full Branding", "SEO & Growth", "Visual Identity",
+            "Motion Design", "Animated Menus", "Creative Direction", "Web & Development", "Brussels · Belgium",
+        ],
+        caseSection: {
+            eyebrow: "Case Studies",
+            heading: ["THREE PROJECTS.", "THREE PROOFS."],
+        },
+        cases: [
+            {
+                eyebrow: "Case study 01",
+                h2: ["PALÈS", "DRINKS"],
+                intro: "Building the complete identity of a purpose-driven drink brand — from packaging to brand positioning — so it's unforgettable at first glance on the shelf.",
+                stat: { num: "3", label: "Distinct visual universes", rest: "Each flavor, its own chromatic and illustrative identity." },
+                meta: [
+                    { label: "Sector", value: "Beverages · FMCG" },
+                    { label: "Services", value: "Packaging · Branding · Illustration" },
+                    { label: "Market", value: "Belgium · International" },
+                ],
+                link: "View the full case study →",
+                steps: [
+                    { label: "Challenge", title: "A drink with a mission", body: "Palès Drinks donates <strong>15% of profits to humanitarian causes</strong>. The brand had to embody that commitment visually — without falling into NGO aesthetics. It needed to feel desirable, fun, and meaningful." },
+                    { label: "What we did", title: "Three universes, one soul", body: "Each flavor gets its own color palette, its own fruit illustrations, and its own character — while staying immediately recognizable as Palès. A branding system <strong>infinitely scalable</strong>, built to grow with the range." },
+                    { label: "Result", title: "From shelf to street", body: "Packaging that stands out on the shelf, gets photographed on Instagram, and communicates the brand's mission without a word of explanation. <strong>Live in Belgian distribution</strong> and recognized for its immediate visual coherence." },
+                ],
+            },
+            {
+                eyebrow: "Case study 02",
+                h2: ["AM", "HVAC"],
+                intro: "A Belgian HVAC expert with 12 years of experience and references like Eiffage and STIB — invisible on Google. We changed that.",
+                stat: { num: "+60", label: "SEO score points", rest: "From 35 to 95 out of 100. From \"invisible\" to page 1 on key queries." },
+                meta: [
+                    { label: "Sector", value: "HVAC · BtoB/BtoC Services" },
+                    { label: "Services", value: "SEO Audit · Content Overhaul · Web Perf" },
+                    { label: "Location", value: "Brussels · Belgium" },
+                ],
+                link: "View the site →",
+                steps: [
+                    { label: "Challenge", title: "Recognized expert, invisible online", body: "AMHVAC works for Eiffage, STIB, SNCB. Their expertise is real. But their site scored <strong>35/100 on SEO</strong> — zero presence on their prospects' actual search queries. Zero organic leads." },
+                    { label: "What we did", title: "Audit → Architecture → Content → Performance", body: "Full technical audit, internal linking restructure, services pages rewritten with precise semantic targeting, Core Web Vitals optimization, and <strong>a thematic SEO blog launched</strong>." },
+                    { label: "Result", title: "Page 1 on the queries that matter", body: "SEO score jumped from <strong>35 to 95/100</strong>. Ranked on 24+ targeted keywords. Core Web Vitals all green. First organic inbound contacts within weeks of deployment." },
+                ],
+            },
+            {
+                eyebrow: "Case study 03",
+                h2: ["ODESU", "IXELLES"],
+                intro: "Full accompaniment of a Brussels concept store — from brand identity to launch.",
+                stat: { num: "360°", label: "Complete identity", rest: "From logo to signage, from digital to print — delivered for opening day." },
+                meta: [
+                    { label: "Sector", value: "Retail · Fashion · Lifestyle" },
+                    { label: "Services", value: "Branding · Brand guidelines · Comm" },
+                    { label: "Location", value: "Ixelles · Brussels" },
+                ],
+                link: "View the full case study →",
+                steps: [
+                    { label: "Challenge", title: "Build a brand from scratch", body: "ODESU was about to open in Ixelles. Zero visual identity, zero defined positioning. The brief: create a brand that <strong>embodies Brussels, fashion, and attitude</strong> — ready for day one." },
+                    { label: "What we did", title: "Naming → Logo → Brand guidelines → Comm", body: "Naming phase guidance, logo and full brand guidelines creation, rollout across all launch materials: <strong>signage, social media, print, storefront</strong>. Content strategy for the opening." },
+                    { label: "Result", title: "An identity that holds up", body: "A coherent brand across all touchpoints from day one. <strong>Active social presence, local visibility, and an identity that stands out</strong> in a dense commercial district like Ixelles." },
+                ],
+            },
+        ],
+        designStory: {
+            eyebrow: "Design approach · Each flavor, a universe",
+            heading: ["COLORS, ILLUSTRATIONS,", "STORYTELLING."],
+            cans: [
+                { name: "Orange & Grenadine", flavor: "The character", body: "The orange–red gradient evokes the energy and warmth of citrus. Illustrations create an upward motion. The <strong>warm, saturated palette</strong> catches the eye on the shelf before any other reading." },
+                { name: "Mojito · Blueberry & Strawberry", flavor: "The freshness", body: "Blue-turquoise evokes water, mint, summer. The pink circles create a <strong>soft, vibrant contrast</strong> — a tension between freshness and fruity sweetness." },
+                { name: "White Peach & Violet", flavor: "The delicacy", body: "Lavender-violet paired with peach creates the visually most premium flavor. The violet flower adds a <strong>botanical, sophisticated note</strong> — where the others play energy, this one plays elegance." },
+            ],
+        },
+        otherSection: {
+            eyebrow: "Belgium · Recent projects",
+            heading: ["OTHER", "WORK"],
+        },
+        miniProjects: [
+            { name: "NYApocalypse", cat: "Logo · Visual identity", city: "Brussels" },
+            { name: "Smash Smash", cat: "Animated menu · Motion", city: "Brussels" },
+            { name: "Crispy Chicken", cat: "Animated menu · Motion", city: "Brussels" },
+            { name: "Tayba", cat: "Animated menu · Branding", city: "Brussels" },
+        ],
+        intl: {
+            eyebrow: "International pedigree",
+            heading: ["OUR", "GLOBAL", "EXPERIENCE."],
+            sub: "Before Brussels, 20 years at the biggest agencies in the Middle East. That level of expertise, now on your brief.",
+            agencies: [
+                { name: "DDB Cairo", detail: "Cairo · Egypt", clients: ["Vodafone Egypt", "Arab Bank", "Cannes Selection"] },
+                { name: "JWT Bahrain", detail: "Manama · Bahrain", clients: ["Mitsubishi Bahrain", "Zain Telecom", "360° Campaigns"] },
+                { name: "BBDO Egypt", detail: "Cairo · Egypt", clients: ["Energizer", "Président Egypt", "TVC Productions"] },
+            ],
+        },
+        cta: {
+            eyebrow: "Your project starts here",
+            heading: ["YOUR PROJECT", "DESERVES", "BETTER."],
+            sub: "Share your brief with us. We'll get back to you in under 24h — no commitment.",
+            primary: "Start a project →",
+            secondary: "Book a 30-min call",
+            whatsapp: "Or message us directly on WhatsApp",
+        },
+    }
 };

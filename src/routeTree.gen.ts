@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LangIndexRouteImport } from './routes/$lang/index'
+import { Route as LangWorkRouteImport } from './routes/$lang/work'
 import { Route as LangServicesRouteImport } from './routes/$lang/services'
 import { Route as LangContactRouteImport } from './routes/$lang/contact'
 import { Route as LangAboutRouteImport } from './routes/$lang/about'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/$lang/',
   path: '/$lang/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangWorkRoute = LangWorkRouteImport.update({
+  id: '/$lang/work',
+  path: '/$lang/work',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LangServicesRoute = LangServicesRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/$lang/about': typeof LangAboutRoute
   '/$lang/contact': typeof LangContactRoute
   '/$lang/services': typeof LangServicesRoute
+  '/$lang/work': typeof LangWorkRoute
   '/$lang/': typeof LangIndexRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/$lang/about': typeof LangAboutRoute
   '/$lang/contact': typeof LangContactRoute
   '/$lang/services': typeof LangServicesRoute
+  '/$lang/work': typeof LangWorkRoute
   '/$lang': typeof LangIndexRoute
 }
 export interface FileRoutesById {
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   '/$lang/about': typeof LangAboutRoute
   '/$lang/contact': typeof LangContactRoute
   '/$lang/services': typeof LangServicesRoute
+  '/$lang/work': typeof LangWorkRoute
   '/$lang/': typeof LangIndexRoute
 }
 export interface FileRouteTypes {
@@ -70,15 +79,23 @@ export interface FileRouteTypes {
     | '/$lang/about'
     | '/$lang/contact'
     | '/$lang/services'
+    | '/$lang/work'
     | '/$lang/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$lang/about' | '/$lang/contact' | '/$lang/services' | '/$lang'
+  to:
+    | '/'
+    | '/$lang/about'
+    | '/$lang/contact'
+    | '/$lang/services'
+    | '/$lang/work'
+    | '/$lang'
   id:
     | '__root__'
     | '/'
     | '/$lang/about'
     | '/$lang/contact'
     | '/$lang/services'
+    | '/$lang/work'
     | '/$lang/'
   fileRoutesById: FileRoutesById
 }
@@ -87,6 +104,7 @@ export interface RootRouteChildren {
   LangAboutRoute: typeof LangAboutRoute
   LangContactRoute: typeof LangContactRoute
   LangServicesRoute: typeof LangServicesRoute
+  LangWorkRoute: typeof LangWorkRoute
   LangIndexRoute: typeof LangIndexRoute
 }
 
@@ -104,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/$lang'
       fullPath: '/$lang/'
       preLoaderRoute: typeof LangIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/work': {
+      id: '/$lang/work'
+      path: '/$lang/work'
+      fullPath: '/$lang/work'
+      preLoaderRoute: typeof LangWorkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$lang/services': {
@@ -135,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   LangAboutRoute: LangAboutRoute,
   LangContactRoute: LangContactRoute,
   LangServicesRoute: LangServicesRoute,
+  LangWorkRoute: LangWorkRoute,
   LangIndexRoute: LangIndexRoute,
 }
 export const routeTree = rootRouteImport

@@ -5,12 +5,17 @@ type Theme = "dark" | "light";
 const STORAGE_KEY = "glitch-theme";
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === "undefined") return "dark";
 
-  useEffect(() => {
-    const stored = (typeof window !== "undefined" && (localStorage.getItem(STORAGE_KEY) as Theme | null)) || "dark";
-    setTheme(stored);
-  }, []);
+    return (localStorage.getItem(STORAGE_KEY) as Theme | null) ?? "dark";
+  });
+
+  // useEffect(() => {
+  //   const stored = (typeof window !== "undefined" && (localStorage.getItem(STORAGE_KEY) as Theme | null)) || "dark";
+  //   setTheme(stored);
+  // }, []);
+
 
   useEffect(() => {
     const root = document.documentElement;
@@ -18,6 +23,8 @@ export function useTheme() {
     root.classList.add(theme);
     localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
+
+
 
   return {
     theme,

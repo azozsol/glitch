@@ -147,4 +147,42 @@ export type Dictionary = {
         submit: string;
         privacyNote: string;
     };
+
+    workPage: {
+        meta: { title: string; description: string; ogTitle: string; ogDescription: string };
+        hero: { kicker: string; h1: [string, string, string]; sub: string; cta: string };
+        ticker: string[];
+        caseSection: { eyebrow: string; heading: [string, string] };
+        cases: Array<{
+            eyebrow: string;
+            h2: [string, string];
+            intro: string;
+            stat: { num: string; label: string; rest: string };
+            meta: Array<{ label: string; value: string }>;
+            link: string;
+            steps: Array<{ label: string; title: string; body: string }>;
+        }>;
+        designStory: {
+            eyebrow: string;
+            heading: [string, string];
+            cans: Array<{ name: string; flavor: string; body: string }>;
+        };
+        otherSection: { eyebrow: string; heading: [string, string] };
+        miniProjects: Array<{ name: string; cat: string; city: string }>;
+        intl: {
+            eyebrow: string;
+            heading: [string, string, string];
+            sub: string;
+            agencies: Array<{ name: string; detail: string; clients: string[] }>;
+        };
+        cta: {
+            eyebrow: string;
+            heading: [string, string, string];
+            sub: string;
+            primary: string;
+            secondary: string;
+            whatsapp: string;
+        };
+    };
+
 };

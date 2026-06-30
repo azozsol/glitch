@@ -295,4 +295,116 @@ export const fr: Dictionary = {
         submit: "Envoyer mon brief →",
         privacyNote: "Vos informations restent confidentielles. Nous ne partageons rien avec des tiers.",
     },
+    workPage: {
+        meta: {
+            title: "Réalisations — GLITCH.BE — Agence Comm & Marketing à Bruxelles",
+            description: "Packaging, branding, SEO, identité visuelle. Des projets réels pour des clients bruxellois — et un palmarès international derrière.",
+            ogTitle: "Réalisations — GLITCH.BE",
+            ogDescription: "Trois projets. Trois preuves. Packaging · Branding · SEO · Identité visuelle.",
+        },
+        hero: {
+            kicker: "Portfolio — Bruxelles · Belgique",
+            h1: ["CE QU'ON", "A VRAIMENT", "FAIT."],
+            sub: "Packaging, branding, SEO, identité visuelle. Des projets réels, pour des clients bruxellois — et un palmarès international derrière.",
+            cta: "Explorer les case studies →",
+        },
+        ticker: [
+            "Packaging Design", "Branding Complet", "SEO & Croissance", "Identité Visuelle",
+            "Motion Design", "Menus Animés", "Direction Créative", "Web & Développement", "Bruxelles · Belgique",
+        ],
+        caseSection: {
+            eyebrow: "Case Studies",
+            heading: ["TROIS PROJETS.", "TROIS PREUVES."],
+        },
+        cases: [
+            {
+                eyebrow: "Case study 01",
+                h2: ["PALÈS", "DRINKS"],
+                intro: "Créer l'identité complète d'une boisson engagée — du packaging au positionnement de marque — pour qu'elle soit mémorable dès le premier regard en rayon.",
+                stat: { num: "3", label: "Univers visuels distincts", rest: "Chaque saveur, sa propre identité chromatique et illustrative." },
+                meta: [
+                    { label: "Secteur", value: "Boissons · FMCG" },
+                    { label: "Services", value: "Packaging · Branding · Illustration" },
+                    { label: "Marché", value: "Belgique · International" },
+                ],
+                link: "Voir le case study complet →",
+                steps: [
+                    { label: "Challenge", title: "Une boisson avec une mission", body: "Palès Drinks verse <strong>15% de ses bénéfices à des actions humanitaires</strong>. La marque devait incarner cet engagement visuellement — sans tomber dans les codes ONG. Il fallait créer quelque chose de désirable, fun, et porteur de sens." },
+                    { label: "Ce qu'on a fait", title: "Trois univers, une même âme", body: "Chaque saveur reçoit sa propre palette de couleurs, ses propres illustrations de fruits, et son propre caractère — tout en restant immédiatement reconnaissable comme Palès. Un système de branding <strong>scalable à l'infini</strong>, conçu pour grandir avec la gamme." },
+                    { label: "Résultat", title: "Du rayon à la rue", body: "Un packaging qui se remarque en rayon, se photographie sur Instagram, et communique la mission de la marque sans un mot d'explication. <strong>Présent dans les circuits de distribution belges</strong> et reconnu pour sa cohérence visuelle immédiate." },
+                ],
+            },
+            {
+                eyebrow: "Case study 02",
+                h2: ["AM", "HVAC"],
+                intro: "Expert HVAC belge avec 12 ans d'expérience et des références comme Eiffage et la STIB — invisible sur Google. On a changé ça.",
+                stat: { num: "+60", label: "Points de score SEO", rest: "De 35 à 95 sur 100. Passage de \"invisible\" à page 1 sur les requêtes clés." },
+                meta: [
+                    { label: "Secteur", value: "HVAC · Services BtoB/BtoC" },
+                    { label: "Services", value: "Audit SEO · Refonte contenu · Perf web" },
+                    { label: "Localisation", value: "Bruxelles · Belgique" },
+                ],
+                link: "Voir le site →",
+                steps: [
+                    { label: "Challenge", title: "Expert reconnu, invisible en ligne", body: "AMHVAC travaille pour Eiffage, la STIB, la SNCB. Leur expertise est réelle. Mais leur site obtenait un <strong>score SEO de 35/100</strong> — aucune présence sur les requêtes de leurs prospects directs. Zéro lead organique." },
+                    { label: "Ce qu'on a fait", title: "Audit → Architecture → Contenu → Performance", body: "Audit technique complet, restructuration du maillage interne, réécriture des pages services avec ciblage sémantique précis, optimisation des Core Web Vitals et <strong>mise en place d'un blog SEO thématique</strong>." },
+                    { label: "Résultat", title: "Page 1 sur les requêtes qui comptent", body: "Score SEO passé de <strong>35 à 95/100</strong>. Classement sur 24+ mots-clés ciblés. Core Web Vitals passés au vert. Premiers contacts organiques entrants dans les semaines suivant le déploiement." },
+                ],
+            },
+            {
+                eyebrow: "Case study 03",
+                h2: ["ODESU", "IXELLES"],
+                intro: "Accompagnement complet d'un concept store bruxellois — de l'identité de marque au lancement.",
+                stat: { num: "360°", label: "Identité complète", rest: "Du logo à la signalétique, du digital au print — livré pour l'ouverture." },
+                meta: [
+                    { label: "Secteur", value: "Retail · Mode · Lifestyle" },
+                    { label: "Services", value: "Branding · Charte graphique · Comm" },
+                    { label: "Lieu", value: "Ixelles · Bruxelles" },
+                ],
+                link: "Voir le case study complet →",
+                steps: [
+                    { label: "Challenge", title: "Créer une marque from scratch", body: "ODESU s'apprêtait à ouvrir ses portes à Ixelles. Zéro identité visuelle, zéro positionnement défini. Le brief : créer une marque qui <strong>incarne Bruxelles, la mode et l'attitude</strong> — et qui soit prête pour le jour J." },
+                    { label: "Ce qu'on a fait", title: "Naming → Logo → Charte → Comm", body: "Accompagnement de la phase de naming, création du logo et de la charte graphique complète, déclinaison sur tous les supports de lancement : <strong>signalétique, réseaux sociaux, print, vitrine</strong>. Stratégie de contenu pour l'ouverture." },
+                    { label: "Résultat", title: "Une identité qui tient la route", body: "Une marque cohérente sur tous les touchpoints dès le premier jour d'ouverture. <strong>Présence sociale active, visibilité locale, et une identité qui se distingue</strong> dans un quartier commerçant dense comme Ixelles." },
+                ],
+            },
+        ],
+        designStory: {
+            eyebrow: "Parti pris design · Chaque saveur, un univers",
+            heading: ["COULEURS, ILLUSTRATIONS,", "STORYTELLING."],
+            cans: [
+                { name: "Orange & Grenadine", flavor: "Le caractère", body: "Le dégradé orange–rouge évoque l'énergie et la chaleur des agrumes. Les illustrations créent un mouvement ascendant. La palette <strong>chaude et saturée</strong> capte l'œil en rayon avant toute autre lecture." },
+                { name: "Mojito · Myrtille & Fraise", flavor: "La fraîcheur", body: "Le bleu-turquoise évoque l'eau, la menthe, l'été. Les ronds roses créent un <strong>contraste doux et vibrant</strong> — une tension entre la fraîcheur et la douceur fruitée." },
+                { name: "Pêche blanche & Violette", flavor: "La délicatesse", body: "Le violet-lavande associé au pêche crée la saveur la plus premium. La fleur de violette ajoute une <strong>note botanique et sophistiquée</strong> — là où les autres misent sur l'énergie, celle-ci joue l'élégance." },
+            ],
+        },
+        otherSection: {
+            eyebrow: "Belgique · Projets récents",
+            heading: ["AUTRES", "RÉALISATIONS"],
+        },
+        miniProjects: [
+            { name: "NYApocalypse", cat: "Logo · Identité visuelle", city: "Bruxelles" },
+            { name: "Smash Smash", cat: "Menu animé · Motion", city: "Bruxelles" },
+            { name: "Crispy Chicken", cat: "Menu animé · Motion", city: "Bruxelles" },
+            { name: "Tayba", cat: "Menu animé · Branding", city: "Bruxelles" },
+        ],
+        intl: {
+            eyebrow: "Pedigree international",
+            heading: ["NOTRE", "EXPÉRIENCE", "MONDIALE."],
+            sub: "Avant Bruxelles, 20 ans dans les plus grandes agences du Proche-Orient. Ce niveau d'expertise, maintenant pour vos projets.",
+            agencies: [
+                { name: "DDB Cairo", detail: "Le Caire · Égypte", clients: ["Vodafone Egypt", "Arab Bank", "Sélection Cannes"] },
+                { name: "JWT Bahrain", detail: "Manama · Bahreïn", clients: ["Mitsubishi Bahrain", "Zain Telecom", "Campagnes 360°"] },
+                { name: "BBDO Egypt", detail: "Le Caire · Égypte", clients: ["Energizer", "Président Egypt", "Productions TVC"] },
+            ],
+        },
+        cta: {
+            eyebrow: "Votre projet commence ici",
+            heading: ["VOTRE PROJET", "MÉRITE", "MIEUX."],
+            sub: "Partagez-nous votre brief. On vous répond en moins de 24h — sans engagement.",
+            primary: "Démarrer un projet →",
+            secondary: "Réserver un appel de 30 min",
+            whatsapp: "Ou écrivez-nous directement sur WhatsApp",
+        },
+    }
 };

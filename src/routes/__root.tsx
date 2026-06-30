@@ -87,6 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "icon", href: "/favicon.ico" },   // <-- Add this
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -104,8 +105,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  const theme = localStorage.getItem('glitch-theme') || 'dark';
+                  document.documentElement.classList.add(theme);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <HeadContent />
       </head>
       <body>
