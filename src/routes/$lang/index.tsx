@@ -58,18 +58,19 @@ function Hero() {
               data-t={h.titleLine1}
             >
               {h.titleLine1}
-              <span className="text-acid"> {h.titleLine2}</span>
-
             </span>
+            <span className="block text-acid"> {h.titleLine2}</span>
             <span className="block text-white">{h.titleLine3}</span>
           </h1>
 
-          <p className="mb-10 max-w-[520px] text-lg leading-[1.7] text-muted-foreground">
+          <p className="mb-10 max-w-130 text-lg leading-[1.7] text-muted-foreground">
             <strong className="font-medium text-white">
               {h.subtitleStrong}
             </strong>{" "}
             {h.subtitleRest}
           </p>
+          <a href="#contact" className="btn-primary">{h.ctaPrimary}</a>
+
         </div>
       </div>
       {/* <div className="pointer-events-none absolute inset-0">

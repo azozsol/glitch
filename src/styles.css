@@ -23,6 +23,7 @@
   --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
+  --color-surface-card: var(--surface-card);
   --color-grid-line: var(--grid-line);
   --color-scan-line: var(--scan-line);
   --font-mono: "Space Mono", ui-monospace, monospace;
@@ -75,6 +76,7 @@
   --muted-strong: #cccccc;
   --muted-faint: #666666;
   --muted-soft: #3a3a3a;
+  --surface-card: white;
 }
 
 .light {
@@ -99,6 +101,7 @@
   --muted-strong: #2a2a2a;
   --muted-faint: #777777;
   --muted-soft: #b8b3a8;
+  --surface-card: white;
 }
 
 @theme inline {

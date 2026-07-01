@@ -41,7 +41,7 @@ export const en: Dictionary = {
         },
         hero: {
             eyebrow: "Comm & Marketing Agency — Brussels",
-            titleLine1: "We crack the code",
+            titleLine1: "We crack",
             titleLine2: "of your",
             titleLine3: "communication.",
             subtitleStrong: "Strategy, creative, web.",
