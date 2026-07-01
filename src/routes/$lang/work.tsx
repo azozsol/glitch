@@ -246,12 +246,20 @@ function PalesFloatingCans() {
     );
 }
 
-function CanStoryCard({ name, flavor, body, swatchFrom, swatchTo }: { name: string; flavor: string; body: string; swatchFrom: string; swatchTo: string }) {
+function CanStoryCard({ src, name, flavor, body }: { src: string; name: string; flavor: string; body: string }) {
     return (
-        <div className="group flex flex-col items-center rounded-sm border border-border bg-white/[0.02] p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:border-acid/35">
+        <div className="group flex flex-col items-center rounded-sm border border-border bg-white/2 p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:border-acid/35">
             <div
-                className={`mb-5 h-[120px] w-[60px] rounded-md bg-gradient-to-br ${swatchFrom} ${swatchTo} shadow-[-8px_16px_32px_rgba(0,0,0,0.5)] transition-transform duration-500 group-hover:-translate-y-2.5 group-hover:scale-105`}
-            />
+                className="mb-5 flex h-40 items-center justify-center transition-transform duration-500 group-hover:-translate-y-2.5 group-hover:scale-105"
+                style={{ filter: 'drop-shadow(-8px 16px 32px rgba(0,0,0,0.5))' }}
+            >
+                <img
+                    src={src}
+                    alt="Pales can"
+                    className="h-full w-auto object-contain"
+                />
+            </div>
+
             <div className="mb-1 text-[15px] font-bold text-foreground">{name}</div>
             <div className="mb-4 font-mono text-[9px] uppercase tracking-[0.14em] text-acid">{flavor}</div>
             <p className="text-left text-xs leading-relaxed text-muted-faint" dangerouslySetInnerHTML={{ __html: body }} />
@@ -291,12 +299,11 @@ function CasePales({ caseData, designStory }: { caseData: any; designStory: any 
                         <div className="grid gap-8 md:grid-cols-3">
                             {designStory.cans.map((can: any, i: number) => (
                                 <CanStoryCard
+                                    src={can.src}
                                     key={can.name}
                                     name={can.name}
                                     flavor={can.flavor}
                                     body={can.body}
-                                    swatchFrom={swatchPairs[i][0]}
-                                    swatchTo={swatchPairs[i][1]}
                                 />
                             ))}
                         </div>

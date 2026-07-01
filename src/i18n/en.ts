@@ -374,9 +374,9 @@ export const en: Dictionary = {
             eyebrow: "Design approach · Each flavor, a universe",
             heading: ["COLORS, ILLUSTRATIONS,", "STORYTELLING."],
             cans: [
-                { name: "Orange & Grenadine", flavor: "The character", body: "The orange–red gradient evokes the energy and warmth of citrus. Illustrations create an upward motion. The <strong>warm, saturated palette</strong> catches the eye on the shelf before any other reading." },
-                { name: "Mojito · Blueberry & Strawberry", flavor: "The freshness", body: "Blue-turquoise evokes water, mint, summer. The pink circles create a <strong>soft, vibrant contrast</strong> — a tension between freshness and fruity sweetness." },
-                { name: "White Peach & Violet", flavor: "The delicacy", body: "Lavender-violet paired with peach creates the visually most premium flavor. The violet flower adds a <strong>botanical, sophisticated note</strong> — where the others play energy, this one plays elegance." },
+                { src: "/images/cans/orange.webp", name: "Orange & Grenadine", flavor: "The character", body: "The orange–red gradient evokes the energy and warmth of citrus. Illustrations create an upward motion. The <strong>warm, saturated palette</strong> catches the eye on the shelf before any other reading." },
+                { src: "/images/cans/mojito.webp", name: "Mojito · Blueberry & Strawberry", flavor: "The freshness", body: "Blue-turquoise evokes water, mint, summer. The pink circles create a <strong>soft, vibrant contrast</strong> — a tension between freshness and fruity sweetness." },
+                { src: "/images/cans/violet.webp", name: "White Peach & Violet", flavor: "The delicacy", body: "Lavender-violet paired with peach creates the visually most premium flavor. The violet flower adds a <strong>botanical, sophisticated note</strong> — where the others play energy, this one plays elegance." },
             ],
         },
         otherSection: {
