@@ -373,9 +373,9 @@ export const fr: Dictionary = {
             eyebrow: "Parti pris design · Chaque saveur, un univers",
             heading: ["COULEURS, ILLUSTRATIONS,", "STORYTELLING."],
             cans: [
-                { name: "Orange & Grenadine", flavor: "Le caractère", body: "Le dégradé orange–rouge évoque l'énergie et la chaleur des agrumes. Les illustrations créent un mouvement ascendant. La palette <strong>chaude et saturée</strong> capte l'œil en rayon avant toute autre lecture." },
-                { name: "Mojito · Myrtille & Fraise", flavor: "La fraîcheur", body: "Le bleu-turquoise évoque l'eau, la menthe, l'été. Les ronds roses créent un <strong>contraste doux et vibrant</strong> — une tension entre la fraîcheur et la douceur fruitée." },
-                { name: "Pêche blanche & Violette", flavor: "La délicatesse", body: "Le violet-lavande associé au pêche crée la saveur la plus premium. La fleur de violette ajoute une <strong>note botanique et sophistiquée</strong> — là où les autres misent sur l'énergie, celle-ci joue l'élégance." },
+                { src: "/images/cans/orange.webp", name: "Orange & Grenadine", flavor: "Le caractère", body: "Le dégradé orange–rouge évoque l'énergie et la chaleur des agrumes. Les illustrations créent un mouvement ascendant. La palette <strong>chaude et saturée</strong> capte l'œil en rayon avant toute autre lecture." },
+                { src: "/images/cans/mojito.webp", name: "Mojito · Myrtille & Fraise", flavor: "La fraîcheur", body: "Le bleu-turquoise évoque l'eau, la menthe, l'été. Les ronds roses créent un <strong>contraste doux et vibrant</strong> — une tension entre la fraîcheur et la douceur fruitée." },
+                { src: "/images/cans/violet.webp", name: "Pêche blanche & Violette", flavor: "La délicatesse", body: "Le violet-lavande associé au pêche crée la saveur la plus premium. La fleur de violette ajoute une <strong>note botanique et sophistiquée</strong> — là où les autres misent sur l'énergie, celle-ci joue l'élégance." },
             ],
         },
         otherSection: {
