@@ -318,6 +318,8 @@ export const en: Dictionary = {
             heading: ["THREE PROJECTS.", "THREE PROOFS."],
         },
         cases: [
+
+            // Case 1
             {
                 eyebrow: "Case study 01",
                 h2: ["PALÈS", "DRINKS"],
@@ -335,6 +337,8 @@ export const en: Dictionary = {
                     { label: "Result", title: "From shelf to street", body: "Packaging that stands out on the shelf, gets photographed on Instagram, and communicates the brand's mission without a word of explanation. <strong>Live in Belgian distribution</strong> and recognized for its immediate visual coherence." },
                 ],
             },
+
+            // Case 2
             {
                 eyebrow: "Case study 02",
                 h2: ["AM", "HVAC"],
@@ -352,6 +356,8 @@ export const en: Dictionary = {
                     { label: "Result", title: "Page 1 on the queries that matter", body: "SEO score jumped from <strong>35 to 95/100</strong>. Ranked on 24+ targeted keywords. Core Web Vitals all green. First organic inbound contacts within weeks of deployment." },
                 ],
             },
+
+            // Case 3
             {
                 eyebrow: "Case study 03",
                 h2: ["ODESU", "IXELLES"],
@@ -367,6 +373,76 @@ export const en: Dictionary = {
                     { label: "Challenge", title: "Build a brand from scratch", body: "ODESU was about to open in Ixelles. Zero visual identity, zero defined positioning. The brief: create a brand that <strong>embodies Brussels, fashion, and attitude</strong> — ready for day one." },
                     { label: "What we did", title: "Naming → Logo → Brand guidelines → Comm", body: "Naming phase guidance, logo and full brand guidelines creation, rollout across all launch materials: <strong>signage, social media, print, storefront</strong>. Content strategy for the opening." },
                     { label: "Result", title: "An identity that holds up", body: "A coherent brand across all touchpoints from day one. <strong>Active social presence, local visibility, and an identity that stands out</strong> in a dense commercial district like Ixelles." },
+                ],
+            },
+
+            // Case 4
+            {
+                eyebrow: "Case study 04",
+                h2: ["DOTREFLECTION", "GMBH"],
+                intro: "Showcase website for a healthcare software company based in Heidelberg — multilingual, containerised, and built to reflect serious technical expertise.",
+                stat: {
+                    num: "i18n",
+                    label: "Multilingual support",
+                    rest: "International accessibility built in from day one.",
+                },
+                meta: [
+                    { label: "Sector", value: "Software · Healthcare" },
+                    { label: "Services", value: "Next.js · i18n · Docker" },
+                    { label: "Market", value: "Germany · International" },
+                ],
+                link: "View the site →",
+                steps: [
+                    {
+                        label: "Challenge",
+                        title: "A medical product, a global audience",
+                        body: "Dotreflection needed a site that reflected their technical expertise and was accessible to users across multiple languages — with a strong visual identity and a fully containerised infrastructure.",
+                    },
+                    {
+                        label: "What we did",
+                        title: "i18n · Custom fonts · Docker",
+                        body: "Full i18n internationalisation integration for multilingual support, custom font implementation to reinforce visual identity, and optimised Docker images for efficient container management.",
+                    },
+                    {
+                        label: "Result",
+                        title: "A robust site, ready for international reach",
+                        body: "A stable multilingual platform, properly containerised, that reflects the company's seriousness and technical depth.",
+                    },
+                ],
+            },
+
+            // Case 5
+            {
+                eyebrow: "Case study 05",
+                h2: ["MUJAZ", ".IO"],
+                intro: "Maintenance and improvement of the public site for an Arabic-language content platform — continuous delivery without service disruption.",
+                stat: {
+                    num: "UX",
+                    label: "Design collaboration",
+                    rest: "Direct iteration with the UX/UI team on every release.",
+                },
+                meta: [
+                    { label: "Sector", value: "Media · Digital content" },
+                    { label: "Services", value: "HTML · CSS · JS · API" },
+                    { label: "Market", value: "MENA · International" },
+                ],
+                link: "View the site →",
+                steps: [
+                    {
+                        label: "Challenge",
+                        title: "A live site to improve without disruption",
+                        body: "Mujaz.io required continuous improvements — performance, UX, backend integrations — without disrupting the experience of existing users.",
+                    },
+                    {
+                        label: "What we did",
+                        title: "Dev · Design · API",
+                        body: "Website maintenance and improvement (HTML, CSS, JavaScript), close collaboration with UX/UI designers for every iteration, and management of API and database integrations.",
+                    },
+                    {
+                        label: "Result",
+                        title: "A stronger platform, a refined UX",
+                        body: "Continuous improvements delivered without service interruption, a healthier technical foundation, and smooth collaboration between dev and design.",
+                    },
                 ],
             },
         ],

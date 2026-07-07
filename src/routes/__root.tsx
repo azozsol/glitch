@@ -87,7 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Glitch" },
     ],
     links: [
-      { rel: "icon", href: "/favicon.ico" },   // <-- Add this
+      { rel: "icon", href: "/favicon.svg" },   // <-- Add this
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

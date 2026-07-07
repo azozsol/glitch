@@ -317,6 +317,7 @@ export const fr: Dictionary = {
             heading: ["TROIS PROJETS.", "TROIS PREUVES."],
         },
         cases: [
+            // Case 1
             {
                 eyebrow: "Case study 01",
                 h2: ["PALÈS", "DRINKS"],
@@ -334,6 +335,8 @@ export const fr: Dictionary = {
                     { label: "Résultat", title: "Du rayon à la rue", body: "Un packaging qui se remarque en rayon, se photographie sur Instagram, et communique la mission de la marque sans un mot d'explication. <strong>Présent dans les circuits de distribution belges</strong> et reconnu pour sa cohérence visuelle immédiate." },
                 ],
             },
+
+            // Case 2
             {
                 eyebrow: "Case study 02",
                 h2: ["AM", "HVAC"],
@@ -351,6 +354,8 @@ export const fr: Dictionary = {
                     { label: "Résultat", title: "Page 1 sur les requêtes qui comptent", body: "Score SEO passé de <strong>35 à 95/100</strong>. Classement sur 24+ mots-clés ciblés. Core Web Vitals passés au vert. Premiers contacts organiques entrants dans les semaines suivant le déploiement." },
                 ],
             },
+
+            // Case 3
             {
                 eyebrow: "Case study 03",
                 h2: ["ODESU", "IXELLES"],
@@ -368,6 +373,78 @@ export const fr: Dictionary = {
                     { label: "Résultat", title: "Une identité qui tient la route", body: "Une marque cohérente sur tous les touchpoints dès le premier jour d'ouverture. <strong>Présence sociale active, visibilité locale, et une identité qui se distingue</strong> dans un quartier commerçant dense comme Ixelles." },
                 ],
             },
+
+            // Case 4
+            {
+                eyebrow: "Case study 04",
+                h2: ["DOTREFLECTION", "GMBH"],
+                intro: "Site vitrine pour un éditeur de logiciels healthcare basé à Heidelberg — multilingue, conteneurisé, conçu pour refléter une expertise technique sérieuse.",
+                stat: {
+                    num: "i18n",
+                    label: "Support multilingue",
+                    rest: "Accessibilité internationale intégrée dès le lancement.",
+                },
+                meta: [
+                    { label: "Secteur", value: "Software · Healthcare" },
+                    { label: "Services", value: "Next.js · i18n · Docker" },
+                    { label: "Marché", value: "Allemagne · International" },
+                ],
+                link: "Voir le site →",
+                steps: [
+                    {
+                        label: "Challenge",
+                        title: "Un produit médical, une audience mondiale",
+                        body: "Dotreflection avait besoin d'un site représentatif de leur expertise technique, accessible à des utilisateurs de plusieurs langues, avec une identité visuelle forte et une infrastructure conteneurisée.",
+                    },
+                    {
+                        label: "Ce qu'on a fait",
+                        title: "i18n · Polices · Docker",
+                        body: "Intégration complète de l'internationalisation (i18n) pour le support multilingue, implémentation de polices personnalisées pour renforcer l'identité visuelle, et création d'images Docker optimisées pour une gestion efficace des conteneurs.",
+                    },
+                    {
+                        label: "Résultat",
+                        title: "Un site robuste, prêt pour l'international",
+                        body: "Une plateforme multilingue stable, correctement conteneurisée, qui reflète le sérieux et l'expertise technique de l'entreprise.",
+                    },
+                ],
+            },
+
+            // Case 5
+            {
+                eyebrow: "Case study 05",
+                h2: ["MUJAZ", ".IO"],
+                intro: "Maintenance et amélioration du site public d'une plateforme de contenu arabophone — livraison continue sans interruption de service.",
+                stat: {
+                    num: "UX",
+                    label: "Collaboration design",
+                    rest: "Itération directe avec l'équipe UX/UI à chaque release.",
+                },
+                meta: [
+                    { label: "Secteur", value: "Media · Contenu digital" },
+                    { label: "Services", value: "HTML · CSS · JS · API" },
+                    { label: "Marché", value: "MENA · International" },
+                ],
+                link: "Voir le site →",
+                steps: [
+                    {
+                        label: "Challenge",
+                        title: "Un site en prod à améliorer sans friction",
+                        body: "Mujaz.io nécessitait des améliorations continues — performance, UX, intégrations backend — sans perturber l'expérience des utilisateurs existants.",
+                    },
+                    {
+                        label: "Ce qu'on a fait",
+                        title: "Dev · Design · API",
+                        body: "Maintenance et amélioration du site (HTML, CSS, JavaScript), collaboration étroite avec les designers UX/UI pour chaque itération, et gestion des intégrations API et base de données.",
+                    },
+                    {
+                        label: "Résultat",
+                        title: "Une plateforme plus solide, une UX affinée",
+                        body: "Des améliorations continues livrées sans interruption de service, une base technique plus saine et une collaboration fluide entre dev et design.",
+                    },
+                ],
+            },
+            
+
         ],
         designStory: {
             eyebrow: "Parti pris design · Chaque saveur, un univers",

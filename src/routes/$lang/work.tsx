@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useRef, useState } from "react";
-import { Reveal } from "@/components/glitch/layout";
+import { GridHoverBackground, Reveal } from "@/components/glitch/layout";
 import { useLang } from "@/hooks/use-lang";
 import { getDictionary } from "@/i18n";
 
@@ -54,8 +54,8 @@ function WorkPage() {
 // ═══════════════════════════════════════════════════════════════════════
 function Hero({ w }: { w: any }) {
     return (
-        <section className="relative overflow-hidden px-0 pb-16 pt-[140px]">
-            <div className="pixel-grid pointer-events-none absolute inset-0 opacity-60" />
+        <section className="relative overflow-hidden bg-background px-0 pb-26 pt-[140px]">
+            <GridHoverBackground className="opacity-70" />
             <div className="relative mx-auto max-w-[1160px] px-8">
                 <Reveal className="section-label">{w.hero.kicker}</Reveal>
 
@@ -70,11 +70,11 @@ function Hero({ w }: { w: any }) {
                     </h1>
                 </Reveal>
 
-                <Reveal delay={100} className="mb-10 max-w-[460px] text-lg leading-[1.7] text-muted-foreground">
+                <Reveal className="mb-10 max-w-[460px] text-lg leading-[1.7] text-muted-foreground">
                     {w.hero.sub}
                 </Reveal>
 
-                <Reveal delay={180}>
+                <Reveal className='absolute z-20'>
                     <a href="#case-studies" className="btn-primary">
                         {w.hero.cta}
                     </a>
@@ -124,11 +124,13 @@ function CaseStudies({ w }: { w: any }) {
                         <span className="text-acid">{w.caseSection.heading[1]}</span>
                     </h2>
                 </Reveal>
-
-                <CasePales caseData={w.cases[0]} designStory={w.designStory} />
-                <CaseAmhvac caseData={w.cases[1]} />
-                <CaseOdesu caseData={w.cases[2]} />
             </div>
+
+            <CasePales caseData={w.cases[0]} designStory={w.designStory} />
+            <CaseAmhvac caseData={w.cases[1]} />
+            <CaseOdesu caseData={w.cases[2]} />
+            <CaseDotreflection caseData={w.cases[3]} />
+            <CaseMujaz caseData={w.cases[4]} />
         </section>
     );
 }
@@ -274,87 +276,51 @@ function CasePales({ caseData, designStory }: { caseData: any; designStory: any 
         ["from-purple-400", "to-pink-300"],
     ];
     return (
-        <div id="pales" className="mb-28">
-            {/* <Reveal>
-                <div className="pixel-grid relative mb-16 h-[420px] overflow-hidden rounded-sm border border-border bg-surface-1 md:h-[560px]">
-                    <PalesFloatingCans />
-
-                </div>
-            </Reveal> */}
-
-            <Reveal>
-                <div className="relative mt-16 mb-16 overflow-hidden rounded-sm border border-border bg-background/95 p-10 md:p-14">
-                    <div className="relative z-1">
-                        <div className="mb-4 font-mono text-[9px] uppercase tracking-[0.28em] text-muted-soft">
-                            {designStory.eyebrow}
-                        </div>
-                        <h3
-                            className="mb-12 font-bold uppercase leading-tight tracking-[-0.03em]"
-                            style={{ fontSize: "clamp(24px,2.5vw,36px)" }}
-                        >
-                            {designStory.heading[0]}
-                            <br />
-                            <span className="text-acid">{designStory.heading[1]}</span>
-                        </h3>
-                        <div className="grid gap-8 md:grid-cols-3">
-                            {designStory.cans.map((can: any, i: number) => (
-                                <CanStoryCard
-                                    src={can.src}
-                                    key={can.name}
-                                    name={can.name}
-                                    flavor={can.flavor}
-                                    body={can.body}
-                                />
-                            ))}
+        <section id="pales" className="bg-surface-1/40 pb-28">
+            <div className="mx-auto max-w-[1160px] px-8">
+                <Reveal>
+                    <div className="relative mt-16 mb-16 overflow-hidden rounded-sm border border-border bg-background/95 p-10 md:p-14">
+                        <div className="relative z-1">
+                            <div className="mb-4 font-mono text-[9px] uppercase tracking-[0.28em] text-muted-soft">
+                                {designStory.eyebrow}
+                            </div>
+                            <h3
+                                className="mb-12 font-bold uppercase leading-tight tracking-[-0.03em]"
+                                style={{ fontSize: "clamp(24px,2.5vw,36px)" }}
+                            >
+                                {designStory.heading[0]}
+                                <br />
+                                <span className="text-acid">{designStory.heading[1]}</span>
+                            </h3>
+                            <div className="grid gap-8 md:grid-cols-3">
+                                {designStory.cans.map((can: any, i: number) => (
+                                    <CanStoryCard
+                                        src={can.src}
+                                        key={can.name}
+                                        name={can.name}
+                                        flavor={can.flavor}
+                                        body={can.body}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </Reveal>
+                </Reveal>
 
-            <Reveal>
-                <div className="grid gap-16 md:grid-cols-2">
-                    <div>
-                        <CaseEyebrow>{caseData.eyebrow}</CaseEyebrow>
-                        <CaseH2 line1={caseData.h2[0]} line2={caseData.h2[1]} />
-                        <p className="mb-5 text-[15px] leading-[1.8] text-muted-faint">{caseData.intro}</p>
-                        <CaseStat num={caseData.stat.num} label={caseData.stat.label} rest={caseData.stat.rest} />
-                        <CaseMetaTable rows={caseData.meta} />
-                        {/* <CaseLink href="https://www.pales-drinks.com/">{caseData.link}</CaseLink> */}
-                    </div>
-                    <CaseNarrative steps={caseData.steps} />
-                </div>
-            </Reveal>
-
-            {/* <Reveal> */}
-            {/* <div className="pixel-grid relative mt-16 overflow-hidden rounded-sm border border-border bg-surface-1 p-10 md:p-14">
-                    <div className="relative z-1">
-                        <div className="mb-4 font-mono text-[9px] uppercase tracking-[0.28em] text-muted-soft">
-                            {designStory.eyebrow}
+                <Reveal>
+                    <div className="grid gap-16 md:grid-cols-2">
+                        <div>
+                            <CaseEyebrow>{caseData.eyebrow}</CaseEyebrow>
+                            <CaseH2 line1={caseData.h2[0]} line2={caseData.h2[1]} />
+                            <p className="mb-5 text-[15px] leading-[1.8] text-muted-faint">{caseData.intro}</p>
+                            <CaseStat num={caseData.stat.num} label={caseData.stat.label} rest={caseData.stat.rest} />
+                            <CaseMetaTable rows={caseData.meta} />
                         </div>
-                        <h3
-                            className="mb-12 font-bold uppercase leading-tight tracking-[-0.03em]"
-                            style={{ fontSize: "clamp(24px,2.5vw,36px)" }}
-                        >
-                            {designStory.heading[0]}
-                            <br />
-                            <span className="text-acid">{designStory.heading[1]}</span>
-                        </h3>
-                        <div className="grid gap-8 md:grid-cols-3">
-                            {designStory.cans.map((can: any, i: number) => (
-                                <CanStoryCard
-                                    key={can.name}
-                                    name={can.name}
-                                    flavor={can.flavor}
-                                    body={can.body}
-                                    swatchFrom={swatchPairs[i][0]}
-                                    swatchTo={swatchPairs[i][1]}
-                                />
-                            ))}
-                        </div>
+                        <CaseNarrative steps={caseData.steps} />
                     </div>
-                </div> */}
-            {/* </Reveal> */}
-        </div>
+                </Reveal>
+            </div>
+        </section>
     );
 }
 
@@ -377,100 +343,71 @@ function CaseAmhvac({ caseData }: { caseData: any }) {
         { label: "Mots-clés classés", before: undefined, after: "24+", change: "↑ ×6 requêtes ciblées" },
         { label: "Core Web Vitals", before: undefined, after: "✓ Passed", change: "LCP · FID · CLS", green: true },
     ];
-    // const features = [
-    //     ["🔥", "Chauffage", "Chaudières · Pompes"],
-    //     ["❄️", "Climatisation", "Réversible · Cassettes"],
-    //     ["💨", "Ventilation", "VMC · Résidentiel"],
-    //     ["♻️", "Écoénergie", "Primes Bruxelles"],
-    // ];
+
     return (
-        <div id="amhvac" className="mb-28 mt-28">
-            <Reveal>
-                <div className="flex justify-center relative mb-16 h-auto flex-col gap-6 overflow-hidden rounded-sm border border-border bg-background/95 p-6 md:h-[560px] md:flex-row md:items-center md:p-10">
-                    {/* Browser mockup */}
-                    <div className="relative z-1 max-w-120 flex-1 overflow-hidden rounded-lg bg-background shadow-2xl">
-                        <div className="flex items-center gap-2.5 bg-surface-2 px-4 py-2.5">
-                            <div className="flex gap-1.5">
-                                <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
-                                <div className="h-2.5 w-2.5 rounded-full bg-amber-500" />
-                                <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+        <section id="amhvac" className="bg-acid/5 pb-28 pt-28">
+            <div className="mx-auto max-w-[1160px] px-8">
+                <Reveal>
+                    <div className="flex justify-center relative mb-16 h-auto flex-col gap-6 overflow-hidden rounded-sm border border-border bg-background/95 p-6 md:h-[560px] md:flex-row md:items-center md:p-10">
+                        {/* Browser mockup */}
+                        <div className="relative z-1 max-w-120 flex-1 overflow-hidden rounded-lg bg-background shadow-2xl">
+                            <div className="flex items-center gap-2.5 bg-surface-2 px-4 py-2.5">
+                                <div className="flex gap-1.5">
+                                    <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
+                                    <div className="h-2.5 w-2.5 rounded-full bg-amber-500" />
+                                    <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                                </div>
+                                <div className="flex-1 rounded-sm bg-background/95 px-2.5 py-1 font-mono text-[10px] tracking-wide text-muted-soft">
+                                    amhvac.be
+                                </div>
                             </div>
-                            <div className="flex-1 rounded-sm bg-background/95 px-2.5 py-1 font-mono text-[10px] tracking-wide text-muted-soft">
-                                amhvac.be
+                            <div className="p-5">
+                                <img src="/images/HMVAC SEO.png" alt="AMHVAC home page" />
+
                             </div>
                         </div>
-                        <div className="p-5">
-                            <img src="/images/HMVAC SEO.png" alt="AMHVAC home page" />
-                            {/* <div className="mb-3 rounded-sm bg-gradient-to-br from-surface-3 to-surface-2 p-6">
-                                <div className="mb-2 font-mono text-base font-bold text-foreground">AM HVAC</div>
-                                <div className="mb-1.5 text-lg font-bold leading-tight text-foreground">
-                                    Expert HVAC écoénergétique en Belgique
-                                </div>
-                                <div className="text-[11px] leading-relaxed text-muted-soft">
-                                    Installation, entretien et réparation — chauffage, ventilation, climatisation. 12 ans d'expérience.
-                                </div>
-                                <div className="mt-3.5 flex gap-2">
-                                    <div className="rounded-sm bg-acid px-3.5 py-1.5 text-[10px] font-bold text-background">
-                                        Devis gratuit
+
+                        {/* SEO stats */}
+                        <div className="relative z-1 flex min-w-[200px] flex-col gap-3.5">
+                            {stats.map((stat) => (
+                                <div key={stat.label} className="rounded-md border border-border bg-white/[0.04] px-5 py-4">
+                                    <div className="mb-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-muted-soft">
+                                        {stat.label}
                                     </div>
-                                    <div className="rounded-sm border border-border px-3.5 py-1.5 text-[10px] text-muted-soft">
-                                        +32 484 71 10 44
+                                    {stat.before && (
+                                        <div className="mb-0.5 text-[11px] text-muted-faint line-through">{stat.before}</div>
+                                    )}
+                                    <div className={`font-mono font-bold leading-none ${stat.green ? "text-base text-emerald-500" : "text-2xl text-acid"}`}>
+                                        {stat.after}
                                     </div>
+                                    <div className="mt-1 text-[10px] text-emerald-500">{stat.change}</div>
+                                    {stat.bar && <SeoProgressBar />}
                                 </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-2">
-                                {features.map(([icon, name, sub]) => (
-                                    <div key={name} className="rounded-sm border border-border bg-background p-2.5">
-                                        <div className="mb-1 text-base">{icon}</div>
-                                        <div className="text-[10px] font-bold text-muted-foreground">{name}</div>
-                                        <div className="mt-0.5 text-[9px] text-muted-soft">{sub}</div>
-                                    </div>
-                                ))}
-                            </div> */}
+                            ))}
                         </div>
                     </div>
+                </Reveal>
 
-                    {/* SEO stats */}
-                    <div className="relative z-1 flex min-w-[200px] flex-col gap-3.5">
-                        {stats.map((stat) => (
-                            <div key={stat.label} className="rounded-md border border-border bg-white/[0.04] px-5 py-4">
-                                <div className="mb-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-muted-soft">
-                                    {stat.label}
-                                </div>
-                                {stat.before && (
-                                    <div className="mb-0.5 text-[11px] text-muted-faint line-through">{stat.before}</div>
-                                )}
-                                <div className={`font-mono font-bold leading-none ${stat.green ? "text-base text-emerald-500" : "text-2xl text-acid"}`}>
-                                    {stat.after}
-                                </div>
-                                <div className="mt-1 text-[10px] text-emerald-500">{stat.change}</div>
-                                {stat.bar && <SeoProgressBar />}
-                            </div>
-                        ))}
+                <Reveal>
+                    <div className="grid gap-16 md:grid-cols-2">
+                        <div>
+                            <CaseEyebrow>{caseData.eyebrow}</CaseEyebrow>
+                            <h2
+                                className="mb-5 font-bold uppercase leading-[0.95] tracking-[-0.04em] text-foreground"
+                                style={{ fontSize: "clamp(32px,3.5vw,52px)" }}
+                            >
+                                {caseData.h2[0]}
+                                <span className="text-acid">{caseData.h2[1]}</span>
+                            </h2>
+                            <p className="mb-5 text-[15px] leading-[1.8] text-muted-faint">{caseData.intro}</p>
+                            <CaseStat num={caseData.stat.num} label={caseData.stat.label} rest={caseData.stat.rest} />
+                            <CaseMetaTable rows={caseData.meta} />
+                        </div>
+                        <CaseNarrative steps={caseData.steps} />
                     </div>
-                </div>
-            </Reveal>
-
-            <Reveal>
-                <div className="grid gap-16 md:grid-cols-2">
-                    <div>
-                        <CaseEyebrow>{caseData.eyebrow}</CaseEyebrow>
-                        <h2
-                            className="mb-5 font-bold uppercase leading-[0.95] tracking-[-0.04em] text-foreground"
-                            style={{ fontSize: "clamp(32px,3.5vw,52px)" }}
-                        >
-                            {caseData.h2[0]}
-                            <span className="text-acid">{caseData.h2[1]}</span>
-                        </h2>
-                        <p className="mb-5 text-[15px] leading-[1.8] text-muted-faint">{caseData.intro}</p>
-                        <CaseStat num={caseData.stat.num} label={caseData.stat.label} rest={caseData.stat.rest} />
-                        <CaseMetaTable rows={caseData.meta} />
-                        {/* <CaseLink href="https://amhvac.be/">{caseData.link}</CaseLink> */}
-                    </div>
-                    <CaseNarrative steps={caseData.steps} />
-                </div>
-            </Reveal>
-        </div>
+                </Reveal>
+            </div>
+        </section>
     );
 }
 
@@ -482,60 +419,138 @@ function CaseOdesu({ caseData }: { caseData: any }) {
         { label: "Comm", val: "Social + Print", sub: "Lancement de marque" },
     ];
     return (
-        <div id="odesu" className="mt-28">
-            <Reveal>
-                <div className="relative mb-16 flex h-auto items-center justify-center overflow-hidden rounded-sm border border-border bg-background/95 p-6 md:h-[560px] md:p-10">
-                    <div className="relative z-[1] w-full max-w-[700px] overflow-hidden rounded-lg shadow-2xl">
-                        <div className="flex flex-col bg-background/95">
-                            <img src="/images/glitch odesu.png" alt="AMHVAC home page" />
+        <section id="odesu" className="bg-surface-1/40 pt-28 pb-28">
+            <div className="mx-auto max-w-[1160px] px-8">
+                <Reveal>
+                    <div className="relative mb-16 flex h-auto items-center justify-center overflow-hidden rounded-sm border border-border bg-background/95 p-6 md:h-[560px] md:p-10">
+                        <div className="relative z-1 w-full max-w-175 overflow-hidden rounded-lg shadow-2xl">
+                            <div className="flex flex-col bg-background/95">
+                                <img src="/images/glitch odesu.png" alt="AMHVAC home page" />
 
-                            {/* <div className="border-b-[3px] border-acid bg-gradient-to-br from-surface-3 to-surface-2 px-10 pb-5 pt-8">
-                                <div className="mb-1 font-mono text-[28px] font-bold uppercase tracking-[0.1em] text-foreground">
-                                    ODESU
+                                {/* <div className="border-b-[3px] border-acid bg-gradient-to-br from-surface-3 to-surface-2 px-10 pb-5 pt-8">
+                                    <div className="mb-1 font-mono text-[28px] font-bold uppercase tracking-[0.1em] text-foreground">
+                                        ODESU
+                                    </div>
+                                    <div className="text-xs uppercase tracking-[0.1em] text-muted-soft">
+                                        Concept Store · Ixelles · Bruxelles
+                                    </div>
                                 </div>
-                                <div className="text-xs uppercase tracking-[0.1em] text-muted-soft">
-                                    Concept Store · Ixelles · Bruxelles
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-1 gap-2 bg-black/20 p-6 sm:grid-cols-3">
-                                {widgets.map((wd) => (
-                                    <div key={wd.label} className="flex flex-col gap-2 rounded-sm border border-acid/15 bg-acid/[0.08] p-4">
-                                        <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-muted-soft">
-                                            {wd.label}
+                                <div className="grid grid-cols-1 gap-2 bg-black/20 p-6 sm:grid-cols-3">
+                                    {widgets.map((wd) => (
+                                        <div key={wd.label} className="flex flex-col gap-2 rounded-sm border border-acid/15 bg-acid/[0.08] p-4">
+                                            <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-muted-soft">
+                                                {wd.label}
+                                            </div>
+                                            <div className="text-[13px] font-bold text-foreground">{wd.val}</div>
+                                            <div className="text-[10px] text-muted-faint">{wd.sub}</div>
                                         </div>
-                                        <div className="text-[13px] font-bold text-foreground">{wd.val}</div>
-                                        <div className="text-[10px] text-muted-faint">{wd.sub}</div>
+                                    ))}
+                                    <div className="flex flex-col gap-2 rounded-sm border border-acid/15 bg-acid/[0.08] p-4 sm:col-span-3">
+                                        <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-muted-soft">
+                                            Résultat
+                                        </div>
+                                        <div className="font-bold text-acid" style={{ fontSize: "clamp(20px,2.5vw,32px)" }}>
+                                            Identité complète livrée
+                                        </div>
+                                        <div className="text-[10px] text-muted-faint">Du premier brief à l'ouverture</div>
                                     </div>
-                                ))}
-                                <div className="flex flex-col gap-2 rounded-sm border border-acid/15 bg-acid/[0.08] p-4 sm:col-span-3">
-                                    <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-muted-soft">
-                                        Résultat
-                                    </div>
-                                    <div className="font-bold text-acid" style={{ fontSize: "clamp(20px,2.5vw,32px)" }}>
-                                        Identité complète livrée
-                                    </div>
-                                    <div className="text-[10px] text-muted-faint">Du premier brief à l'ouverture</div>
-                                </div>
-                            </div> */}
+                                </div> */}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </Reveal>
+                </Reveal>
 
-            <Reveal>
-                <div className="grid gap-16 md:grid-cols-2">
-                    <CaseNarrative steps={caseData.steps} />
-                    <div>
-                        <CaseEyebrow>{caseData.eyebrow}</CaseEyebrow>
-                        <CaseH2 line1={caseData.h2[0]} line2={caseData.h2[1]} />
-                        <p className="mb-5 text-[15px] leading-[1.8] text-muted-faint">{caseData.intro}</p>
-                        <CaseStat num={caseData.stat.num} label={caseData.stat.label} rest={caseData.stat.rest} />
-                        <CaseMetaTable rows={caseData.meta} />
-                        {/* <CaseLink href="#contact">{caseData.link}</CaseLink> */}
+                <Reveal>
+                    <div className="grid gap-16 md:grid-cols-2">
+                        <CaseNarrative steps={caseData.steps} />
+                        <div>
+                            <CaseEyebrow>{caseData.eyebrow}</CaseEyebrow>
+                            <CaseH2 line1={caseData.h2[0]} line2={caseData.h2[1]} />
+                            <p className="mb-5 text-[15px] leading-[1.8] text-muted-faint">{caseData.intro}</p>
+                            <CaseStat num={caseData.stat.num} label={caseData.stat.label} rest={caseData.stat.rest} />
+                            <CaseMetaTable rows={caseData.meta} />
+                        </div>
                     </div>
+                </Reveal>
+            </div>
+        </section>
+    );
+}
+
+
+// ── Case 04: DOTREFLECTION ───────────────────────────────────────────────────
+function BrowserMockup({ src, alt, url }: { src: string; alt: string; url: string }) {
+    return (
+        <div className="relative z-1 w-full max-w-175 overflow-hidden rounded-lg bg-background shadow-2xl">
+            <div className="flex items-center gap-2.5 bg-surface-2 px-4 py-2.5">
+                <div className="flex gap-1.5">
+                    <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-amber-500" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
                 </div>
-            </Reveal>
+                <div className="flex-1 rounded-sm bg-background/95 px-2.5 py-1 font-mono text-[10px] tracking-wide text-muted-soft">
+                    {url}
+                </div>
+            </div>
+            <div className="p-5">
+                <img src={src} alt={alt} />
+            </div>
         </div>
+    );
+}
+
+function CaseDotreflection({ caseData }: { caseData: any }) {
+    return (
+        <section id="dotref" className="bg-acid/5 pt-28 pb-28">
+            <div className="mx-auto max-w-[1160px] px-8">
+                <Reveal>
+                    <div className="relative mb-16 flex h-auto items-center justify-center overflow-hidden rounded-sm border border-border bg-background/95 p-6 md:h-[560px] md:p-10">
+                        <BrowserMockup src="/images/dotref.png" alt="Dotreflection home page" url="dotreflection.com" />
+                    </div>
+                </Reveal>
+
+                <Reveal>
+                    <div className="grid gap-16 md:grid-cols-2">
+                        <div>
+                            <CaseEyebrow>{caseData.eyebrow}</CaseEyebrow>
+                            <CaseH2 line1={caseData.h2[0]} line2={caseData.h2[1]} />
+                            <p className="mb-5 text-[15px] leading-[1.8] text-muted-faint">{caseData.intro}</p>
+                            <CaseStat num={caseData.stat.num} label={caseData.stat.label} rest={caseData.stat.rest} />
+                            <CaseMetaTable rows={caseData.meta} />
+                        </div>
+                        <CaseNarrative steps={caseData.steps} />
+                    </div>
+                </Reveal>
+            </div>
+        </section>
+    );
+}
+
+// ── Case 05: MUJAZ ───────────────────────────────────────────────────
+function CaseMujaz({ caseData }: { caseData: any }) {
+    return (
+        <section id="mujaz" className="bg-surface-1/40 pt-28 pb-28">
+            <div className="mx-auto max-w-[1160px] px-8">
+                <Reveal>
+                    <div className="relative mb-16 flex h-auto items-center justify-center overflow-hidden rounded-sm border border-border bg-background/95 p-6 md:h-[560px] md:p-10">
+                        <BrowserMockup src="/images/mujaz.png" alt="Mujaz.io home page" url="mujaz.io" />
+                    </div>
+                </Reveal>
+
+                <Reveal>
+                    <div className="grid gap-16 md:grid-cols-2">
+                        <CaseNarrative steps={caseData.steps} />
+                        <div>
+                            <CaseEyebrow>{caseData.eyebrow}</CaseEyebrow>
+                            <CaseH2 line1={caseData.h2[0]} line2={caseData.h2[1]} />
+                            <p className="mb-5 text-[15px] leading-[1.8] text-muted-faint">{caseData.intro}</p>
+                            <CaseStat num={caseData.stat.num} label={caseData.stat.label} rest={caseData.stat.rest} />
+                            <CaseMetaTable rows={caseData.meta} />
+                        </div>
+                    </div>
+                </Reveal>
+            </div>
+        </section>
     );
 }
 

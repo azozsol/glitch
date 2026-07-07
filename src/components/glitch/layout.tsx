@@ -28,6 +28,43 @@ export function Reveal({
 }
 
 /**
+ * GridHoverBackground
+ * Full-bleed grid of small squares, each lighting up on hover via pure CSS
+ * (no JS mouse tracking). Meant to sit behind hero content as an
+ * `absolute inset-0` layer — content stacks on top naturally since it's a
+ * later, positioned sibling.
+ */
+export function GridHoverBackground({
+    cols = 30,
+    rows = 14,
+    className = "",
+}: {
+    cols?: number;
+    rows?: number;
+    className?: string;
+}) {
+    const cells = Array.from({ length: cols * rows });
+    return (
+        <div
+            aria-hidden
+            className={`absolute inset-0 z-10 overflow-hidden ${className}`}
+            style={{
+                display: "grid",
+                gridTemplateColumns: `repeat(${cols}, 1fr)`,
+                gridTemplateRows: `repeat(${rows}, 1fr)`,
+            }}
+        >
+            {cells.map((_, i) => (
+                <div
+                    key={i}
+                    className="border border-grid-line bg-transparent transition-colors duration-500 delay-300 ease-out hover:bg-acid hover:duration-100 hover:delay-0"
+                />
+            ))}
+        </div>
+    );
+}
+
+/**
  * Field
  * Label + control wrapper used in forms (e.g. ContactForm).
  */
