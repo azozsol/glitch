@@ -32,14 +32,14 @@ function Hero() {
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
 
       {/* Background image */}
-      <img
+      {/* <img
         src="images/bg-1.png"
         alt="background"
         className="absolute inset-0 h-full w-full object-cover"
-      />
+      /> */}
 
       {/* Optional dark overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* <div className="absolute inset-0 bg-background" /> */}
 
       {/* Content */}
       <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-16 px-8 md:grid-cols-[1fr_420px]">
@@ -54,17 +54,17 @@ function Hero() {
             style={{ fontSize: "clamp(38px,5.5vw,72px)" }}
           >
             <span
-              className="glitch-overlay relative inline-block text-white"
+              className="glitch-overlay relative inline-block text-foreground"
               data-t={h.titleLine1}
             >
               {h.titleLine1}
             </span>
             <span className="block text-acid"> {h.titleLine2}</span>
-            <span className="block text-white">{h.titleLine3}</span>
+            <span className="block text-foreground">{h.titleLine3}</span>
           </h1>
 
           <p className="mb-10 max-w-130 text-lg leading-[1.7] text-muted-foreground">
-            <strong className="font-medium text-white">
+            <strong className="font-medium text-foreground">
               {h.subtitleStrong}
             </strong>{" "}
             {h.subtitleRest}
@@ -142,7 +142,7 @@ function Ticker() {
     <div className="relative z-10 overflow-hidden border-y border-border bg-surface-1 py-3.5">
       <div className="ticker-track">
         {items.map((it, i) => (
-          <div key={i} className="flex items-center gap-3.5 whitespace-nowrap px-9 font-mono text-[11px] uppercase tracking-[0.1em] text-muted-soft">
+          <div key={i} className="flex items-center gap-3.5 whitespace-nowrap px-9 font-mono text-[11px] uppercase tracking-widest text-muted-soft">
             <span className="h-1 w-1 shrink-0 rounded-full bg-acid" />
             {it}
           </div>
@@ -160,14 +160,14 @@ function Clients() {
     <div className="border-y border-border bg-surface-1 py-14">
       <div className="mx-auto max-w-6xl px-8">
         <Reveal className="section-label">{c.label}</Reveal>
-        <Reveal className="flex flex-wrap overflow-hidden rounded-sm border border-border">
+        <Reveal className="grid grid-cols-2 gap-px overflow-hidden rounded-sm p-px bg-border sm:grid-cols-4 lg:grid-cols-8">
           {c.names.map(({ name, meta }) => (
             <div
               key={name}
-              className="flex-1 basis-[140px] border-b border-r border-border px-5 py-[22px] transition-colors hover:bg-surface-2"
+              className="group bg-surface-1 px-5 py-5.5 transition-colors hover:bg-acid "
             >
-              <div className="mb-0.5 text-sm font-semibold text-foreground">{name}</div>
-              <div className="font-mono text-[9px] tracking-[0.06em] text-muted-faint">{meta}</div>
+              <div className="mb-0.5 text-sm font-semibold text-foreground group-hover:text-white">{name}</div>
+              <div className="font-mono text-[9px] tracking-[0.06em] text-cyn transition-colors group-hover:text-white">{meta}</div>
             </div>
           ))}
         </Reveal>
@@ -181,13 +181,13 @@ function Difference() {
   const d = t.home.difference;
   return (
     <section className="py-20">
-      <div className="mx-auto max-w-[1160px] px-8">
+      <div className="mx-auto max-w-6xl px-8">
         <Reveal className="section-label">{d.label}</Reveal>
-        <Reveal className="grid gap-px overflow-hidden rounded border border-border bg-border md:grid-cols-3">
+        <Reveal className="grid gap-px overflow-hidden rounded-sm p-px bg-border md:grid-cols-3">
           {d.items.map((item, i) => {
             const [before, strong, after] = item.bodyRest.split("{strong}");
             return (
-              <div key={i} className="diff-card group relative overflow-hidden bg-background px-8 py-10 transition-colors hover:bg-surface-1">
+              <div key={i} className="diff-card group relative overflow-hidden bg-surface-1 px-8 py-10 transition-colors ">
                 <span className="absolute left-0 top-0 h-0 w-0.5 bg-acid transition-all duration-300 group-hover:h-full" />
                 <div className="mb-5 font-mono text-[11px] tracking-[0.14em] text-muted-soft">{item.num}</div>
                 <h3 className="mb-3.5 text-xl font-bold tracking-[-0.02em] text-foreground">{item.title}</h3>
@@ -225,14 +225,14 @@ function Services() {
                       ? "border-acid/25 text-acid"
                       : kind === "c"
                         ? "border-cyn/25 text-cyn"
-                        : "border-border text-muted-faint"
+                        : "border-border text-cyn"
                       }`}
                   >
                     {label}
                   </span>
                 ))}
               </div>
-              <a href="#" className="mt-4 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-acid transition-all hover:gap-2.5">
+              <a href="#" className="mt-4 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-acid transition-all hover:gap-2.5">
                 {s.discoverLabel}
               </a>
             </div>
@@ -247,14 +247,14 @@ function Services() {
 }
 
 function FeaturedCase() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const fc = t.home.featuredCase;
 
   return (
     <section id="portfolio" className="pb-20">
       <div className="mx-auto max-w-6xl px-8">
         {/* <Reveal className="section-label">Une réalisation récente</Reveal> */}
-        <Reveal className="overflow-hidden rounded border border-border bg-surface-1">
+        <Reveal className="overflow-hidden rounded-sm border border-border bg-surface-1">
           <div
             className="relative flex h-65 items-center justify-center overflow-hidden"
             style={{ background: "linear-gradient(135deg,#0a0a14,#1a0a0a)" }}
@@ -284,9 +284,9 @@ function FeaturedCase() {
             </div>
             <div className="rounded-sm border border-acid/15 bg-acid/5 p-5">
               <div className="case-col-label">{fc.resultLabel}</div>
-              <div className="font-mono text-[28px] font-bold leading-none text-acid">5</div>
+              <div className="font-mono text-[28px] font-bold leading-none text-acid">3</div>
               <div className="text-xs text-muted-faint">{fc.resultBody}</div>
-              <a href="#" className="mt-3.5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-acid hover:gap-2.5">
+              <a href={`/${lang}/work#case-studies`} className="mt-3.5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-acid hover:gap-2.5">
                 {fc.caseStudyLink}
               </a>
             </div>
@@ -303,8 +303,8 @@ function BottomCTA() {
 
   return (
     <section className="pb-20">
-      <div className="mx-auto max-w-[1160px] px-8">
-        <Reveal className="relative overflow-hidden rounded border border-border bg-surface-1 px-14 py-[72px] text-center">
+      <div className="mx-auto max-w-6xl px-8">
+        <Reveal className="relative overflow-hidden rounded-sm border border-border bg-surface-1 px-14 py-18 text-center">
           <span
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-mono font-bold tracking-[-0.04em]"

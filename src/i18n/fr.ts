@@ -6,6 +6,7 @@ export const fr: Dictionary = {
     },
 
     nav: {
+        home: "Accueil",
         services: "Services",
         realisations: "Réalisations",
         about: "L'équipe",
@@ -29,7 +30,7 @@ export const fr: Dictionary = {
             title: "Contact",
             items: ["hello@glitch.be", "WhatsApp", "LinkedIn", "Instagram", "Bruxelles, Belgique"],
         },
-        copyright: "© 2025 GLITCH.BE — Comm & Marketing · Tous droits réservés · Mentions légales",
+        copyright: "© 2024 GLITCH.BE — Comm & Marketing · Tous droits réservés · Mentions légales",
     },
 
     home: {
@@ -443,7 +444,7 @@ export const fr: Dictionary = {
                     },
                 ],
             },
-            
+
 
         ],
         designStory: {

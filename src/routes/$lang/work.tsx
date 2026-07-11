@@ -54,9 +54,9 @@ function WorkPage() {
 // ═══════════════════════════════════════════════════════════════════════
 function Hero({ w }: { w: any }) {
     return (
-        <section className="relative overflow-hidden bg-background px-0 pb-26 pt-[140px]">
+        <section className="relative overflow-hidden bg-background px-0 pb-26 pt-35">
             <GridHoverBackground className="opacity-70" />
-            <div className="relative mx-auto max-w-[1160px] px-8">
+            <div className="relative mx-auto max-w-6xl px-8">
                 <Reveal className="section-label">{w.hero.kicker}</Reveal>
 
                 <Reveal className="mb-6">
@@ -70,7 +70,7 @@ function Hero({ w }: { w: any }) {
                     </h1>
                 </Reveal>
 
-                <Reveal className="mb-10 max-w-[460px] text-lg leading-[1.7] text-muted-foreground">
+                <Reveal className="mb-10 max-w-115 text-lg leading-[1.7] text-muted-foreground">
                     {w.hero.sub}
                 </Reveal>
 
@@ -90,14 +90,14 @@ function Hero({ w }: { w: any }) {
 function Ticker({ items }: { items: string[] }) {
     const doubled = [...items, ...items];
     return (
-        <div className="overflow-hidden border-y border-border bg-surface-1 py-[18px]">
+        <div className="overflow-hidden border-y border-border bg-surface-1 py-4.5">
             <div className="ticker-track">
                 {doubled.map((item, i) => (
                     <div
                         key={i}
                         className="flex items-center gap-4 whitespace-nowrap px-12 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-soft"
                     >
-                        <span className="inline-block h-[3px] w-[3px] shrink-0 rounded-full bg-acid" />
+                        <span className="inline-block h-0.75 w-0.75 shrink-0 rounded-full bg-acid" />
                         {item}
                     </div>
                 ))}
@@ -112,7 +112,7 @@ function Ticker({ items }: { items: string[] }) {
 function CaseStudies({ w }: { w: any }) {
     return (
         <section id="case-studies" className="px-0 py-24">
-            <div className="mx-auto max-w-[1160px] px-8">
+            <div className="mx-auto max-w-290 px-8">
                 <Reveal className="mb-20">
                     <div className="section-label">{w.caseSection.eyebrow}</div>
                     <h2
@@ -276,8 +276,8 @@ function CasePales({ caseData, designStory }: { caseData: any; designStory: any 
         ["from-purple-400", "to-pink-300"],
     ];
     return (
-        <section id="pales" className="bg-surface-1/40 pb-28">
-            <div className="mx-auto max-w-[1160px] px-8">
+        <section id="pales" className="bg-acid/5 pb-28">
+            <div className="mx-auto max-w-290 px-8">
                 <Reveal>
                     <div className="relative mt-16 mb-16 overflow-hidden rounded-sm border border-border bg-background/95 p-10 md:p-14">
                         <div className="relative z-1">
@@ -345,8 +345,8 @@ function CaseAmhvac({ caseData }: { caseData: any }) {
     ];
 
     return (
-        <section id="amhvac" className="bg-acid/5 pb-28 pt-28">
-            <div className="mx-auto max-w-[1160px] px-8">
+        <section id="amhvac" className=" pb-28 pt-28">
+            <div className="mx-auto max-w-6xl px-8">
                 <Reveal>
                     <div className="flex justify-center relative mb-16 h-auto flex-col gap-6 overflow-hidden rounded-sm border border-border bg-background/95 p-6 md:h-[560px] md:flex-row md:items-center md:p-10">
                         {/* Browser mockup */}
@@ -419,8 +419,8 @@ function CaseOdesu({ caseData }: { caseData: any }) {
         { label: "Comm", val: "Social + Print", sub: "Lancement de marque" },
     ];
     return (
-        <section id="odesu" className="bg-surface-1/40 pt-28 pb-28">
-            <div className="mx-auto max-w-[1160px] px-8">
+        <section id="odesu" className="bg-acid/5 pt-28 pb-28">
+            <div className="mx-auto max-w-6xl px-8">
                 <Reveal>
                     <div className="relative mb-16 flex h-auto items-center justify-center overflow-hidden rounded-sm border border-border bg-background/95 p-6 md:h-[560px] md:p-10">
                         <div className="relative z-1 w-full max-w-175 overflow-hidden rounded-lg shadow-2xl">
@@ -501,7 +501,7 @@ function BrowserMockup({ src, alt, url }: { src: string; alt: string; url: strin
 
 function CaseDotreflection({ caseData }: { caseData: any }) {
     return (
-        <section id="dotref" className="bg-acid/5 pt-28 pb-28">
+        <section id="dotref" className="pt-28 pb-28">
             <div className="mx-auto max-w-[1160px] px-8">
                 <Reveal>
                     <div className="relative mb-16 flex h-auto items-center justify-center overflow-hidden rounded-sm border border-border bg-background/95 p-6 md:h-[560px] md:p-10">
@@ -529,8 +529,8 @@ function CaseDotreflection({ caseData }: { caseData: any }) {
 // ── Case 05: MUJAZ ───────────────────────────────────────────────────
 function CaseMujaz({ caseData }: { caseData: any }) {
     return (
-        <section id="mujaz" className="bg-surface-1/40 pt-28 pb-28">
-            <div className="mx-auto max-w-[1160px] px-8">
+        <section id="mujaz" className="bg-acid/5 pt-28 pb-28">
+            <div className="mx-auto max-w-6xl px-8">
                 <Reveal>
                     <div className="relative mb-16 flex h-auto items-center justify-center overflow-hidden rounded-sm border border-border bg-background/95 p-6 md:h-[560px] md:p-10">
                         <BrowserMockup src="/images/mujaz.png" alt="Mujaz.io home page" url="mujaz.io" />
@@ -626,8 +626,8 @@ function MiniCard({ name, cat, city }: { name: string; cat: string; city: string
 
 function OtherWork({ w }: { w: any }) {
     return (
-        <section id="realisations" className="border-y border-border bg-surface-1/40 px-0 py-24">
-            <div className="mx-auto max-w-[1160px] px-8">
+        <section id="realisations" className=" px-0 py-20">
+            <div className="mx-auto max-w-6xl px-8">
                 <Reveal className="mb-12">
                     <div className="section-label">{w.otherSection.eyebrow}</div>
                     <h2
@@ -656,13 +656,13 @@ function OtherWork({ w }: { w: any }) {
 // ═══════════════════════════════════════════════════════════════════════
 function AgencyCard({ name, detail, clients }: { name: string; detail: string; clients: string[] }) {
     return (
-        <div className="bg-surface-1 px-6 py-7 transition-colors duration-200 hover:bg-surface-2">
-            <div className="mb-1.5 text-[17px] font-bold tracking-[-0.02em] text-foreground">{name}</div>
-            <div className="font-mono text-[9px] uppercase tracking-[0.1em] text-muted-soft">{detail}</div>
+        <div className="group bg-surface-1 px-6 py-7 transition-colors duration-200 hover:bg-acid">
+            <div className="mb-1.5 text-[17px] font-bold tracking-[-0.02em] text-foreground group-hover:text-white">{name}</div>
+            <div className="font-mono text-[9px] uppercase tracking-[0.1em] text-muted-soft group-hover:text-white">{detail}</div>
             <div className="mt-3.5 flex flex-col gap-1.5">
                 {clients.map((c) => (
-                    <div key={c} className="flex items-center gap-2 text-xs text-muted-faint">
-                        <span className="text-[10px] text-acid">→</span>
+                    <div key={c} className="flex items-center gap-2 text-xs text-muted-faint group-hover:text-white">
+                        <span className="text-[10px] text-acid group-hover:text-white">→</span>
                         {c}
                     </div>
                 ))}
@@ -674,7 +674,7 @@ function AgencyCard({ name, detail, clients }: { name: string; detail: string; c
 function IntlStrip({ w }: { w: any }) {
     return (
         <section className="pixel-grid relative overflow-hidden bg-background px-0 py-20">
-            <div className="relative z-[1] mx-auto max-w-[1160px] px-8">
+            <div className="relative z-10 mx-auto max-w-6xl px-8">
                 <div className="grid items-center gap-16 md:grid-cols-[1fr_2fr]">
                     <Reveal>
                         <div className="mb-5 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.28em] text-muted-soft">
@@ -691,10 +691,10 @@ function IntlStrip({ w }: { w: any }) {
                             <br />
                             <span className="text-acid">{w.intl.heading[2]}</span>
                         </h2>
-                        <p className="mt-4 max-w-[300px] text-sm leading-relaxed text-muted-foreground">{w.intl.sub}</p>
+                        <p className="mt-4 max-w-75 text-sm leading-relaxed text-muted-foreground">{w.intl.sub}</p>
                     </Reveal>
-                    <Reveal delay={120}>
-                        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-3">
+                    <Reveal >
+                        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-sm p-px bg-border sm:grid-cols-3">
                             {w.intl.agencies.map((ag: any) => (
                                 <AgencyCard key={ag.name} name={ag.name} detail={ag.detail} clients={ag.clients} />
                             ))}
@@ -711,17 +711,17 @@ function IntlStrip({ w }: { w: any }) {
 // ═══════════════════════════════════════════════════════════════════════
 function CtaSection({ w }: { w: any }) {
     return (
-        <section id="contact" className="relative overflow-hidden border-t border-border bg-surface-1/40 px-0 py-24 text-center">
+        <section id="contact" className="relative overflow-hidden  px-0 py-20 text-center">
             <div
                 className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-mono font-bold tracking-[-0.04em] text-transparent"
                 style={{ fontSize: "clamp(100px,18vw,260px)", WebkitTextStroke: "1px var(--surface-3)" }}
             >
                 24H
             </div>
-            <div className="relative mx-auto max-w-[1160px] px-8">
+            <div className="relative mx-auto max-w-6xl px-8">
                 <div className="mx-auto max-w-[760px]">
                     <Reveal className="section-label justify-center">{w.cta.eyebrow}</Reveal>
-                    <Reveal delay={80}>
+                    <Reveal >
                         <h2
                             className="mb-6 font-bold uppercase leading-[0.92] tracking-[-0.05em] text-foreground"
                             style={{ fontSize: "clamp(40px,5.5vw,76px)" }}
@@ -733,18 +733,18 @@ function CtaSection({ w }: { w: any }) {
                             <span className="text-acid">{w.cta.heading[2]}</span>
                         </h2>
                     </Reveal>
-                    <Reveal delay={160}>
+                    <Reveal >
                         <p className="mx-auto mb-10 max-w-[440px] text-[17px] leading-[1.75] text-muted-foreground">
                             {w.cta.sub}
                         </p>
                     </Reveal>
-                    <Reveal delay={240}>
+                    <Reveal >
                         <div className="flex flex-wrap items-center justify-center gap-5">
                             <a href="#" className="btn-primary">{w.cta.primary}</a>
                             <a href="#" className="btn-secondary">{w.cta.secondary}</a>
                         </div>
                     </Reveal>
-                    <Reveal delay={320}>
+                    <Reveal >
                         <div className="mt-7 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-soft">
                             {w.cta.whatsapp}
                         </div>

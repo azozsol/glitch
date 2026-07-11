@@ -10,6 +10,7 @@ export type Dictionary = {
     };
 
     nav: {
+        home: string;
         services: string;
         realisations: string; // -> currently links to /#portfolio on the homepage
         about: string;
@@ -164,14 +165,14 @@ export type Dictionary = {
         }>;
         designStory: {
             eyebrow: string;
-            heading: [string, string];
+            heading: [string, string, string];
             cans: Array<{ src: string, name: string; flavor: string; body: string }>;
         };
         otherSection: { eyebrow: string; heading: [string, string] };
         miniProjects: Array<{ name: string; cat: string; city: string }>;
         intl: {
             eyebrow: string;
-            heading: [string, string, string];
+            heading: [string, string];
             sub: string;
             agencies: Array<{ name: string; detail: string; clients: string[] }>;
         };

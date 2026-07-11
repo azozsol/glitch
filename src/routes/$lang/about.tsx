@@ -48,7 +48,7 @@ function AboutPage() {
       <section className="pb-20">
         <div className="mx-auto max-w-[1160px] px-8">
           <Reveal className="section-label">{a.differenceLabel}</Reveal>
-          <Reveal className="grid gap-px overflow-hidden rounded border border-border bg-border md:grid-cols-3">
+          <Reveal className="grid gap-px overflow-hidden rounded p-px bg-border md:grid-cols-3">
             {a.differenceItems.map((item, i) => {
               const [before, after] = item.bodyRest.split("{strong}");
               return (

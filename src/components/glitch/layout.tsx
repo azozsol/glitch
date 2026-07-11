@@ -36,7 +36,7 @@ export function Reveal({
  */
 export function GridHoverBackground({
     cols = 30,
-    rows = 14,
+    rows = 12,
     className = "",
 }: {
     cols?: number;
@@ -53,6 +53,7 @@ export function GridHoverBackground({
                 gridTemplateColumns: `repeat(${cols}, 1fr)`,
                 gridTemplateRows: `repeat(${rows}, 1fr)`,
             }}
+
         >
             {cells.map((_, i) => (
                 <div
@@ -170,6 +171,7 @@ export function Nav() {
     }, []);
 
     const links: [string, string][] = [
+        [`/${lang}`, t.nav.home],
         [`/${lang}/services`, t.nav.services],
         [`/${lang}/work`, t.nav.realisations],
         [`/${lang}/about`, t.nav.about],
@@ -204,6 +206,7 @@ export function Nav() {
                         <li key={href}>
                             <Link
                                 to={href}
+                                activeOptions={href === `/${lang}` ? { exact: true } : undefined}
                                 className="font-mono text-[11px] uppercase tracking-widest text-muted-faint transition-colors hover:text-acid [&.active]:text-acid"
                             >
                                 {label}
@@ -370,7 +373,7 @@ export function Footer() {
                             <button
                                 key={l}
                                 onClick={() => switchLang(l)}
-                                className={`font-mono text-[10px] uppercase tracking-[0.1em] transition-colors ${lang === l ? "text-acid" : "text-muted-soft hover:text-acid"
+                                className={`font-mono text-[10px] uppercase tracking-widest transition-colors ${lang === l ? "text-acid" : "text-muted-soft hover:text-acid"
                                     }`}
                             >
                                 {langLabels[l]}
