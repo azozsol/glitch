@@ -1,6 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
+import { SUPPORTED_LANGS } from "@/i18n";
+import { appendContactSubmissionToSheet } from "../google-sheets.server";
+import { sendContactEmails } from "../resend.server";
+
 // Shared between the client (react-hook-form + zodResolver, for inline
 // validation in ContactForm) and the server (.inputValidator below, as a
 // safety net for requests that bypass client JS). Messages are short i18n
@@ -30,22 +34,55 @@ export const contactFormSchema = z.object({
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
+// Server-fn-only extension: adds `lang` so the auto-reply email can be sent
+// in the submitter's language. `lang` isn't a user-editable form field --
+// it comes from useLang() on the client (see ContactForm.onSubmit) -- so
+// it's kept out of contactFormSchema/ContactFormValues, which stay exactly
+// the react-hook-form-facing 8 fields.
+const submitContactFormSchema = contactFormSchema.extend({
+  lang: z.enum(SUPPORTED_LANGS),
+});
+
 // Invoked from the client after react-hook-form + zodResolver already
-// passed: await submitContactForm({ data: values })
+// passed: await submitContactForm({ data: { ...values, lang } })
 // The .handler body runs server-only and is tree-shaken from the client
 // bundle; the schema above (module-level) ships to the client, which is
 // intentional since it's reused by zodResolver.
-//
-// Fast-follow (explicitly out of scope for now): replace the console.log
-// with real email/CRM delivery.
 export const submitContactForm = createServerFn({ method: "POST" })
-  .inputValidator(contactFormSchema)
+  .inputValidator(submitContactFormSchema)
   .handler(async ({ data }) => {
     if (data.website) {
       // Honeypot tripped -- pretend success so the bot gets no signal it
       // was caught, but skip logging/processing the submission.
       return { success: true as const };
     }
-    console.log("[contact] new submission:", data);
+
+    const record = {
+      submittedAt: new Date().toISOString(),
+      name: data.name,
+      company: data.company ?? "",
+      email: data.email,
+      phone: data.phone ?? "",
+      need: data.need,
+      budget: data.budget ?? "",
+      message: data.message ?? "",
+      lang: data.lang,
+    };
+
+    // Best-effort delivery: a Google Sheets or Resend outage must never
+    // surface as a failed submission to the user -- their data already
+    // passed validation and was accepted. Log with enough context to
+    // diagnose from server logs, but always resolve success to the client.
+    const [sheetResult, emailResult] = await Promise.allSettled([
+      appendContactSubmissionToSheet(record),
+      sendContactEmails(record),
+    ]);
+    if (sheetResult.status === "rejected") {
+      console.error("[contact] Google Sheets append failed:", sheetResult.reason);
+    }
+    if (emailResult.status === "rejected") {
+      console.error("[contact] Resend dispatch failed:", emailResult.reason);
+    }
+
     return { success: true as const };
   });

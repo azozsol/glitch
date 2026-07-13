@@ -36,28 +36,45 @@ export function Reveal({
  * Full-bleed grid of small squares, each lighting up on hover via pure CSS
  * (no JS mouse tracking). Meant to sit behind hero content as an
  * `absolute inset-0` layer — content stacks on top naturally since it's a
- * later, positioned sibling.
+ * later, positioned sibling. Cell count is derived from the container's
+ * measured size so cells stay a fixed `cellSize`px square (matching the
+ * `pixel-grid` utility's 60px tiling) instead of stretching to fill it.
  */
 export function GridHoverBackground({
-    cols = 30,
-    rows = 12,
+    cellSize = 60,
     className = "",
 }: {
-    cols?: number;
-    rows?: number;
+    cellSize?: number;
     className?: string;
 }) {
-    const cells = Array.from({ length: cols * rows });
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [grid, setGrid] = useState({ cols: 0, rows: 0 });
+
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+        const observer = new ResizeObserver((entries) => {
+            const { width, height } = entries[0].contentRect;
+            setGrid({
+                cols: Math.ceil(width / cellSize),
+                rows: Math.ceil(height / cellSize),
+            });
+        });
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [cellSize]);
+
+    const cells = Array.from({ length: grid.cols * grid.rows });
     return (
         <div
+            ref={containerRef}
             aria-hidden
             className={`absolute inset-0 z-10 overflow-hidden ${className}`}
             style={{
                 display: "grid",
-                gridTemplateColumns: `repeat(${cols}, 1fr)`,
-                gridTemplateRows: `repeat(${rows}, 1fr)`,
+                gridTemplateColumns: `repeat(${grid.cols}, ${cellSize}px)`,
+                gridTemplateRows: `repeat(${grid.rows}, ${cellSize}px)`,
             }}
-
         >
             {cells.map((_, i) => (
                 <div
@@ -137,7 +154,7 @@ export function ContactForm() {
 
     async function onSubmit(values: ContactFormValues) {
         try {
-            await submitContactForm({ data: values });
+            await submitContactForm({ data: { ...values, lang } });
             navigate({ to: "/$lang/thank-you", params: { lang } });
         } catch (error) {
             console.error("[contact] submission failed:", error);

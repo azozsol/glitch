@@ -28,8 +28,8 @@ function ContactPage() {
         <div className="mx-auto max-w-[1160px] px-8">
           <Reveal className="section-label">{c.eyebrow}</Reveal>
           <Reveal className="mb-4">
-            <h1 className="font-bold tracking-[-0.03em]" style={{ fontSize: "clamp(32px,5vw,56px)" }}>
-              {c.titleStrong} <span className="text-acid">{c.titleAccent}</span>
+            <h1 className="font-bold tracking-[-0.03em] uppercase" style={{ fontSize: "clamp(32px,5vw,56px)" }}>
+              {c.titleStrong} <span className="text-acid uppercase">{c.titleAccent}</span>
             </h1>
           </Reveal>
           <Reveal className="max-w-[600px] text-lg leading-[1.7] text-muted-foreground">

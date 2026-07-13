@@ -29,7 +29,7 @@ function Hero() {
 
   return (
     //<section className="relative flex min-h-screen items-center justify-center overflow-hidden px-0 pb-20 pt-[100px]">
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-[95vh] items-center justify-center overflow-hidden ">
 
       {/* Background image */}
       {/* <img
@@ -45,32 +45,34 @@ function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-16 px-8 md:grid-cols-[1fr_420px]">
         <div>
           <p className="mb-6 flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-acid">
-            <span className="h-px w-5 bg-acid" />
+            <span className="h-px w-5 bg-acid " />
             {h.eyebrow}
           </p>
-
-          <h1
-            className="mb-7 font-bold leading-none tracking-[-0.03em]"
-            style={{ fontSize: "clamp(38px,5.5vw,72px)" }}
-          >
-            <span
-              className="glitch-overlay relative inline-block text-foreground"
-              data-t={h.titleLine1}
+          <Reveal>
+            <h1
+              className="mb-7 font-bold leading-none tracking-[-0.03em]"
+              style={{ fontSize: "clamp(38px,5.5vw,72px)" }}
             >
-              {h.titleLine1}
-            </span>
-            <span className="block text-acid"> {h.titleLine2}</span>
-            <span className="block text-foreground">{h.titleLine3}</span>
-          </h1>
+              <span
+                className="glitch-overlay uppercase relative inline-block text-foreground"
+                data-t={h.titleLine1}
+              >
+                {h.titleLine1}
+              </span>
+              <span className="block text-acid uppercase"> {h.titleLine2}</span>
+              <span className="block text-foreground uppercase">{h.titleLine3}</span>
+            </h1>
+          </Reveal>
+          <Reveal>
 
-          <p className="mb-10 max-w-130 text-lg leading-[1.7] text-muted-foreground">
-            <strong className="font-medium text-foreground">
-              {h.subtitleStrong}
-            </strong>{" "}
-            {h.subtitleRest}
-          </p>
-          <a href="#contact" className="btn-primary">{h.ctaPrimary}</a>
-
+            <p className="mb-10 max-w-130 text-lg leading-[1.7] text-muted-foreground">
+              <strong className="font-medium text-foreground">
+                {h.subtitleStrong}
+              </strong>{" "}
+              {h.subtitleRest}
+            </p>
+            <a href="#contact" className="btn-primary">{h.ctaPrimary}</a>
+          </Reveal>
         </div>
       </div>
       {/* <div className="pointer-events-none absolute inset-0">

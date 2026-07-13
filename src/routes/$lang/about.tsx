@@ -35,8 +35,8 @@ function AboutPage() {
         <div className="mx-auto max-w-[1160px] px-8">
           <Reveal className="section-label">{a.eyebrow}</Reveal>
           <Reveal className="mb-4">
-            <h1 className="font-bold tracking-[-0.03em]" style={{ fontSize: "clamp(32px,5vw,56px)" }}>
-              {a.titleStrong} <span className="text-acid">{a.titleAccent}</span>
+            <h1 className="font-bold tracking-[-0.03em] uppercase" style={{ fontSize: "clamp(32px,5vw,56px)" }}>
+              {a.titleStrong} <span className="text-acid uppercase">{a.titleAccent}</span>
             </h1>
           </Reveal>
           <Reveal className="max-w-[600px] text-lg leading-[1.7] text-muted-foreground">
@@ -99,9 +99,8 @@ function AboutPage() {
                     {m.tags.map(([label, kind]) => (
                       <span
                         key={label}
-                        className={`rounded-sm border px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.06em] ${
-                          kind === "a" ? "border-acid/20 text-acid" : "border-border text-muted-faint"
-                        }`}
+                        className={`rounded-sm border px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.06em] ${kind === "a" ? "border-acid/20 text-acid" : "border-border text-muted-faint"
+                          }`}
                       >
                         {label}
                       </span>

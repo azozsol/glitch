@@ -54,14 +54,14 @@ function WorkPage() {
 // ═══════════════════════════════════════════════════════════════════════
 function Hero({ w }: { w: any }) {
     return (
-        <section className="relative overflow-hidden bg-background px-0 pb-26 pt-35">
+        <section className="relative flex items-center min-h-[95vh] overflow-hidden bg-background px-0 pb-26 pt-35">
             <GridHoverBackground className="opacity-70" />
             <div className="relative mx-auto max-w-6xl px-8">
                 <Reveal className="section-label">{w.hero.kicker}</Reveal>
 
-                <Reveal className="mb-6">
+                <Reveal className="mb-6 text-center">
                     <h1
-                        className="font-bold uppercase leading-[0.95] tracking-[-0.04em]"
+                        className="font-bold uppercase  leading-[0.95] tracking-[-0.04em]"
                         style={{ fontSize: "clamp(40px,7vw,84px)" }}
                     >
                         <span className="block">{w.hero.h1[0]}</span>
@@ -70,11 +70,11 @@ function Hero({ w }: { w: any }) {
                     </h1>
                 </Reveal>
 
-                <Reveal className="mb-10 max-w-115 text-lg leading-[1.7] text-muted-foreground">
+                <Reveal className="mx-auto mb-10 max-w-115 text-center text-lg leading-[1.7] text-muted-foreground">
                     {w.hero.sub}
                 </Reveal>
 
-                <Reveal className='absolute z-20'>
+                <Reveal className='absolute inset-x-0 z-20 flex justify-center'>
                     <a href="#case-studies" className="btn-primary">
                         {w.hero.cta}
                     </a>
@@ -90,12 +90,12 @@ function Hero({ w }: { w: any }) {
 function Ticker({ items }: { items: string[] }) {
     const doubled = [...items, ...items];
     return (
-        <div className="overflow-hidden border-y border-border bg-surface-1 py-4.5">
+        <div className="relative z-10 overflow-hidden border-y border-border bg-surface-1 py-3.5">
             <div className="ticker-track">
                 {doubled.map((item, i) => (
                     <div
                         key={i}
-                        className="flex items-center gap-4 whitespace-nowrap px-12 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-soft"
+                        className="flex items-center gap-3.5 whitespace-nowrap px-9 font-mono text-[11px] uppercase tracking-widest text-muted-soft"
                     >
                         <span className="inline-block h-0.75 w-0.75 shrink-0 rounded-full bg-acid" />
                         {item}
