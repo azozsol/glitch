@@ -23,6 +23,9 @@ export const contactFormSchema = z.object({
   need: z.string().trim().min(1, { message: "required" }),
   budget: z.string().trim().optional(),
   message: z.string().trim().optional(),
+  // Honeypot: a hidden field real users never fill in (see ContactForm).
+  // Bots that auto-fill every input trip it; never shown/validated in the UI.
+  website: z.string().optional(),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -38,6 +41,11 @@ export type ContactFormValues = z.infer<typeof contactFormSchema>;
 export const submitContactForm = createServerFn({ method: "POST" })
   .inputValidator(contactFormSchema)
   .handler(async ({ data }) => {
+    if (data.website) {
+      // Honeypot tripped -- pretend success so the bot gets no signal it
+      // was caught, but skip logging/processing the submission.
+      return { success: true as const };
+    }
     console.log("[contact] new submission:", data);
     return { success: true as const };
   });

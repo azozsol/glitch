@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
@@ -115,7 +115,16 @@ export function ContactForm() {
         formState: { errors, isSubmitting },
     } = useForm<ContactFormValues>({
         resolver: zodResolver(contactFormSchema),
-        defaultValues: { name: "", company: "", email: "", phone: "", need: "", budget: "", message: "" },
+        defaultValues: {
+            name: "",
+            company: "",
+            email: "",
+            phone: "",
+            need: "",
+            budget: "",
+            message: "",
+            website: "",
+        },
     });
 
     // contactFormSchema's zod messages are short keys ("required" /
@@ -146,6 +155,15 @@ export function ContactForm() {
                     </h2>
                 </Reveal>
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                    {/* Honeypot: hidden from real users, bots that auto-fill forms trip it. */}
+                    <input
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        aria-hidden="true"
+                        className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden"
+                        {...register("website")}
+                    />
                     <Reveal className="grid gap-3.5 md:grid-cols-2">
                         <Field label={f.fields.name} error={errorText(errors.name?.message)}>
                             <input
@@ -239,10 +257,24 @@ export function Nav() {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
     const [mounted, setMounted] = useState(false);
+    const navRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         setMounted(true);
     }, []);
+
+    useEffect(() => {
+        if (!menuOpen) return;
+        function handlePointerDown(e: PointerEvent) {
+            if (navRef.current && !navRef.current.contains(e.target as Node)) {
+                setMenuOpen(false);
+            }
+        }
+        document.addEventListener("pointerdown", handlePointerDown);
+        return () => {
+            document.removeEventListener("pointerdown", handlePointerDown);
+        }
+    }, [menuOpen]);
 
     const links: [string, string][] = [
         [`/${lang}`, t.nav.home],
@@ -263,7 +295,7 @@ export function Nav() {
     const langLabels: Record<Lang, string> = { fr: "FR", en: "EN" };
 
     return (
-        <nav className="fixed inset-x-0 top-0 z-50 border-b border-acid/10 bg-background/95 backdrop-blur-md">
+        <nav ref={navRef} className="fixed inset-x-0 top-0 z-50 border-b border-acid/10 bg-background/95 backdrop-blur-md">
             <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-8">
                 {/* Logo */}
                 <Link
@@ -367,6 +399,7 @@ export function Nav() {
                             <li key={href}>
                                 <Link
                                     to={href}
+                                    activeOptions={href === `/${lang}` ? { exact: true } : undefined}
                                     onClick={() => setMenuOpen(false)}
                                     className="font-mono text-[11px] uppercase tracking-widest text-muted-faint transition-colors hover:text-acid [&.active]:text-acid"
                                 >
