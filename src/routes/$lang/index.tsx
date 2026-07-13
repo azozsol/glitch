@@ -3,6 +3,7 @@ import { useEffect, type ReactNode } from "react";
 import { useTheme } from "@/hooks/use-theme";
 import { HeroCanvas, CaseCanvas, PixelAvatar } from "@/components/glitch/canvases";
 import { Reveal } from "@/components/glitch/layout";
+import { WorldMapDemo } from "@/components/WorldMapDemo";
 import { useLang } from "@/hooks/use-lang";
 import { getDictionary } from "@/i18n";
 //import GlitchLogo from "@/components/GlitchLogo";
@@ -41,10 +42,15 @@ function Hero() {
       {/* Optional dark overlay */}
       {/* <div className="absolute inset-0 bg-background" /> */}
 
+      {/* World map background */}
+      <div className="absolute inset-0 -z-10 opacity-40 pointer-events-none">
+        <WorldMapDemo />
+      </div>
+
       {/* Content */}
       <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-16 px-8 md:grid-cols-[1fr_420px]">
-        <div>
-          <p className="mb-6 flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-acid">
+        <div className="text-center md:text-left">
+          <p className="mb-6 flex items-center justify-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-acid md:justify-start">
             <span className="h-px w-5 bg-acid " />
             {h.eyebrow}
           </p>
@@ -65,7 +71,7 @@ function Hero() {
           </Reveal>
           <Reveal>
 
-            <p className="mb-10 max-w-130 text-lg leading-[1.7] text-muted-foreground">
+            <p className="mx-auto mb-10 max-w-130 text-lg leading-[1.7] text-muted-foreground md:mx-0">
               <strong className="font-medium text-foreground">
                 {h.subtitleStrong}
               </strong>{" "}
