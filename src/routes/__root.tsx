@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav, Footer } from "@/components/glitch/layout";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -140,6 +141,7 @@ function RootComponent() {
       {/* <div className="pointer-events-none fixed inset-0 z-1 scanlines" /> */}
       <Outlet />
       <Footer />
+      <Toaster richColors position="top-center" />
     </QueryClientProvider>
   );
 }

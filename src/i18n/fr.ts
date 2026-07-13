@@ -295,7 +295,28 @@ export const fr: Dictionary = {
         },
         submit: "Envoyer mon brief →",
         privacyNote: "Vos informations restent confidentielles. Nous ne partageons rien avec des tiers.",
+        submitting: "Envoi en cours…",
+        errors: {
+            required: "Ce champ est requis.",
+            invalidEmail: "Veuillez entrer une adresse e-mail valide.",
+            submitFailed: "Une erreur est survenue. Réessayez, ou contactez-nous directement sur WhatsApp.",
+        },
     },
+
+    thankYouPage: {
+        meta: {
+            title: "Brief bien reçu — GLITCH.BE",
+            description: "Votre brief a bien été reçu. On revient vers vous avec une analyse structurée en moins de 24h.",
+            ogTitle: "Brief bien reçu — GLITCH.BE",
+            ogDescription: "Envoi confirmé. Réponse sous 24h.",
+        },
+        eyebrow: "Envoi confirmé",
+        titleStrong: "Votre brief est",
+        titleAccent: "bien arrivé.",
+        intro: "Merci d'avoir partagé votre projet avec nous. On l'étudie avec attention et on revient vers vous en moins de 24h.",
+        cta: "Retour à l'accueil →",
+    },
+
     workPage: {
         meta: {
             title: "Réalisations — GLITCH.BE — Agence Comm & Marketing à Bruxelles",

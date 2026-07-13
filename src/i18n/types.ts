@@ -147,6 +147,21 @@ export type Dictionary = {
         };
         submit: string;
         privacyNote: string;
+        submitting: string; // label shown on the submit button while the request is in flight
+        errors: {
+            required: string;
+            invalidEmail: string;
+            submitFailed: string; // generic toast copy for a failed/network-error submission
+        };
+    };
+
+    thankYouPage: {
+        meta: { title: string; description: string; ogTitle: string; ogDescription: string };
+        eyebrow: string;
+        titleStrong: string;
+        titleAccent: string;
+        intro: string;
+        cta: string; // "Back to home" style CTA label
     };
 
     workPage: {

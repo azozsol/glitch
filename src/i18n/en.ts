@@ -295,6 +295,26 @@ export const en: Dictionary = {
         },
         submit: "Transmit Brief Blueprint →",
         privacyNote: "All submitted data is fully isolated, confidential, and protected under compliance protocols. Zero data sharing.",
+        submitting: "Transmitting…",
+        errors: {
+            required: "This field is required.",
+            invalidEmail: "Enter a valid corporate email address.",
+            submitFailed: "Transmission failed. Please retry, or reach us directly via WhatsApp.",
+        },
+    },
+
+    thankYouPage: {
+        meta: {
+            title: "Brief Received — GLITCH.BE",
+            description: "Your brief has been received and is under strategic review. Our founding partners will respond within 24 hours.",
+            ogTitle: "Brief Received — GLITCH.BE",
+            ogDescription: "Submission confirmed. Expect a structured response within 24 hours.",
+        },
+        eyebrow: "Submission Confirmed",
+        titleStrong: "Your brief is",
+        titleAccent: "under review.",
+        intro: "Thank you for sharing your objectives. Our founding partners are evaluating your submission and will respond with a structured assessment within 24 hours.",
+        cta: "Return to homepage →",
     },
 
     workPage: {

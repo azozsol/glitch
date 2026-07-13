@@ -1,9 +1,13 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useState, useEffect, type ReactNode } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 import { useTheme } from "@/hooks/use-theme";
 import { useReveal } from "@/hooks/use-reveal";
 import { useLang } from "@/hooks/use-lang";
 import { SUPPORTED_LANGS, type Lang } from "@/i18n";
+import { contactFormSchema, submitContactForm, type ContactFormValues } from "@/lib/api/contact.functions";
 
 /**
  * Reveal
@@ -73,10 +77,12 @@ export function Field({
     label,
     children,
     full = false,
+    error,
 }: {
     label?: string;
     children: ReactNode;
     full?: boolean;
+    error?: string;
 }) {
     return (
         <div className={`flex flex-col gap-1.5 ${full ? "md:col-span-2" : ""}`}>
@@ -86,6 +92,9 @@ export function Field({
                 </label>
             )}
             {children}
+            {error && (
+                <p className="font-mono text-[10px] tracking-[0.04em] text-destructive">{error}</p>
+            )}
         </div>
     );
 }
@@ -96,8 +105,36 @@ export function Field({
  * and the dedicated /[lang]/contact page.
  */
 export function ContactForm() {
-    const { t } = useLang();
+    const { t, lang } = useLang();
     const f = t.contactForm;
+    const navigate = useNavigate();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+    } = useForm<ContactFormValues>({
+        resolver: zodResolver(contactFormSchema),
+        defaultValues: { name: "", company: "", email: "", phone: "", need: "", budget: "", message: "" },
+    });
+
+    // contactFormSchema's zod messages are short keys ("required" /
+    // "invalidEmail"), not display text -- resolve the real, language-aware
+    // copy here so one schema serves both languages.
+    function errorText(message?: string): string | undefined {
+        if (!message) return undefined;
+        return f.errors[message as keyof typeof f.errors] ?? message;
+    }
+
+    async function onSubmit(values: ContactFormValues) {
+        try {
+            await submitContactForm({ data: values });
+            navigate({ to: "/$lang/thank-you", params: { lang } });
+        } catch (error) {
+            console.error("[contact] submission failed:", error);
+            toast.error(f.errors.submitFailed);
+        }
+    }
 
     return (
         <section id="contact" className="pb-20">
@@ -108,45 +145,82 @@ export function ContactForm() {
                         {f.titleLine1}<br />{f.titleLine2}
                     </h2>
                 </Reveal>
-                <Reveal className="grid gap-3.5 md:grid-cols-2">
-                    <Field label={f.fields.name}>
-                        <input type="text" placeholder={f.fields.namePlaceholder} className="form-input" />
-                    </Field>
-                    <Field label={f.fields.company}>
-                        <input type="text" placeholder={f.fields.companyPlaceholder} className="form-input" />
-                    </Field>
-                    <Field label={f.fields.email}>
-                        <input type="email" placeholder={f.fields.emailPlaceholder} className="form-input" />
-                    </Field>
-                    <Field label={f.fields.phone}>
-                        <input type="tel" placeholder={f.fields.phonePlaceholder} className="form-input" />
-                    </Field>
-                    <Field label={f.fields.need}>
-                        <select className="form-input">
-                            <option value="">{f.fields.needPlaceholder}</option>
-                            {f.fields.needOptions.map((opt) => (
-                                <option key={opt}>{opt}</option>
-                            ))}
-                        </select>
-                    </Field>
-                    <Field label={f.fields.budget}>
-                        <select className="form-input">
-                            <option value="">{f.fields.budgetPlaceholder}</option>
-                            {f.fields.budgetOptions.map((opt) => (
-                                <option key={opt}>{opt}</option>
-                            ))}
-                        </select>
-                    </Field>
-                    <Field label={f.fields.message} full>
-                        <textarea placeholder={f.fields.messagePlaceholder} className="form-input min-h-[110px] resize-y" />
-                    </Field>
-                    <Field full>
-                        <button type="button" className="btn-primary w-fit">{f.submit}</button>
-                        <p className="mt-2.5 font-mono text-[10px] tracking-[0.04em] text-muted-faint">
-                            {f.privacyNote}
-                        </p>
-                    </Field>
-                </Reveal>
+                <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                    <Reveal className="grid gap-3.5 md:grid-cols-2">
+                        <Field label={f.fields.name} error={errorText(errors.name?.message)}>
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder={f.fields.namePlaceholder}
+                                className="form-input"
+                                {...register("name")}
+                            />
+                        </Field>
+                        <Field label={f.fields.company} error={errorText(errors.company?.message)}>
+                            <input
+                                type="text"
+                                id="company"
+                                placeholder={f.fields.companyPlaceholder}
+                                className="form-input"
+                                {...register("company")}
+                            />
+                        </Field>
+                        <Field label={f.fields.email} error={errorText(errors.email?.message)}>
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder={f.fields.emailPlaceholder}
+                                className="form-input"
+                                {...register("email")}
+                            />
+                        </Field>
+                        <Field label={f.fields.phone} error={errorText(errors.phone?.message)}>
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder={f.fields.phonePlaceholder}
+                                className="form-input"
+                                {...register("phone")}
+                            />
+                        </Field>
+                        <Field label={f.fields.need} error={errorText(errors.need?.message)}>
+                            <select id="need" className="form-input" {...register("need")}>
+                                <option value="">{f.fields.needPlaceholder}</option>
+                                {f.fields.needOptions.map((opt) => (
+                                    <option key={opt}>{opt}</option>
+                                ))}
+                            </select>
+                        </Field>
+                        <Field label={f.fields.budget} error={errorText(errors.budget?.message)}>
+                            <select id="budget" className="form-input" {...register("budget")}>
+                                <option value="">{f.fields.budgetPlaceholder}</option>
+                                {f.fields.budgetOptions.map((opt) => (
+                                    <option key={opt}>{opt}</option>
+                                ))}
+                            </select>
+                        </Field>
+                        <Field label={f.fields.message} full error={errorText(errors.message?.message)}>
+                            <textarea
+                                id="message"
+                                placeholder={f.fields.messagePlaceholder}
+                                className="form-input min-h-[110px] resize-y"
+                                {...register("message")}
+                            />
+                        </Field>
+                        <Field full>
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="btn-primary w-fit disabled:cursor-not-allowed disabled:opacity-60"
+                            >
+                                {isSubmitting ? f.submitting : f.submit}
+                            </button>
+                            <p className="mt-2.5 font-mono text-[10px] tracking-[0.04em] text-muted-faint">
+                                {f.privacyNote}
+                            </p>
+                        </Field>
+                    </Reveal>
+                </form>
             </div>
         </section>
     );
