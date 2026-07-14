@@ -1,8 +1,6 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import DottedMap from "dotted-map";
-
-import { useTheme } from "@/hooks/use-theme";
 
 interface MapProps {
   dots?: Array<{
@@ -12,17 +10,37 @@ interface MapProps {
   lineColor?: string;
 }
 
+// `useTheme` (src/hooks/use-theme.ts) keeps independent per-call state, so it
+// never sees toggles made by Nav's own instance. Read the live `<html>` class
+// instead, matching how canvases.tsx reacts to the actual DOM theme.
+function useIsDarkMode() {
+  const [isDark, setIsDark] = useState(
+    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark"),
+  );
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const update = () => setIsDark(root.classList.contains("dark"));
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
+  return isDark;
+}
+
 export default function WorldMap({ dots = [], lineColor = "#0ea5e9" }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const map = new DottedMap({ height: 100, grid: "diagonal" });
 
-  const { theme } = useTheme();
+  const isDark = useIsDarkMode();
 
   const svgMap = map.getSVG({
     radius: 0.22,
-    color: theme === "dark" ? "#FFFFFF40" : "#00000040",
+    color: isDark ? "#FFFFFF40" : "#00000040",
     shape: "circle",
-    backgroundColor: theme === "dark" ? "black" : "white",
+    backgroundColor: isDark ? "#181818" : "white",
   });
 
   const projectPoint = (lat: number, lng: number) => {
@@ -41,7 +59,7 @@ export default function WorldMap({ dots = [], lineColor = "#0ea5e9" }: MapProps)
   };
 
   return (
-    <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg relative font-sans">
+    <div className="w-full aspect-4/5 sm:aspect-3/2 md:aspect-2/1 dark:bg-surface-2 bg-white rounded-lg relative font-sans">
       <img
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"

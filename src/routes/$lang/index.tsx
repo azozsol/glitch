@@ -43,7 +43,7 @@ function Hero() {
       {/* <div className="absolute inset-0 bg-background" /> */}
 
       {/* World map background */}
-      <div className="absolute inset-0 -z-10 opacity-40 pointer-events-none">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
         <WorldMapDemo />
       </div>
 
