@@ -48,7 +48,7 @@ function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-16 px-8 md:grid-cols-[1fr_420px]">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-16 px-8">
         <div className="text-center md:text-left">
           <p className="mb-6 flex items-center justify-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-acid md:justify-start">
             <span className="h-px w-5 bg-acid " />

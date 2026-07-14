@@ -557,63 +557,16 @@ function CaseMujaz({ caseData }: { caseData: any }) {
 // ═══════════════════════════════════════════════════════════════════════
 // OTHER WORK (mini grid)
 // ═══════════════════════════════════════════════════════════════════════
-function MiniVisual({ name }: { name: string }) {
-    switch (name) {
-        case "NYApocalypse":
-            return (
-                <div className="p-5 text-center">
-                    <div className="font-mono text-[28px] font-bold leading-none tracking-[-0.03em] text-foreground">NYA</div>
-                    <div className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">pocalypse</div>
-                    <div className="mt-4 flex justify-center gap-2">
-                        <div className="h-2 w-2 rounded-full bg-red-600" />
-                        <div className="h-2 w-2 rounded-full bg-orange-500" />
-                        <div className="h-2 w-2 rounded-full bg-foreground" />
-                    </div>
-                </div>
-            );
-        case "Smash Smash":
-            return (
-                <div className="grid h-full w-full grid-cols-2 gap-1.5 p-3">
-                    {[0, 1, 2, 3].map((i) => (
-                        <div key={i} className="flex flex-col justify-end rounded-sm border border-acid/15 bg-acid/[0.08] p-2">
-                            <div className="mb-0.5 h-[3px] rounded-full bg-acid" />
-                            <div className="h-[3px] w-1/2 rounded-full bg-acid/40" />
-                        </div>
-                    ))}
-                </div>
-            );
-        case "Crispy Chicken":
-            return (
-                <div className="flex h-full flex-col items-center justify-center gap-2.5">
-                    <div className="text-center font-mono text-[13px] font-bold uppercase leading-tight tracking-[0.08em] text-foreground">
-                        Crispy
-                        <br />
-                        Chicken
-                    </div>
-                    <div className="flex gap-1.5">
-                        <div className="h-[3px] w-7 rounded-full bg-acid" />
-                        <div className="h-[3px] w-4 rounded-full bg-acid/35" />
-                        <div className="h-[3px] w-2.5 rounded-full bg-acid/15" />
-                    </div>
-                </div>
-            );
-        case "Tayba":
-            return (
-                <div className="flex h-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-amber-50 to-amber-100 p-5">
-                    <div className="text-xl font-bold tracking-[0.12em] text-amber-950">طيب</div>
-                    <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-amber-700">TAYBA</div>
-                </div>
-            );
-        default:
-            return null;
-    }
-}
-
-function MiniCard({ name, cat, city }: { name: string; cat: string; city: string }) {
+function MiniCard({ src, name, cat, city }: { src: string; name: string; cat: string; city: string }) {
     return (
         <div className="group cursor-pointer overflow-hidden rounded-sm border border-border bg-surface-1 transition-all duration-300 hover:-translate-y-1 hover:border-acid/30">
             <div className="flex h-40 items-center justify-center overflow-hidden bg-surface-2">
-                <MiniVisual name={name} />
+                <img
+                    src={src}
+                    alt={name}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
             </div>
             <div className="p-4">
                 <div className="mb-1 text-[15px] font-bold tracking-[-0.01em] text-foreground">{name}</div>
@@ -642,7 +595,7 @@ function OtherWork({ w }: { w: any }) {
                 <Reveal>
                     <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                         {w.miniProjects.map((p: any) => (
-                            <MiniCard key={p.name} name={p.name} cat={p.cat} city={p.city} />
+                            <MiniCard key={p.name} src={p.src} name={p.name} cat={p.cat} city={p.city} />
                         ))}
                     </div>
                 </Reveal>

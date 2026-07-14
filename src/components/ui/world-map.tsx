@@ -14,9 +14,10 @@ interface MapProps {
 // never sees toggles made by Nav's own instance. Read the live `<html>` class
 // instead, matching how canvases.tsx reacts to the actual DOM theme.
 function useIsDarkMode() {
-  const [isDark, setIsDark] = useState(
-    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark"),
-  );
+  // const [isDark, setIsDark] = useState(
+  //   () => typeof document !== "undefined" && document.documentElement.classList.contains("dark"),
+  // );
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;

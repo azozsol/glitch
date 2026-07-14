@@ -44,7 +44,7 @@ export const en: Dictionary = {
             eyebrow: "Digital Identity // Engineered to Convert — Brussels",
             titleLine1: "We engineer the",
             titleLine2: "digital identity",
-            titleLine3: "of elite brands.",
+            titleLine3: "of elite brands",
             subtitleStrong: "Intentional strategy, premium design, bespoke code.",
             subtitleRest: "One dedicated team. Direct alignment. Zero agency friction.",
             ctaPrimary: "Deploy your project →",
@@ -481,10 +481,10 @@ export const en: Dictionary = {
             heading: ["ADDITIONAL", "STUDIO WORK"],
         },
         miniProjects: [
-            { name: "NYApocalypse", cat: "Identity Engine · Visual Architecture", city: "Brussels" },
-            { name: "Smash Smash", cat: "Motion Engineering · Interactive Menus", city: "Brussels" },
-            { name: "Crispy Chicken", cat: "Motion Engineering · Interactive Menus", city: "Brussels" },
-            { name: "Tayba", cat: "Brand Identity · Menu Architecture", city: "Brussels" },
+            { src:"/images/additionals/4.svg", name: "NYApocalypse", cat: "Identity Engine · Visual Architecture", city: "Brussels" },
+            { src:"/images/additionals/3.svg",name: "Smash Smash", cat: "Motion Engineering · Interactive Menus", city: "Brussels" },
+            { src:"/images/additionals/2.svg",name: "Crispy Chicken", cat: "Motion Engineering · Interactive Menus", city: "Brussels" },
+            { src:"/images/additionals/1.svg",name: "Tayba", cat: "Brand Identity · Menu Architecture", city: "Brussels" },
         ],
         intl: {
             eyebrow: "Global Pedigree",

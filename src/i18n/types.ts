@@ -184,7 +184,7 @@ export type Dictionary = {
             cans: Array<{ src: string, name: string; flavor: string; body: string }>;
         };
         otherSection: { eyebrow: string; heading: [string, string] };
-        miniProjects: Array<{ name: string; cat: string; city: string }>;
+        miniProjects: Array<{ src: string; name: string; cat: string; city: string }>;
         intl: {
             eyebrow: string;
             heading: [string, string];
