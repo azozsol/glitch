@@ -10,7 +10,7 @@ import type { Lang } from "@/i18n";
 const SHEETS_SCOPE = "https://www.googleapis.com/auth/spreadsheets";
 
 // Shared submission shape appended to the sheet and emailed via Resend
-// (src/lib/resend.server.ts) -- built once in contact.functions.ts so both
+// (src/lib/resend.server.tsx) -- built once in contact.functions.ts so both
 // delivery paths can't drift from each other.
 export interface ContactSubmissionRecord {
   submittedAt: string; // ISO 8601 UTC
