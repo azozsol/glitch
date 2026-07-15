@@ -57,8 +57,17 @@ export async function appendContactSubmissionToSheet(
   const { clientEmail, privateKey, spreadsheetId, sheetName } = getSheetsConfig();
   const token = await getAccessToken(clientEmail, privateKey);
 
-  const range = `${sheetName}!A:I`;
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${encodeURIComponent(range)}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
+  // Sheets API range syntax requires the tab name single-quoted whenever it
+  // contains a space or other special character (any internal single quotes
+  // must be doubled) -- quoting unconditionally is also valid for simple
+  // names, so this is safe regardless of what the tab is actually called.
+  const range = `'${sheetName.replace(/'/g, "''")}'!A:I`;
+  // RAW, not USER_ENTERED: the latter parses cells as if a user typed them,
+  // so a phone number starting with "+" (or any field starting with "=",
+  // "-", "@") gets misread as a formula and errors out. RAW always writes
+  // the literal string, which also avoids formula-injection from free-text
+  // fields like name/company/message.
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${encodeURIComponent(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
 
   const res = await fetch(url, {
     method: "POST",

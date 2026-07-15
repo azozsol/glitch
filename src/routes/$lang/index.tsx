@@ -30,7 +30,7 @@ function Hero() {
 
   return (
     //<section className="relative flex min-h-screen items-center justify-center overflow-hidden px-0 pb-20 pt-[100px]">
-    <section className="relative flex min-h-[95vh] items-center justify-center overflow-hidden ">
+    <section className="relative flex min-h-[95dvh] items-center justify-center overflow-hidden ">
 
       {/* Background image */}
       {/* <img

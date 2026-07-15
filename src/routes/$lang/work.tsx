@@ -54,7 +54,7 @@ function WorkPage() {
 // ═══════════════════════════════════════════════════════════════════════
 function Hero({ w }: { w: any }) {
     return (
-        <section className="relative flex items-center min-h-[95vh] overflow-hidden bg-background px-0 pb-26 pt-35">
+        <section className="relative flex items-center min-h-[95dvh] overflow-hidden bg-background px-0 pb-26 pt-35">
             <GridHoverBackground className="opacity-70" />
             <div className="relative mx-auto max-w-6xl px-8">
                 <Reveal className="section-label">{w.hero.kicker}</Reveal>
