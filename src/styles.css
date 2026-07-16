@@ -83,7 +83,7 @@
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: #222222;
   --input: #181818;
-  --ring: #049CD8;
+  --ring: #049cd8;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -97,7 +97,7 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
-  --acid: #049CD8;
+  --acid: #049cd8;
   --mag: #ff2d78;
   --cyn: #00e5ff;
   --surface-1: #111111;
@@ -130,7 +130,7 @@
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: #222222;
   --input: #181818;
-  --ring: #049CD8;
+  --ring: #049cd8;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -144,7 +144,7 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
-  --acid: #049CD8;
+  --acid: #049cd8;
   --mag: #ff2d78;
   --cyn: #00e5ff;
   --surface-1: #111111;
@@ -168,8 +168,8 @@
   --muted-foreground: #555555;
   --border: #d8d4cb;
   --input: #ffffff;
-  --ring: #049CD8;
-  --acid: #049CD8;
+  --ring: #049cd8;
+  --acid: #049cd8;
   --mag: #d11460;
   --cyn: #007a99;
   --surface-1: #ffffff;
@@ -268,6 +268,48 @@
   }
 }
 
+@utility glitch-logo-top {
+  position: absolute;
+  inset: 0;
+  /* Slight overlap (49% vs. 50%) hides the anti-aliasing seam that a
+     perfectly even 50/50 clip-path split leaves at the letters' midpoint. */
+  clip-path: inset(0 0 49% 0);
+}
+
+@utility glitch-logo-bottom {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(49% 0 0 0);
+}
+
+.redShadow {
+  text-shadow: -10px -2px var(--acid);
+}
+
+.greenShadow {
+  text-shadow: -10px -2px var(--cyn);
+}
+
+@keyframes intro-fallback-hide {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@utility intro-splash {
+  /* Hard safety net: if GSAP/JS never runs or errors, force-hide the
+     overlay a few seconds after the intro should have finished, so the
+     site is never permanently blocked. Under normal conditions GSAP's
+     onComplete (~1.9s) fires well before this. */
+  animation: intro-fallback-hide 0s linear 4s forwards;
+}
+
+@utility intro-hidden {
+  display: none !important;
+  pointer-events: none !important;
+}
+
 @utility ticker-track {
   display: flex;
   width: max-content;
@@ -277,7 +319,9 @@
 @utility reveal-on-scroll {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 
   &.is-visible {
     opacity: 1;

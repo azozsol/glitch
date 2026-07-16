@@ -468,8 +468,8 @@ export function Footer() {
                 <div className="mb-14 grid grid-cols-2 gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
                     <div>
                         <div className="flex items-center gap-0.5">
-                            <span className="font-mono text-[18px] font-bold text-foreground">GLITCH</span>
-                            <span className="font-mono text-[18px] font-bold text-acid">.BE</span>
+                            <span className="font-mono text-[18px] font-bold text-foreground">GLITCHBRUSSELS</span>
+                            <span className="font-mono text-[18px] font-bold text-acid">.COM</span>
                         </div>
                         <p className="mt-2.5 max-w-[240px] text-[13px] leading-[1.65] text-muted-soft">
                             {t.footer.tagline}

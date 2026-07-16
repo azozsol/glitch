@@ -29,20 +29,8 @@ function Hero() {
   const h = t.home.hero;
 
   return (
-    //<section className="relative flex min-h-screen items-center justify-center overflow-hidden px-0 pb-20 pt-[100px]">
     <section className="relative flex min-h-[95dvh] items-center justify-center overflow-hidden ">
 
-      {/* Background image */}
-      {/* <img
-        src="images/bg-1.png"
-        alt="background"
-        className="absolute inset-0 h-full w-full object-cover"
-      /> */}
-
-      {/* Optional dark overlay */}
-      {/* <div className="absolute inset-0 bg-background" /> */}
-
-      {/* World map background */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <WorldMapDemo />
       </div>
@@ -81,63 +69,6 @@ function Hero() {
           </Reveal>
         </div>
       </div>
-      {/* <div className="pointer-events-none absolute inset-0">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-mono font-bold tracking-[-0.04em]"
-          style={{
-            fontSize: "clamp(80px, 18vw, 220px)",
-            color: "transparent",
-            WebkitTextStroke: "1px var(--grid-line)",
-          }}
-        >
-          GLITCH
-        </div>
-        <span className="absolute left-6 top-20 h-5 w-5 border-l-2 border-t-2 border-acid/30" />
-        <span className="absolute right-6 top-20 h-5 w-5 border-r-2 border-t-2 border-acid/30" />
-        <span className="absolute bottom-10 left-6 h-5 w-5 border-b-2 border-l-2 border-acid/30" />
-        <span className="absolute bottom-10 right-6 h-5 w-5 border-b-2 border-r-2 border-acid/30" />
-      </div>
-      <div className="mx-auto grid w-full max-w-[1160px] items-center gap-16 px-8 md:grid-cols-[1fr_420px]">
-        <div>
-          <p className="mb-6 flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-acid">
-            <span className="h-px w-5 bg-acid" />
-            {h.eyebrow}
-          </p>
-          <h1 className="mb-7 font-bold leading-none tracking-[-0.03em]" style={{ fontSize: "clamp(38px,5.5vw,72px)" }}>
-            <span className="glitch-overlay relative inline-block text-foreground" data-t={h.titleLine1}>
-              {h.titleLine1}
-            </span>
-            <span className="block text-acid">{h.titleLine2}</span>
-            <span className="block text-foreground">{h.titleLine3}</span>
-          </h1>
-          <p className="mb-10 max-w-[520px] text-lg leading-[1.7] text-muted-foreground">
-            <strong className="font-medium text-foreground">{h.subtitleStrong}</strong> {h.subtitleRest}
-          </p>
-          <div className="flex flex-wrap items-center gap-3.5">
-            <a href="#contact" className="btn-primary">{h.ctaPrimary}</a>
-            <a href="#portfolio" className="btn-secondary">{h.ctaSecondary}</a>
-          </div>
-        </div>
-        <div className="relative hidden md:block">
-          <div className="relative aspect-square overflow-hidden rounded border border-acid/20 bg-surface-1 ">
-            <span className="absolute -left-px -top-px z-10 h-3.5 w-3.5 border-l-2 border-t-2 border-acid" />
-            <span className="absolute -right-px -top-px z-10 h-3.5 w-3.5 border-r-2 border-t-2 border-acid" />
-            <span className="absolute -bottom-px -left-px z-10 h-3.5 w-3.5 border-b-2 border-l-2 border-acid" />
-            <span className="absolute -bottom-px -right-px z-10 h-3.5 w-3.5 border-b-2 border-r-2 border-acid" />
-            <HeroCanvas />
-            <div className="absolute inset-x-3.5 bottom-3.5 rounded-sm border border-acid/25 bg-background/90 p-3 font-mono text-[10px] tracking-[0.08em] text-acid">
-              {h.cardBadge}
-              <span className="mt-0.5 block text-[9px] text-muted-faint">
-                {h.cardSubBadge}
-              </span>
-            </div>
-
-          </div>
-
-
-        </div>
-      </div> */}
     </section>
   );
 }

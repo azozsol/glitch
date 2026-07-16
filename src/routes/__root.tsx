@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav, Footer } from "@/components/glitch/layout";
+import { IntroSplash } from "@/components/glitch/intro";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -88,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Glitch" },
     ],
     links: [
-      { rel: "icon", href: "/favicon.svg" },   // <-- Add this
+      { rel: "icon", href: "/favicon.svg" }, // <-- Add this
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -135,6 +136,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <IntroSplash />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Nav />
       <div className="pointer-events-none fixed inset-0 z-0 pixel-grid" />
