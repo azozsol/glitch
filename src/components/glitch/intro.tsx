@@ -45,17 +45,26 @@ export function IntroSplash() {
     document.documentElement.style.overflow = "hidden";
     gsap.defaults({ ease: "power4.inOut" });
 
+    // skewX shifts the element horizontally by roughly height * tan(angle) —
+    // on a wide desktop viewport that reads as a quick glitch flicker, but
+    // the same angle on a narrow phone screen (where the wordmark is a much
+    // larger fraction of the viewport width) turns into an off-screen smear.
+    // Scale both the skew and the small x-jitter down below the sm breakpoint.
+    const isNarrowViewport = window.innerWidth < 640;
+    const skewAngle = isNarrowViewport ? 35 : 75;
+    const jitterX = isNarrowViewport ? 10 : 20;
+
     const scaleUp = { duration: 0.02, scaleY: 1.1 };
     const scaleDown = { duration: 0.04, scaleY: 1 };
     const both = [top, bottom];
 
     const tl = gsap.timeline({ onComplete: finish });
 
-    tl.to(both, { duration: 0.1, skewX: 75 })
+    tl.to(both, { duration: 0.1, skewX: skewAngle })
       .to(both, { duration: 0.04, skewX: 0 })
       .to(both, { duration: 0.04, opacity: 0 })
       .to(both, { duration: 0.04, opacity: 1 })
-      .to(both, { duration: 0.04, x: -20 })
+      .to(both, { duration: 0.04, x: -jitterX })
       .to(both, { duration: 0.04, x: 0 })
       .add("split")
       .to(top, { duration: 0.5, x: -4 }, "split")
