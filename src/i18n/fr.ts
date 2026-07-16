@@ -2,7 +2,7 @@ import type { Dictionary } from "./types";
 
 export const fr: Dictionary = {
     meta: {
-        siteName: "GLITCH.BE",
+        siteName: "GLITCHBRUSSELS.COM",
     },
 
     nav: {
@@ -28,16 +28,16 @@ export const fr: Dictionary = {
         },
         colContact: {
             title: "Contact",
-            items: ["hello@glitch.be", "WhatsApp", "LinkedIn", "Instagram", "Bruxelles, Belgique"],
+            items: ["contact@glitchbrussels.com", "WhatsApp", "LinkedIn", "Instagram", "Bruxelles, Belgique"],
         },
-        copyright: "© 2026 GLITCH.BE — Création & Ingénierie Digitale · Tous droits réservés · Mentions légales",
+        copyright: "© 2024 glitchbrussels.com — Création & Ingénierie Digitale · Tous droits réservés · Mentions légales",
     },
 
     home: {
         meta: {
-            title: "GLITCH.BE — Studio Premium de Création & Ingénierie Digitale | Bruxelles",
+            title: "GLITCHBRUSSELS.COM — Studio Premium de Création & Ingénierie Digitale | Bruxelles",
             description: "Stratégie de marque haut de gamme, création publicitaire d'élite et systèmes web pensés pour la conversion. Une équipe unique, une exécution sans faille, zéro friction.",
-            ogTitle: "GLITCH.BE — Création & Ingénierie Digitale Premium",
+            ogTitle: "GLITCHBRUSSELS.COM — Création & Ingénierie Digitale Premium",
             ogDescription: "Nous construisons l'identité digitale et la valeur commerciale. Stratégie · Création · Architecture Web.",
         },
         hero: {
@@ -49,13 +49,13 @@ export const fr: Dictionary = {
             subtitleRest: "Une équipe dédiée. Un alignement direct. Zéro friction d'agence.",
             ctaPrimary: "Lancez votre projet →",
             ctaSecondary: "Découvrir nos réalisations",
-            cardBadge: "GLITCH.BE — CAPTEZ L'ATTENTION",
+            cardBadge: "GLITCHBRUSSELS.COM — CAPTEZ L'ATTENTION",
             cardSubBadge: "Bruxelles · Stratégie · Design Systems · Web Avancé",
         },
         ticker: [
-            "Stratégie de Marque", "Direction Créative", "Architecture & Dev Web", "Performance Digitale",
-            "Identité Visuelle Premium", "Production Film & TVC", "Optimisation SEO", "Conseil Executive",
-            "Expériences UI Interactives", "Design de Packaging Haut de Gamme",
+            "Palès — Brussels · Cmleon", "GoodFood — Brussels · Pixel&co", "Mujaz — Beyrouth · LLC",
+            "Makifornia — Brussels · CMLeon", "Mitsubishi — Bahrain · JWT", "DOTREFLECTION — Berlin · GMBH",
+            "Zain Telecom — Bahrain · JWT", "TMG Holdings — Egypt · DDB",
         ],
         clients: {
             label: "Pedigree & Partenariats de Confiance",
@@ -173,9 +173,9 @@ export const fr: Dictionary = {
 
     servicesPage: {
         meta: {
-            title: "Expertise & Services Stratégiques — GLITCH.BE | Bruxelles",
+            title: "Expertise & Services Stratégiques — GLITCHBRUSSELS.COM | Bruxelles",
             description: "Identité de marque haut de gamme, ingénierie web sur-mesure, systèmes de croissance digitale et programmes de formation corporate conçus pour générer de la valeur enterprise.",
-            ogTitle: "Compétences — Studio GLITCH.BE",
+            ogTitle: "Compétences — Studio GLITCHBRUSSELS.COM",
             ogDescription: "Des compétences unifiées construites pour faire grandir les marques modernes. Stratégie · Direction Créative · Architecture · Croissance.",
         },
         eyebrow: "Spectre Stratégique",
@@ -218,15 +218,15 @@ export const fr: Dictionary = {
 
     aboutPage: {
         meta: {
-            title: "La Philosophie & Méthodologie du Studio — GLITCH.BE",
+            title: "La Philosophie & Méthodologie du Studio — GLITCHBRUSSELS.COM",
             description: "Découvrez comment nous fusionnons une expertise d'agence approfondie avec une ingénierie web agile pour construire des outils digitaux qui surpassent votre concurrence.",
-            ogTitle: "Le Studio — GLITCH.BE",
+            ogTitle: "Le Studio — GLITCHBRUSSELS.COM",
             ogDescription: "Direction créative d'élite combinée à un code propre et prêt pour la production. Communication directe, résultat supérieur.",
         },
         eyebrow: "Le Studio",
         titleStrong: "Talent d'élite.",
         titleAccent: "Responsabilité directe.",
-        intro: "GLITCH.BE a été fondée à Bruxelles pour remplacer entièrement les structures d'agence lentes. Nous fusionnons 20 ans de direction créative multinationale d'élite avec une architecture web de pointe, offrant une communication directe avec les partenaires du projet et une exécution finale sans faille.",
+        intro: "GLITCHBRUSSELS.COM a été fondée à Bruxelles pour remplacer entièrement les structures d'agence lentes. Nous fusionnons 20 ans de direction créative multinationale d'élite avec une architecture web de pointe, offrant une communication directe avec les partenaires du projet et une exécution finale sans faille.",
         differenceLabel: "Les Fondations",
         differenceItems: [
             {
@@ -253,9 +253,9 @@ export const fr: Dictionary = {
 
     contactPage: {
         meta: {
-            title: "Contactez Nos Partenaires — Studio GLITCH.BE",
+            title: "Contactez Nos Partenaires — Studio GLITCHBRUSSELS.COM",
             description: "Discutez de vos objectifs de projet avec nos partenaires fondateurs. Nous fournissons un alignement stratégique professionnel sous 24 heures. Bruxelles, Belgique.",
-            ogTitle: "Lancer un Projet — GLITCH.BE",
+            ogTitle: "Lancer un Projet — GLITCHBRUSSELS.COM",
             ogDescription: "Partagez vos besoins business. Recevez une analyse de brief complète en moins de 24 heures.",
         },
         eyebrow: "Lancement de Projet",
@@ -305,9 +305,9 @@ export const fr: Dictionary = {
 
     thankYouPage: {
         meta: {
-            title: "Brief Reçu — GLITCH.BE",
+            title: "Brief Reçu — GLITCHBRUSSELS.COM",
             description: "Votre brief a été reçu et est en cours d'évaluation stratégique. Nos partenaires fondateurs répondront sous 24 heures.",
-            ogTitle: "Brief Reçu — GLITCH.BE",
+            ogTitle: "Brief Reçu — GLITCHBRUSSELS.COM",
             ogDescription: "Soumission confirmée. Réponse structurée à prévoir sous 24 heures.",
         },
         eyebrow: "Soumission Confirmée",
@@ -319,9 +319,9 @@ export const fr: Dictionary = {
 
     workPage: {
         meta: {
-            title: "Études de Cas Sélectionnées & Déploiements Corporate — GLITCH.BE",
+            title: "Études de Cas Sélectionnées & Déploiements Corporate — GLITCHBRUSSELS.COM",
             description: "Explorez des systèmes de packaging physique, une ingénierie web complexe, des frameworks SEO haute performance et des projets d'identité de marque d'élite.",
-            ogTitle: "Études de Cas — Portfolio GLITCH.BE",
+            ogTitle: "Études de Cas — Portfolio GLITCHBRUSSELS.COM",
             ogDescription: "Des études de cas éprouvées détaillant l'optimisation de marque, du code haut de gamme et un impact marché immédiat.",
         },
         hero: {
@@ -331,8 +331,9 @@ export const fr: Dictionary = {
             cta: "Déconstruire les workflows de cas →",
         },
         ticker: [
-            "Architecture de Packaging Avancée", "Branding Complet", "Systèmes SEO Techniques", "Écosystèmes de Design Corporate",
-            "Motion Design Premium", "Systèmes d'Interface Interactifs", "Direction Créative", "Développement Full-Stack", "Bruxelles · Belgique",
+            "Palès — Brussels · Cmleon", "GoodFood — Brussels · Pixel&co", "Mujaz — Beyrouth · LLC",
+            "Makifornia — Brussels · CMLeon", "Mitsubishi — Bahrain · JWT", "DOTREFLECTION — Berlin · GMBH",
+            "Zain Telecom — Bahrain · JWT", "TMG Holdings — Egypt · DDB",
         ],
         caseSection: {
             eyebrow: "Analyses de Cas Approfondies",
@@ -481,10 +482,10 @@ export const fr: Dictionary = {
             heading: ["AUTRES", "RÉALISATIONS DU STUDIO"],
         },
         miniProjects: [
-            {src:"/images/additionals/4.svg", name: "NYApocalypse", cat: "Moteur d'Identité · Architecture Visuelle", city: "Bruxelles" },
-            {src:"/images/additionals/3.svg", name: "Smash Smash", cat: "Ingénierie Motion · Menus Interactifs", city: "Bruxelles" },
-            {src:"/images/additionals/2.svg", name: "Crispy Chicken", cat: "Ingénierie Motion · Menus Interactifs", city: "Bruxelles" },
-            {src:"/images/additionals/1.svg", name: "Tayba", cat: "Identité de Marque · Architecture de Menu", city: "Bruxelles" },
+            { src: "/images/additionals/4.svg", name: "NYApocalypse", cat: "Moteur d'Identité · Architecture Visuelle", city: "Bruxelles" },
+            { src: "/images/additionals/3.svg", name: "Smash Smash", cat: "Ingénierie Motion · Menus Interactifs", city: "Bruxelles" },
+            { src: "/images/additionals/2.svg", name: "Crispy Chicken", cat: "Ingénierie Motion · Menus Interactifs", city: "Bruxelles" },
+            { src: "/images/additionals/1.svg", name: "Tayba", cat: "Identité de Marque · Architecture de Menu", city: "Bruxelles" },
         ],
         intl: {
             eyebrow: "Pedigree Mondial",

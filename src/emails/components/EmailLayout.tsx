@@ -1,4 +1,14 @@
-import { Body, Container, Head, Hr, Html, Preview, Section, Text } from "@react-email/components";
+import {
+  Body,
+  Container,
+  Head,
+  Hr,
+  Html,
+  Img,
+  Preview,
+  Section,
+  Text,
+} from "@react-email/components";
 import type { ReactNode } from "react";
 
 // Shared visual language for all transactional emails -- mirrors the site's
@@ -49,18 +59,18 @@ export function EmailLayout({ previewText, children }: EmailLayoutProps) {
           }}
         >
           <Section style={{ padding: "28px 32px 20px" }}>
-            <Text
-              style={{
-                margin: 0,
-                fontFamily: fontFamily.mono,
-                fontSize: "18px",
-                fontWeight: 700,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              <span style={{ color: colors.foreground }}>GLITCH</span>
-              <span style={{ color: colors.acid }}>.BE</span>
-            </Text>
+            {/*
+                Absolute production URL -- email clients fetch images over
+                HTTP, they can't read local repo files. Case-sensitive path
+                (glitch-Logo.svg, capital L) matters on prod hosting even
+                though local Windows dev is case-insensitive.
+            */}
+            <Img
+              src="https://glitchbrussels.com/images/glitch-Logo.svg"
+              alt="glitchbrussels.com"
+              width={179}
+              height={30}
+            />
           </Section>
           <Hr style={{ borderColor: colors.border, margin: 0 }} />
           <Section style={{ padding: "28px 32px" }}>{children}</Section>
@@ -75,8 +85,8 @@ export function EmailLayout({ previewText, children }: EmailLayoutProps) {
                 color: colors.mutedForeground,
               }}
             >
-              © 2026 GLITCH.BE — Creative &amp; Digital Engineering · All rights reserved · Legal
-              notice
+              © 2024 GLITCHBRUSSELS.COM — Creative &amp; Digital Engineering · All rights reserved ·
+              Legal notice
             </Text>
           </Section>
         </Container>

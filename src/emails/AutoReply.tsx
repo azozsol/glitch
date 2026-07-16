@@ -11,18 +11,18 @@ interface AutoReplyProps {
 
 const COPY: Record<Lang, { subject: string; intro: string; recap: string; signoff: string }> = {
   fr: {
-    subject: "Votre message a bien été reçu — GLITCH.BE",
+    subject: "Votre message a bien été reçu — glitchbrussels.com",
     intro:
       "Merci, nous avons bien reçu votre message. Notre équipe l'étudie et revient vers vous rapidement.",
     recap: "Récapitulatif de votre soumission :",
-    signoff: "À très vite,\nL'équipe GLITCH.BE",
+    signoff: "À très vite,\nL'équipe glitchbrussels.com",
   },
   en: {
-    subject: "Your message has been received — GLITCH.BE",
+    subject: "Your message has been received — glitchbrussels.com",
     intro:
       "Thanks — we've received your message. Our team is reviewing it and will be in touch soon.",
     recap: "Summary of your submission:",
-    signoff: "Talk soon,\nThe GLITCH.BE team",
+    signoff: "Talk soon,\nThe glitchbrussels.com team",
   },
 };
 

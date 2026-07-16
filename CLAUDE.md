@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-GLITCH.BE — a bilingual (FR/EN) marketing site, built on **TanStack Start** (file-based
+GLITCHBRUSSELS.COM — a bilingual (FR/EN) marketing site, built on **TanStack Start** (file-based
 router + SSR) and generated/maintained via **Lovable**. Package manager is **bun**
 (`bun.lock` is authoritative; `package-lock.json` is also present but bun is used for
 scripts/dev).

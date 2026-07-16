@@ -39,7 +39,7 @@ export type Dictionary = {
             subtitleRest: string; // "Une équipe. Un brief. Zéro prise de tête."
             ctaPrimary: string;
             ctaSecondary: string;
-            cardBadge: string; // "GLITCH.BE — LET'S CRACK THE CODE"
+            cardBadge: string; // "GLITCHBRUSSELS.COM — LET'S CRACK THE CODE"
             cardSubBadge: string;
         };
         ticker: string[];

@@ -1,7 +1,7 @@
 /**
  * GlitchLogo.jsx
  * ─────────────────────────────────────────────────────────────
- * GLITCH.BE — Animated logo component for React (G only)
+ * GLITCHBRUSSELS.COM — Animated logo component for React (G only)
  *
  * Usage:
  *   import GlitchLogo from './components/GlitchLogo'

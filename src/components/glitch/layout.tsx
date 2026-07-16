@@ -320,7 +320,7 @@ export function Nav() {
                     params={{ lang }}
                     className="flex items-center gap-0.5 font-mono text-[18px] font-bold tracking-tight text-foreground"
                 >
-                    <img src="/images/glitch-Logo.svg" alt="GLITCH.BE — Comm & Marketing" className="h-8 w-auto" />
+                    <img src="/images/glitch-Logo.svg" alt="GLITCHBRUSSELS.COM — Comm & Marketing" className="h-8 w-auto" />
                 </Link>
 
                 {/* Desktop nav */}
