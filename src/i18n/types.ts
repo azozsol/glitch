@@ -79,7 +79,8 @@ export type Dictionary = {
             body: string;
             ctaPrimary: string;
             ctaSecondary: string;
-            whatsapp: string;
+            whatsapp_line1: string;
+            whatsapp_line2: string;
         };
     };
 

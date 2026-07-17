@@ -25,7 +25,7 @@ export const Route = createFileRoute("/$lang/")({
 
 
 function Hero() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const h = t.home.hero;
 
   return (
@@ -65,7 +65,7 @@ function Hero() {
               </strong>{" "}
               {h.subtitleRest}
             </p>
-            <a href="#contact" className="btn-primary">{h.ctaPrimary}</a>
+            <a href={`/${lang}/contact`} className="btn-primary">{h.ctaPrimary}</a>
           </Reveal>
         </div>
       </div>
@@ -143,7 +143,7 @@ function Difference() {
 }
 
 function Services() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const s = t.home.services;
 
   return (
@@ -171,14 +171,14 @@ function Services() {
                   </span>
                 ))}
               </div>
-              <a href="#" className="mt-4 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-acid transition-all hover:gap-2.5">
+              <a href={`/${lang}/services`} className="mt-4 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-acid transition-all hover:gap-2.5">
                 {s.discoverLabel}
               </a>
             </div>
           ))}
         </Reveal>
         <div className="mt-8 text-center">
-          <a href="#" className="btn-secondary inline-flex">{s.ctaAll}</a>
+          <a href={`/${lang}/services`} className="btn-secondary inline-flex">{s.ctaAll}</a>
         </div>
       </div>
     </section>
@@ -237,7 +237,7 @@ function FeaturedCase() {
 }
 
 function BottomCTA() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const b = t.home.bottomCta;
 
   return (
@@ -258,11 +258,19 @@ function BottomCTA() {
             {b.body}
           </p>
           <div className="relative flex flex-wrap justify-center gap-4">
-            <a href="#contact" className="btn-primary">{b.ctaPrimary}</a>
-            <a href="#" className="btn-secondary inline-flex">{b.ctaSecondary}</a>
+            <a href={`/${lang}/contact`} className="btn-primary">{b.ctaPrimary}</a>
+            <a href={`/${lang}/contact`} className="btn-secondary inline-flex">{b.ctaSecondary}</a>
           </div>
           <p className="relative mt-5 font-mono text-[11px] tracking-[0.04em] text-muted-faint">
-            {b.whatsapp}
+            {b.whatsapp_line1}{" "}
+            <a
+              href="https://wa.me/32483042040"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer hover:text-acid"
+            >
+              {b.whatsapp_line2}
+            </a>
           </p>
         </Reveal>
       </div>
