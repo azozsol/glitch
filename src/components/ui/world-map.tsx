@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "motion/react";
 import DottedMap from "dotted-map";
 
@@ -14,9 +14,6 @@ interface MapProps {
 // never sees toggles made by Nav's own instance. Read the live `<html>` class
 // instead, matching how canvases.tsx reacts to the actual DOM theme.
 function useIsDarkMode() {
-  // const [isDark, setIsDark] = useState(
-  //   () => typeof document !== "undefined" && document.documentElement.classList.contains("dark"),
-  // );
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -31,18 +28,25 @@ function useIsDarkMode() {
   return isDark;
 }
 
+// Dot grid is static (independent of theme/props) — build it once for the
+// app's lifetime instead of on every WorldMap mount/render.
+const dottedMap = new DottedMap({ height: 100, grid: "diagonal" });
+
 export default function WorldMap({ dots = [], lineColor = "#0ea5e9" }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const map = new DottedMap({ height: 100, grid: "diagonal" });
 
   const isDark = useIsDarkMode();
 
-  const svgMap = map.getSVG({
-    radius: 0.22,
-    color: isDark ? "#FFFFFF40" : "#00000040",
-    shape: "circle",
-    backgroundColor: isDark ? "#181818" : "white",
-  });
+  const svgMap = useMemo(
+    () =>
+      dottedMap.getSVG({
+        radius: 0.22,
+        color: isDark ? "#FFFFFF40" : "#00000040",
+        shape: "circle",
+        backgroundColor: isDark ? "#181818" : "white",
+      }),
+    [isDark],
+  );
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);

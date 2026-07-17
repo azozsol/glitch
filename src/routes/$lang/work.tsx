@@ -663,6 +663,7 @@ function IntlStrip({ w }: { w: any }) {
 // CTA
 // ═══════════════════════════════════════════════════════════════════════
 function CtaSection({ w }: { w: any }) {
+    const { lang } = useLang();
     return (
         <section id="contact" className="relative overflow-hidden  px-0 py-20 text-center">
             <div
@@ -693,8 +694,8 @@ function CtaSection({ w }: { w: any }) {
                     </Reveal>
                     <Reveal >
                         <div className="flex flex-wrap items-center justify-center gap-5">
-                            <a href="#" className="btn-primary">{w.cta.primary}</a>
-                            <a href="#" className="btn-secondary">{w.cta.secondary}</a>
+                            <a href={`/${lang}/contact`} className="btn-primary">{w.cta.primary}</a>
+                            <a href={`/${lang}/contact`} className="btn-secondary">{w.cta.secondary}</a>
                         </div>
                     </Reveal>
                     <Reveal >

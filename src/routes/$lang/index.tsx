@@ -29,7 +29,7 @@ function Hero() {
   const h = t.home.hero;
 
   return (
-    <section className="relative flex min-h-[95dvh] items-center justify-center overflow-hidden ">
+    <section id="homepage-hero" className="relative flex min-h-[95dvh] items-center justify-center overflow-hidden ">
 
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <WorldMapDemo />

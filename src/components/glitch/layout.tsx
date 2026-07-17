@@ -301,6 +301,17 @@ export function Nav() {
         [`/${lang}/contact`, t.nav.contact],
     ];
 
+    // Clicking the logo/Home while already on the homepage doesn't trigger a
+    // navigation (same route), so it wouldn't otherwise scroll back to the
+    // hero. Intercept that one case and scroll manually instead of stuffing
+    // a #hash into the URL just to force a re-navigation.
+    function goHome(e: React.MouseEvent) {
+        if (location.pathname === `/${lang}`) {
+            e.preventDefault();
+            document.getElementById("homepage-hero")?.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+
     function switchLang(target: Lang) {
         if (target === lang) return;
         // Replace the leading /fr or /en segment with the target language,
@@ -318,6 +329,7 @@ export function Nav() {
                 <Link
                     to="/$lang"
                     params={{ lang }}
+                    onClick={goHome}
                     className="flex items-center gap-0.5 font-mono text-[18px] font-bold tracking-tight text-foreground"
                 >
                     <img src="/images/glitch-Logo.svg" alt="GLITCHBRUSSELS.COM — Comm & Marketing" className="h-8 w-auto" />
@@ -330,6 +342,7 @@ export function Nav() {
                             <Link
                                 to={href}
                                 activeOptions={href === `/${lang}` ? { exact: true } : undefined}
+                                onClick={href === `/${lang}` ? goHome : undefined}
                                 className="font-mono text-[11px] uppercase tracking-widest text-muted-faint transition-colors hover:text-acid [&.active]:text-acid"
                             >
                                 {label}
@@ -417,7 +430,10 @@ export function Nav() {
                                 <Link
                                     to={href}
                                     activeOptions={href === `/${lang}` ? { exact: true } : undefined}
-                                    onClick={() => setMenuOpen(false)}
+                                    onClick={(e) => {
+                                        if (href === `/${lang}`) goHome(e);
+                                        setMenuOpen(false);
+                                    }}
                                     className="font-mono text-[11px] uppercase tracking-widest text-muted-faint transition-colors hover:text-acid [&.active]:text-acid"
                                 >
                                     {label}
