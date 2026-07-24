@@ -673,11 +673,11 @@ function CtaSection({ w }: { w: any }) {
                 24H
             </div>
             <div className="relative mx-auto max-w-6xl px-8">
-                <div className="mx-auto max-w-[760px]">
+                <div className="mx-auto max-w-190">
                     <Reveal className="section-label justify-center">{w.cta.eyebrow}</Reveal>
                     <Reveal >
                         <h2
-                            className="mb-6 font-bold uppercase leading-[0.92] tracking-[-0.05em] text-foreground"
+                            className="mb-6 font-bold uppercase leading-[0.92] tracking-tighter text-foreground"
                             style={{ fontSize: "clamp(40px,5.5vw,76px)" }}
                         >
                             {w.cta.heading[0]}
@@ -688,7 +688,7 @@ function CtaSection({ w }: { w: any }) {
                         </h2>
                     </Reveal>
                     <Reveal >
-                        <p className="mx-auto mb-10 max-w-[440px] text-[17px] leading-[1.75] text-muted-foreground">
+                        <p className="mx-auto mb-10 max-w-110 text-[17px] leading-[1.75] text-muted-foreground">
                             {w.cta.sub}
                         </p>
                     </Reveal>

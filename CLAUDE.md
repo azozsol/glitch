@@ -19,6 +19,7 @@ bun run build:dev   # build in development mode
 bun run preview     # preview a production build
 bun run lint         # eslint .
 bun run format       # prettier --write .
+bun run email:dev    # preview src/emails/* templates in the react-email dev UI
 ```
 
 There is no test runner configured in this repo (no test script, no test files) — don't
@@ -124,6 +125,30 @@ explicitly overridden to `"vercel"` (default would be `"cloudflare"`).
   localStorage key and toggles the `dark`/`light` class on `<html>`; the inline script
   in `__root.tsx`'s `RootShell` applies the stored theme before hydration to avoid a
   flash — keep both in sync if you change the storage key or default.
+
+### Contact form submission (dual-delivery, best-effort)
+
+`src/lib/api/contact.functions.ts` (`submitContactForm`, a `createServerFn`) is the
+single entry point the client calls. Non-obvious details if you touch it:
+
+- It fans out to two independent backends in parallel via `Promise.allSettled` —
+  `appendContactSubmissionToSheet` (`src/lib/google-sheets.server.ts`, appends a row to
+  a Google Sheet via a service-account JWT) and `sendContactEmails`
+  (`src/lib/resend.server.tsx`, sends via Resend using the `src/emails/*` React-email
+  templates). Either can fail without failing the other, and the client always gets
+  `{ success: true }` back as long as validation passed — a Sheets/Resend outage must
+  never surface as a failed submission, since the user's data was already accepted.
+  Failures are only `console.error`'d server-side.
+- `contactFormSchema` is shared between client-side validation (react-hook-form +
+  `zodResolver`, in `ContactForm`) and the server `.inputValidator` safety net. Error
+  messages are short i18n keys (`"required"`, `"invalidEmail"`), not display strings —
+  `ContactForm` looks up the real copy in `t.contactForm.errors` so validation stays
+  bilingual.
+- There's a honeypot field (`website`) never rendered to real users; if it's filled in,
+  the handler pretends success but skips both Sheets and Resend delivery.
+- Google Sheets writes use `valueInputOption=RAW`, not `USER_ENTERED` — deliberate, so a
+  phone number starting with `+` (or any field starting with `=`, `-`, `@`) isn't parsed
+  as a formula.
 
 ## Conventions
 

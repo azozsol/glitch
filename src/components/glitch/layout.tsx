@@ -478,31 +478,69 @@ export function Footer() {
 
     const langLabels: Record<Lang, string> = { fr: "FR", en: "EN" };
 
+    const contactLinks: Record<string, string> = {
+        LinkedIn: "https://www.linkedin.com/company/glitchbrussels",
+    };
+
+    function renderFooterCol(col: { title: string; items: string[] }) {
+        return (
+            <div key={col.title}>
+                <h4 className="mb-[18px] font-mono text-[9px] uppercase tracking-[0.18em] text-muted-soft">{col.title}</h4>
+                <ul className="flex flex-col gap-2.5">
+                    {col.items.map((it) => {
+                        const href = contactLinks[it];
+                        return (
+                            <li key={it}>
+                                <a
+                                    href={href ?? "#"}
+                                    {...(href ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                                    className="text-[13px] text-muted-faint transition-colors hover:text-acid"
+                                >
+                                    {it}
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        );
+    }
+
     return (
         <footer className="relative z-10 border-t border-border px-0 pb-9 pt-14 bg-background/95">
             <div className="mx-auto max-w-6xl px-8">
-                <div className="mb-14 grid grid-cols-2 gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
-                    <div>
-                        <div className="flex items-center gap-0.5">
-                            <span className="font-mono text-[18px] font-bold text-foreground">GLITCHBRUSSELS</span>
-                            <span className="font-mono text-[18px] font-bold text-acid">.COM</span>
-                        </div>
-                        <p className="mt-2.5 max-w-[240px] text-[13px] leading-[1.65] text-muted-soft">
+                {/* Mobile (<640px) only: Expertise hidden, tagline spans full width, Studio + Contact sit side by side */}
+                <div className="mb-14 sm:hidden">
+                    <div className="mb-10">
+                        <img
+                            src="/images/glitch-Logo.svg"
+                            alt="GLITCHBRUSSELS.COM — Comm & Marketing"
+                            className="h-8 w-auto -ml-1"
+                        />
+                        <p className="mt-2.5 text-[13px] leading-[1.65] text-muted-soft">
                             {t.footer.tagline}
                         </p>
                     </div>
-                    {[t.footer.colServices, t.footer.colAgency, t.footer.colContact].map((col) => (
-                        <div key={col.title}>
-                            <h4 className="mb-[18px] font-mono text-[9px] uppercase tracking-[0.18em] text-muted-soft">{col.title}</h4>
-                            <ul className="flex flex-col gap-2.5">
-                                {col.items.map((it) => (
-                                    <li key={it}>
-                                        <a href="#" className="text-[13px] text-muted-faint transition-colors hover:text-acid">{it}</a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+                    <div className="flex flex-row gap-8">
+                        {renderFooterCol(t.footer.colAgency)}
+                        {renderFooterCol(t.footer.colContact)}
+                    </div>
+                </div>
+
+                {/* sm and up: brand + Studio + Contact (Expertise hidden) */}
+                <div className="mb-14 hidden sm:grid sm:grid-cols-2 sm:gap-12 md:grid-cols-[2fr_1fr_1fr]">
+                    <div>
+                        <img
+                            src="/images/glitch-Logo.svg"
+                            alt="GLITCHBRUSSELS.COM — Comm & Marketing"
+                            className="h-8 w-auto -ml-1"
+                        />
+                        <p className="mt-2.5 max-w-96 text-[13px] leading-[1.65] text-muted-soft">
+                            {t.footer.tagline}
+                        </p>
+                    </div>
+                    {renderFooterCol(t.footer.colAgency)}
+                    {renderFooterCol(t.footer.colContact)}
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6">
                     <p className="font-mono text-[10px] tracking-[0.06em] text-muted-soft">
