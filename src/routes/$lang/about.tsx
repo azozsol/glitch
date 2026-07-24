@@ -78,13 +78,13 @@ function AboutPage() {
                 key={m.name}
                 className="overflow-hidden rounded-sm border border-border bg-surface-1 transition-colors hover:border-acid/30"
               >
-                <div className="relative flex h-[200px] items-center justify-center overflow-hidden bg-surface-2">
+                {/* <div className="relative flex h-[200px] items-center justify-center overflow-hidden bg-surface-2">
                   <PixelAvatar {...AVATARS[i]} />
                   <div
                     className="absolute inset-0"
                     style={{ background: `linear-gradient(to bottom, transparent 60%, ${TINTS[i]} 100%)` }}
                   />
-                </div>
+                </div> */}
                 <div className="border-y border-border bg-background px-5 py-2.5 font-mono text-[9px] uppercase tracking-[0.14em] text-acid">
                   {m.role}
                 </div>
