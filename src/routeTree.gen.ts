@@ -11,11 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LangIndexRouteImport } from './routes/$lang/index'
-import { Route as LangWorkRouteImport } from './routes/$lang/work'
-import { Route as LangThankYouRouteImport } from './routes/$lang/thank-you'
-import { Route as LangServicesRouteImport } from './routes/$lang/services'
-import { Route as LangContactRouteImport } from './routes/$lang/contact'
 import { Route as LangAboutRouteImport } from './routes/$lang/about'
+import { Route as LangContactRouteImport } from './routes/$lang/contact'
+import { Route as LangServicesRouteImport } from './routes/$lang/services'
+import { Route as LangThankYouRouteImport } from './routes/$lang/thank-you'
+import { Route as LangWorkRouteImport } from './routes/$lang/work'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -27,19 +27,9 @@ const LangIndexRoute = LangIndexRouteImport.update({
   path: '/$lang/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LangWorkRoute = LangWorkRouteImport.update({
-  id: '/$lang/work',
-  path: '/$lang/work',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LangThankYouRoute = LangThankYouRouteImport.update({
-  id: '/$lang/thank-you',
-  path: '/$lang/thank-you',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LangServicesRoute = LangServicesRouteImport.update({
-  id: '/$lang/services',
-  path: '/$lang/services',
+const LangAboutRoute = LangAboutRouteImport.update({
+  id: '/$lang/about',
+  path: '/$lang/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LangContactRoute = LangContactRouteImport.update({
@@ -47,9 +37,19 @@ const LangContactRoute = LangContactRouteImport.update({
   path: '/$lang/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LangAboutRoute = LangAboutRouteImport.update({
-  id: '/$lang/about',
-  path: '/$lang/about',
+const LangServicesRoute = LangServicesRouteImport.update({
+  id: '/$lang/services',
+  path: '/$lang/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangThankYouRoute = LangThankYouRouteImport.update({
+  id: '/$lang/thank-you',
+  path: '/$lang/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangWorkRoute = LangWorkRouteImport.update({
+  id: '/$lang/work',
+  path: '/$lang/work',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -137,25 +137,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/$lang/work': {
-      id: '/$lang/work'
-      path: '/$lang/work'
-      fullPath: '/$lang/work'
-      preLoaderRoute: typeof LangWorkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$lang/thank-you': {
-      id: '/$lang/thank-you'
-      path: '/$lang/thank-you'
-      fullPath: '/$lang/thank-you'
-      preLoaderRoute: typeof LangThankYouRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$lang/services': {
-      id: '/$lang/services'
-      path: '/$lang/services'
-      fullPath: '/$lang/services'
-      preLoaderRoute: typeof LangServicesRouteImport
+    '/$lang/about': {
+      id: '/$lang/about'
+      path: '/$lang/about'
+      fullPath: '/$lang/about'
+      preLoaderRoute: typeof LangAboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$lang/contact': {
@@ -165,11 +151,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/$lang/about': {
-      id: '/$lang/about'
-      path: '/$lang/about'
-      fullPath: '/$lang/about'
-      preLoaderRoute: typeof LangAboutRouteImport
+    '/$lang/services': {
+      id: '/$lang/services'
+      path: '/$lang/services'
+      fullPath: '/$lang/services'
+      preLoaderRoute: typeof LangServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/thank-you': {
+      id: '/$lang/thank-you'
+      path: '/$lang/thank-you'
+      fullPath: '/$lang/thank-you'
+      preLoaderRoute: typeof LangThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/work': {
+      id: '/$lang/work'
+      path: '/$lang/work'
+      fullPath: '/$lang/work'
+      preLoaderRoute: typeof LangWorkRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
